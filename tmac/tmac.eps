@@ -1,0 +1,31 @@
+.\" tmac.eps
+.\"
+.\" .EPS file.eps [L|R|C|indents] [width] [height]
+.de EPS
+.ds eps.tmp /tmp/.eps.\n($$
+.\" obtaing the bounding box
+.ec @
+.sy cat @$1 | sed -n '/%%BoundingBox: \([-0123456789]\{1,10\}\) \([-0123456789]\{1,10\}\) \([-0123456789]\{1,10\}\) \([-0123456789]\{1,10\}\)/{s//.nr llx 0+\1,.nr lly 0+\2,.nr urx 0+\3,.nr ury 0+\4/p; q; }' | tr ',' '\\n' >@*[eps.tmp]
+.ec
+.so \\*[eps.tmp]
+.sy rm \\*[eps.tmp]
+.\" image scaling
+.ie '\\$3'' .nr eps.scale 100
+.el .nr eps.scale ((\\$3)/(\\n[urx]-\\n[llx]))*100
+.if !'\\$4'' .if \\n[eps.scale]>(((\\$4)/(\\n[ury]-\\n[lly]))*100) \
+.  nr eps.scale ((\\$4)/(\\n[ury]-\\n[lly]))*100
+.nr eps.w (\\n[urx]-\\n[llx])*\\n[eps.scale]/100
+.nr eps.h (\\n[ury]-\\n[lly])*\\n[eps.scale]/100
+.\" the placement
+.ie '\\$2'' .nr eps.in 0
+.el .nr eps.in (\\$2)
+.if '\\$2'L' .nr eps.in 0
+.if '\\$2'C' .nr eps.in (\\n(.l-\\n(.i-\\n[eps.w])/2
+.if '\\$2'R' .nr eps.in (\\n(.l-\\n(.i-\\n[eps.w])
+.\" printing the image
+.br
+.ne \\n[eps.h]u
+.sp \\n[eps.h]u
+\h'|\\n[eps.in]u'\\X'eps \\$1 \\n[eps.w]'\h'\\n[eps.w]u'
+.br
+..
