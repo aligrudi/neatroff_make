@@ -41,10 +41,16 @@ install: all
 	cp neateqn/eqn $(BDIR)/neateqn
 	cp neatmkfn/mkfn $(BDIR)/neatmkfn
 	cp neatrefer/refer $(BDIR)/neatrefer
-	mkdir -p $(MDIR)
+	chmod 755 $(BDIR)/neat{roff,post,eqn,mkfn,refer}
+
+	mkdir -p -m 755 $(MDIR)
 	cp -r tmac/* $(MDIR)/
-	mkdir -p $(FDIR)
-	cp -r devutf $(FDIR)/
+	chmod 755 $(MDIR)/*/
+	chmod 644 $(MDIR)/*.* $(MDIR)/*/*
+
+	mkdir -p -m 755 $(FDIR)/devutf
+	cp -r devutf/* $(FDIR)/devutf/
+	chmod 644 $(FDIR)/devutf/*
 
 help:
 	@echo "Neatroff top-level makefile"
