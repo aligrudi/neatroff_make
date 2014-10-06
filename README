@@ -1,0 +1,14 @@
+NEATROFF TOP-LEVEL MAKEFILE
+===========================
+
+This directory contains the top-level makefile of neatroff to obtain,
+build and install neatroff and the helper programs that accompany it.
+After the installation, the following programs should be available:
+
+* neatroff: the main troff program.
+* neatpost: a postscript post-processor.
+* neateqn: an eqn clone to format equations.
+* neatrefer: an incompatible refer clone (see neatrefer/README).
+* neatmkfn: a program to create neatroff font descriptions.
+* pic9: the Plan 9 pic pre-processor.
+* tbl9: the Plan 9 tbl pre-processor.
