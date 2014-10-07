@@ -61,11 +61,12 @@ install: all
 help:
 	@echo "Neatroff top-level makefile"
 	@echo
-	@echo "   init        Initialise git repositories"
-	@echo "   pull        Pull git repositories"
 	@echo "   all         Compile the programs"
 	@echo "   install     Install the executables and data"
 	@echo "   clean       Remove generated files"
+	@echo
+	@echo "   init        Initialise git repositories (git clone)"
+	@echo "   pull        Update git repositories (git pull)"
 
 clean:
 	cd neatroff && $(MAKE) clean
