@@ -74,4 +74,6 @@ clean:
 	cd neateqn && $(MAKE) clean
 	cd neatmkfn && $(MAKE) clean
 	cd neatrefer && $(MAKE) clean
+	cd troff/tbl && $(MAKE) clean
+	cd troff/pic && $(MAKE) clean
 	rm -rf devutf/
