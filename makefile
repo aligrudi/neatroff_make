@@ -12,6 +12,8 @@ MDIR = $(PREFIX)/share/neatroff/tmac
 # Directory to install the executables
 BDIR = $(PREFIX)/bin
 
+INSTALL = install
+
 all: init
 	@cd neatroff && $(MAKE) FDIR="$(FDIR)" MDIR="$(MDIR)"
 	@cd neatpost && $(MAKE) FDIR="$(FDIR)" MDIR="$(MDIR)"
@@ -40,14 +42,13 @@ pull: init
 
 install: all
 	mkdir -p $(BDIR)
-	cp neatroff/roff $(BDIR)/neatroff
-	cp neatpost/post $(BDIR)/neatpost
-	cp neateqn/eqn $(BDIR)/neateqn
-	cp neatmkfn/mkfn $(BDIR)/neatmkfn
-	cp neatrefer/refer $(BDIR)/neatrefer
-	cp troff/tbl/tbl $(BDIR)/tbl9
-	cp troff/pic/pic $(BDIR)/pic9
-	chmod 755 $(BDIR)/neat{roff,post,eqn,mkfn,refer} $(BDIR)/{pic9,tbl9}
+	$(INSTALL) neatroff/roff $(BDIR)/neatroff
+	$(INSTALL) neatpost/post $(BDIR)/neatpost
+	$(INSTALL) neateqn/eqn $(BDIR)/neateqn
+	$(INSTALL) neatmkfn/mkfn $(BDIR)/neatmkfn
+	$(INSTALL) neatrefer/refer $(BDIR)/neatrefer
+	$(INSTALL) troff/tbl/tbl $(BDIR)/tbl9
+	$(INSTALL) troff/pic/pic $(BDIR)/pic9
 
 	mkdir -p -m 755 $(MDIR)
 	cp -r tmac/* $(MDIR)/
