@@ -12,8 +12,8 @@
 .if t .ds .] \v'.4m'\s+2\fP
 .if n .ds [o ""
 .if n .ds [c ""
-.if t .ds [o ``
-.if t .ds [c ''
+.if t .ds [o \(lq
+.if t .ds [c \(rq
 .\" the next lines deal with the problem of .[1] or [1].
 .\" refer will write "linexxx\*(<.[1]\*(>.
 .\" and either "<." or ">." should produce the .;
