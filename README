@@ -3,6 +3,14 @@ NEATROFF TOP-LEVEL MAKEFILE
 
 This directory contains the top-level makefile of neatroff to obtain,
 build and install neatroff and the helper programs that accompany it.
+
+Before building the programs, edit the makefile.  GSFONTS should point
+to the directory containing the standard ghostscript fonts
+(ghostscript-fonts package, containing files like n021003l.afm).  In
+most environments it can be either /usr/share/ghostscript/fonts or
+/usr/share/fonts/type1/gsfonts.  Also PREFIX specifies the
+installation prefix.
+
 After the installation, the following programs should be available:
 
 * neatroff: the main troff program.
