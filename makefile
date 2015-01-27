@@ -39,6 +39,7 @@ pull: init
 	cd neateqn && git pull
 	cd neatrefer && git pull
 	cd troff && git pull
+	git pull
 
 install: all
 	mkdir -p $(BDIR)
