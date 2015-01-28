@@ -11,6 +11,8 @@ FDIR = $(PREFIX)/share/neatroff/font
 MDIR = $(PREFIX)/share/neatroff/tmac
 # Directory to install the executables
 BDIR = $(PREFIX)/bin
+# Directory to install the manual pages
+MANDIR = $(PREFIX)/man
 
 INSTALL = install
 
@@ -59,6 +61,10 @@ install: all
 	mkdir -p -m 755 $(FDIR)/devutf
 	cp -r devutf/* $(FDIR)/devutf/
 	chmod 644 $(FDIR)/devutf/*
+
+	mkdir -p -m 755 $(MANDIR)/man1
+	cp -r man/*.1 $(MANDIR)/man1/
+	chmod 644 $(MANDIR)/man1/neat*.1
 
 help:
 	@echo "Neatroff top-level makefile"
