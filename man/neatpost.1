@@ -1,0 +1,62 @@
+.\" first draft by Larry Kollar
+.TH neatpost 1
+.SH NAME
+neatpost \- the neatroff PostScript post-processor
+.SH SYNOPSIS
+.I neatpost
+.RB [ \-F \~\c
+.IR dir ]
+.RB [ \-p \~\c
+.IR size ]
+.RB [ \-w \~\c
+.IR wid ]
+.RI [< input ]
+.RI [> output ]
+.SH DESCRIPTION
+.I Neatpost
+translates the device-independent output from
+.IR neatroff ,
+usually read on the standard input from a pipe,
+into PostScript.
+.SH OPTIONS
+The following options are available:
+.IP "\-F \fIdir\fP" 9
+Sets the font directory.
+The default is typically
+/usr/share/neatroff/font.
+.IP "\-p \fIsize\fP"
+Sets the paper size.
+The
+.I size
+can be one of the following:
+.RS
+.IP \[bu] 3
+Any standard metric paper size like
+.BR a4 .
+.IP \[bu]
+One of the standard US paper sizes:
+.BR letter ,
+.BR legal ,
+.BR ledger ,
+or
+.BR tabloid .
+.IP \[bu]
+A custom paper size, specified as
+.IR width x height ,
+in units of 0.1mm (1/254 inch).
+For example,
+.B 2100x2970
+is equivalent to\~\c
+.BR a4 .
+.RE
+.IP "\-w \fIwid\fP"
+Sets the line thickness for drawing primitives,
+in thousands of an em.
+The default is 40.
+.SH FILES
+.IP "/usr/share/neatroff/font/*"
+.I Neatroff
+output device directories.
+.SH "SEE ALSO"
+.IR neatroff (1),
+.IR neatmkfn (1)

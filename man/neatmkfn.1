@@ -1,0 +1,77 @@
+.\" first draft by Larry Kollar
+.TH neatmkfn 1
+.SH NAME
+neatmkfn \- the neatroff typesetting processor
+.SH SYNOPSIS
+.I neatmkfn
+.RB [ \-a ]
+.RB [ \-o ]
+.RB [ \-s ]
+.RB [ \-p \~\c
+.IR name ]
+.RB [ \-t \~\c
+.IR name ]
+.RB [ \-r \~\c
+.IR res ]
+.RB [ \-k \~\c
+.IR kmin ]
+.RB [ \-b ]
+.RB [ \-S \~\c
+.IR scrs ]
+.RB [ \-L \~\c
+.IR langs ]
+.RB [ \-w ]
+.RI < file
+.RI > output
+.SH DESCRIPTION
+.I Neatmkfn
+extracts information
+from TrueType/OpenType fonts
+or AFM files
+and outputs font descriptions
+suitable for use with
+.IR neatroff .
+.SH OPTIONS
+The following options are available:
+.IP \-a 10
+Reads an AFM file (default).
+.IP "\-o"
+Reads a TrueType or OpenType file.
+.IP "\-s"
+Designates this as a special font.
+.IP "\-p \fIname\fP"
+Use
+.I name
+in place of the PostScript font name.
+.IP "\-t \fIname\fP"
+Sets the
+.I troff
+font name.
+.IP "\-r \fIres\fP"
+Sets the device resolution.
+The default is 720 (i.e. 1/720 inch).
+.IP "\-k \fIkmin\fP"
+Sets the minimum amount of kerning.
+The default is 0.
+.IP "\-b"
+Include glyph bounding boxes in the output.
+.IP "\-S \fIscrs\fP"
+A comma-separated list of scripts to include.
+Use
+.RB \[dq] "-S\~help" \[dq]
+to list the available scripts in the font.
+.IP "\-L \fIlangs\fP"
+A comma-separated list of languages to include.
+Use
+.RB \[dq] "-L\~help" \[dq]
+to list the available languages in the font.
+.IP "\-w"
+Warn about unsupported font features.
+.SH FILES
+.IP "/usr/share/neatroff/font/devutf/*" 4
+Font description files for
+.I utf
+output device.
+.SH "SEE ALSO"
+.IR neatroff (1),
+.IR neatpost (1)

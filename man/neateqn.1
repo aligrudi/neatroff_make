@@ -1,0 +1,34 @@
+.\" first draft by Larry Kollar
+.TH neateqn 1
+.SH NAME
+neateqn \- the neatroff equation preprocessor
+.SH SYNOPSIS
+.I neateqn
+.RI [< input ]
+.RI [> output ]
+.SH DESCRIPTION
+.I Neateqn
+is a preprocessor for
+.IR neatroff .
+It processes blocks of equation markup between
+.B \&.EQ
+and
+.B \&.EN
+commands, replacing the equation commands
+with low-level typesetting markup
+that is typically piped to
+.I neatroff
+or another preprocessor.
+.LP
+The primary difference between
+.I neateqn
+and standard
+.I eqn
+is that
+.I neateqn
+recognizes UTF-8 encoding.
+.SH "SEE ALSO"
+.IR neatroff (1)
+.IP http://litcave.rudi.ir/neateqn.pdf
+Explains how to define custom brackets and specify character types in
+.IR neateqn .

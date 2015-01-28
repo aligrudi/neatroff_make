@@ -1,0 +1,101 @@
+.\" first draft by Larry Kollar
+.TH neatroff 1
+.SH NAME
+neatroff \- the neatroff typesetting processor
+.SH SYNOPSIS
+.I neatroff
+.RB [ \-m\c
+.IR x ]
+.RB [ \-C ]
+.RB [ \-T\c
+.IR dev ]
+.RB [ \-F\c
+.IR dir ]
+.RB [ \-M\c
+.IR dir ]
+.RI [ files \&...]
+.SH DESCRIPTION
+.I Neatroff
+is an extended version of AT&T
+.IR ditroff ,
+supporting TrueType/OpenType fonts
+and whole-paragraph formatting.
+.I Neatroff
+requires the user to construct the pipeline
+to format a document.
+For example:
+.EX
+.sp
+cat mydoc.t | neateqn | neatroff -ms -Tutf | neatpost | ps2pdf - mydoc.pdf
+.EE
+.SS Extensions
+The following are the most important
+.I neatroff
+extensions:
+.IP \[bu] 3
+Like GNU
+.IR troff ,
+.I neatroff
+supports names of arbitrary length for
+requests, macro names, number registers, and string variables.
+.IP \[bu]
+.I Neatroff
+supports UTF-8 input
+without the need for a preprocessor.
+.IP \[bu]
+The ``dir'' branch of
+.I neatroff
+supports right-to-left typesetting
+for languages requiring it.
+.IP \[bu]
+To enable whole-paragraph formatting, add
+.B p
+in front of the adjustment specification; for example,
+.B "ad pb"
+fully justifies paragraphs with advanced filling.
+Finally, in the ``dir'' branch,
+.B "ad k"
+supports Kashideh justification.
+.SH OPTIONS
+The following options are available:
+.IP "\-m \fIx\fP" 8
+Loads the
+.I x
+macro package.
+.IP "\-C"
+Enables compatibility mode
+with AT&T
+.IR troff .
+.IP "\-T \fIdev\fP"
+Sets the output device.
+The default is
+.B utf
+for PostScript.
+.IP "\-F \fIdir\fP"
+Sets the font directory.
+The default is typically
+/usr/share/neatroff/font.
+.IP "\-M \fIdir\fP"
+Sets the macro directory.
+The default is typically
+/usr/share/neatroff/tmac.
+.SH FILES
+.IP "/usr/share/neatroff/tmac/tmac.x" 4
+The
+.I x
+macro package.
+.IP "/usr/share/neatroff/font/*"
+Output device directories.
+.SH "SEE ALSO"
+.IR neatpost (1),
+.IR neateqn (1),
+.IR neatrefer (1),
+.IR neatmkfn (1)
+.IP http://litcave.rudi.ir/neatstart.pdf 4
+Explains how to compile and install
+.IR neatroff ,
+and add new fonts.
+.IP http://litcave.rudi.ir/neatroff.pdf
+Describes the primary differences between
+.I neatroff
+and other troff-like typesetting systems.

@@ -1,0 +1,54 @@
+.\" first draft by Larry Kollar
+.TH neatrefer 1
+.SH NAME
+neatrefer \- the neatroff reference pre-processor
+.SH SYNOPSIS
+.I neatrefer
+.RB [ \-p \~\c
+.IR bib ]
+.RB [ \-e ]
+.RB [ \-m ]
+.RI [< input ]
+.RI [> output ]
+.SH DESCRIPTION
+.I Neatrefer
+is a preprocessor for
+.IR neatroff .
+It processes reference markup between
+.B \&.[
+and
+.B \&.]
+commands, replacing the commands
+with reference information from a database of references.
+The output is formatted as footnotes or endnotes.
+.SS "Extensions and Limitations"
+.I Neatrefer
+assumes that each database entry
+has an
+.B L
+key, which specifies the label of a record.
+.LP
+.I Neatrefer
+supports multiple references in a single
+.BR \&.[ / \&.]
+command when using the
+.B -m
+option.
+Separate multiple labels by whitespace.
+.SH OPTIONS
+The following options are available:
+.IP "\-p \fIbib\fP" 8
+The file name of the reference database.
+.IP "\-e"
+Accumulate references.
+.IP "\-m"
+Allow multiple references in a single
+.BR \&.[ / \&.]
+command.
+Separate labels with whitespace.
+.SH "SEE ALSO"
+.IR neatroff (1)
+.IP http://man.cat-v.org/unix_8th/1/refer 4
+The original
+.I refer
+manpage.
