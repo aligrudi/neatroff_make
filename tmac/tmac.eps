@@ -11,9 +11,9 @@
 .sy rm \\*[eps.tmp]
 .\" image scaling
 .ie '\\$3'' .nr eps.scale 100
-.el .nr eps.scale ((\\$3)/(\\n[urx]-\\n[llx]))*100
-.if !'\\$4'' .if \\n[eps.scale]>(((\\$4)/(\\n[ury]-\\n[lly]))*100) \
-.  nr eps.scale ((\\$4)/(\\n[ury]-\\n[lly]))*100
+.el .nr eps.scale ((\\$3)*100/(\\n[urx]-\\n[llx]))
+.if !'\\$4'' .if \\n[eps.scale]>(((\\$4)*100/(\\n[ury]-\\n[lly]))) \
+.	nr eps.scale ((\\$4)*100/(\\n[ury]-\\n[lly]))
 .nr eps.w (\\n[urx]-\\n[llx])*\\n[eps.scale]/100
 .nr eps.h (\\n[ury]-\\n[lly])*\\n[eps.scale]/100
 .\" the placement
