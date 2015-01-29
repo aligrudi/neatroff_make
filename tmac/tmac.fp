@@ -9,10 +9,10 @@
 .\"
 .if ''\*[fp.src]' .ds fp.src "/path/to/GS_FONTPATH
 .if ''\*[fp.dst]' .ds fp.dst "/tmp/
-.if ''\*[fp.mkfn]' .ds fp.mkfn "neatmkfn -b
+.if ''\*[fp.mkfn]' .ds fp.mkfn "neatmkfn
 .\" .fp.ttf font_position troff_font_name font_name
 .de fp.ttf
-.	sy \\*[fp.mkfn] -o <\\*[fp.src]/\\$3.ttf >\\*[fp.dst]/\\$3
+.	sy \\*[fp.mkfn] -b -l -o <\\*[fp.src]/\\$3.ttf >\\*[fp.dst]/\\$3
 .	fp \\$1 \\$2 \\*[fp.dst]/\\$3
 ..
 .\" .fp.otf font_position troff_font_name font_name
@@ -22,6 +22,6 @@
 ..
 .\" .fp.afm font_position troff_font_name font_name
 .de fp.afm
-.	sy \\*[fp.mkfn] -a <\\*[fp.src]/\\$3.afm >\\*[fp.dst]/\\$3
+.	sy \\*[fp.mkfn] -b -a <\\*[fp.src]/\\$3.afm >\\*[fp.dst]/\\$3
 .	fp \\$1 \\$2 \\*[fp.dst]/\\$3
 ..
