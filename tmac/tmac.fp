@@ -17,7 +17,7 @@
 ..
 .\" .fp.otf font_position troff_font_name font_name
 .de fp.otf
-.	sy echo -e 'Open("\\*[fp.src]/\\$3.otf")\\\\nGenerate("\\*[fp.src]/\\$3.ttf")' | fontforge >/dev/null 2>&1
+.	sy fontforge -lang=ff -c 'Open("\\*[fp.src]/\\$3.otf"); Generate("\\*[fp.src]/\\$3.ttf");' >/dev/null 2>&1
 .	fp.ttf \\$1 \\$2 \\$3
 ..
 .\" .fp.afm font_position troff_font_name font_name
