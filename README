@@ -4,30 +4,7 @@ NEATROFF TOP-LEVEL MAKEFILE
 This directory contains the top-level makefile of neatroff to obtain,
 build and install neatroff and the helper programs that accompany it.
 
-To use Neatroff without installing it (which is recommended), switch
-to the standalone branch, which obtains the fonts automatically for
-convenience, and to create Farsi documents, switch to the farsi
-branch.  For more information, consult the following documents:
-
-http://litcave.rudi.ir/neatstart.pdf
-http://litcave.rudi.ir/neatfbeg.pdf
-
-INSTALLATION
-============
-
-Before building the programs, edit the makefile.  GSFONTS should point
-to the directory containing the standard ghostscript fonts
-(ghostscript-fonts package, containing files like n021003l.afm).  In
-most environments it can be either /usr/share/ghostscript/fonts or
-/usr/share/fonts/type1/gsfonts.  Also PREFIX specifies the
-installation prefix.
-
-After the installation, the following programs should be available:
-
-* neatroff: the main troff program.
-* neatpost: a postscript post-processor.
-* neateqn: an eqn clone to format equations.
-* neatrefer: an incompatible refer clone (see neatrefer/README).
-* neatmkfn: a program to create neatroff font descriptions.
-* pic9: the Plan 9 pic pre-processor.
-* tbl9: the Plan 9 tbl pre-processor.
+$ make init		# Obtain the necessary files and fonts
+$ make neat		# Build the programs
+$ cd demo		# A small neatroff test
+$ make			# Generate test.pdf from test.ms
