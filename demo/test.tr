@@ -1,0 +1,8 @@
+.fp 5 FR IRNazanin
+.fzoom FR 1100
+.sp 5
+Welcome to \m[#727]neatroff\m[]!
+.sp -1
+.<<
+.ft FR
+به \m[#727]نیتراف\m[] خوش آمدید!

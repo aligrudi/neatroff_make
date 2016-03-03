@@ -22,12 +22,15 @@ help:
 	@echo
 
 init:
-	@test -d neatroff || git clone git://repo.or.cz/neatroff.git
+	@test -d neatroff || git clone -b dir git://repo.or.cz/neatroff.git
 	@test -d neatpost || git clone git://repo.or.cz/neatpost.git
 	@test -d neatmkfn || git clone git://repo.or.cz/neatmkfn.git
 	@test -d neateqn || git clone git://repo.or.cz/neateqn.git
 	@test -d neatrefer || git clone git://repo.or.cz/neatrefer.git
 	@test -d troff || git clone git://repo.or.cz/troff.git
+	@test -d soin || (wget -c http://litcave.rudi.ir/soin.tar.gz && tar xf soin.tar.gz)
+	@test -d roffjoin || (wget -c http://litcave.rudi.ir/roffjoin.tar.gz && tar xf roffjoin.tar.gz)
+	@test -d shape || (wget -c http://litcave.rudi.ir/shape.tar.gz && tar xf shape.tar.gz)
 	@cd fonts && sh ./fonts.sh
 
 pull:
@@ -47,6 +50,9 @@ neat:
 	@cd neatrefer && $(MAKE)
 	@cd troff/pic && $(MAKE)
 	@cd troff/tbl && $(MAKE)
+	@cd soin && $(MAKE)
+	@cd roffjoin && $(MAKE)
+	@cd shape && $(MAKE)
 	@cd neatmkfn && ./gen.sh $(FONTS) $(FDIR)/devutf >/dev/null
 
 clean:
@@ -57,4 +63,7 @@ clean:
 	cd neatrefer && $(MAKE) clean
 	cd troff/tbl && $(MAKE) clean
 	cd troff/pic && $(MAKE) clean
+	cd soin && $(MAKE) clean
+	cd roffjoin && $(MAKE) clean
+	cd shape && $(MAKE) clean
 	@rm -r $(FDIR)/devutf

@@ -6,11 +6,21 @@ EQN = $(BASE)/neateqn/eqn
 REFER = $(BASE)/neatrefer/refer
 PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
+SOIN = $(BASE)/soin/soin
+JOIN = $(BASE)/roffjoin/roffjoin
+SHAPE = $(BASE)/shape/shape
 
-all: test.pdf
+all: test.pdf fa.pdf
+
+%.ps: %.tr
+	@echo "Generating $@"
+	@cat $< | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) -pa4 >$@
 
 %.ps: %.ms
-	cat $< | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) -pa4 >$@
+	@echo "Generating $@"
+	@cat $< | $(SOIN) | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | \
+		$(REFER) -m -e -o ct -p ref.bib | \
+		$(ROFF) -meps -mtbl -mkeep -mfa -msrefs | $(POST) -pa4 >$@
 
 %.pdf: %.ps
 	ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true -sFONTPATH=$(BASE)/fonts/ $< $@
