@@ -1,0 +1,86 @@
+.\" A package for managing floating objects
+.\"
+.\" The package provides the following macros:
+.\"
+.\" .keepbeg type
+.\"   Starts a floating object.  The argument specifies its type:
+.\"   'f' for simple floating objects, 't' for floating objects
+.\"   that should be printed at page top, and 'd' for non-floating
+.\"   objects.
+.\"
+.\" .keepend
+.\"   Ends a floating object.
+.\"
+.\" .keepbop
+.\"   This macro should be called at the beginning of each page,
+.\"   after printing page header.
+.\"
+.\" .keepeof
+.\"   This macro should be called when the document ends, to
+.\"   output all queued floating objects.
+.\"
+.\" .keepbeg.rst
+.\"   This macro is called by this package just before printing a
+.\"    floating object.  It may be redefined if necessary.
+.\"
+.\" .keepend.rst
+.\"   This macro is called by this package just after printing
+.\"   a floating object.  It may be redefined if necessary.
+.\"
+.nr keepi 0		\" current queued object index
+.nr keepn 0		\" the last queued object
+.de keepbeg
+.	br
+.	nr keeptype 1
+.	if 'd'\\$1' .nr keeptype 0
+.	if 't'\\$1' .nr keeptype 2
+.	da keepdiv
+..
+.de keepbeg.rst
+.	in 0
+..
+.de keepend.rst
+.	in 0
+..
+.de keepprint
+.	if \\n[keepprint]=0 \{\
+.		nr keepprint 1
+.		ev keepenv
+.		keepbeg.rst
+.		nf
+.		\\$1
+.		ev
+.		keepend.rst
+.		nr keepprint 0
+.		rm \\$1
+.	\}
+..
+.de keepend
+.	br
+.	di
+.	ie \\n[keeptype]=0 \{\
+.		if \\n(.t<=\\n(dn .bp
+.		keepprint keepdiv \}
+.	el .ie (\\n[keeptype]=1)&(\\n[keepi]=\\n[keepn])&(\\n(.t>\\n(dn) \{\
+.		keepprint keepdiv \}
+.	el \{\
+.		nr keep\\n[keepn].top \\n[keeptype]-1
+.		nr keep\\n[keepn].len \\n(dn
+.		rn keepdiv keep\\n[keepn].div
+.		nr keepn +1
+.	\}
+..
+.de keepbop
+.	if (\\n[keepi]<\\n[keepn])&(\\n[keep\\n[keepi].len]<\\n(.t) \{\
+.		keepprint keep\\n[keepi].div
+.		nr keepi +1
+.		if (\\n[keepi]<\\n[keepn])&(1-\\n[keep\\n[keepi].top]) .keepbop
+.	\}
+..
+.de keepeof
+.	keepbop
+.	if \\n[keepi]<\\n[keepn] \{\
+.		bp
+.		keepeof
+.	\}
+..
