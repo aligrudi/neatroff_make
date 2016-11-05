@@ -1,0 +1,139 @@
+.\" A macro package for simple tables
+.\"
+.\" This package creates simple tables, without using the tbl
+.\" preprocessor.  The main macros are as follows:
+.\"
+.\" .tblbeg colwid1 colwid2 ...
+.\"   This macro begins a table.  Its arguments are the widths of the
+.\"   columns.  At most four columns are supported.  The width of the
+.\"   last column can be 0 to expand it to the end of the line.
+.\"
+.\" .tblbox all row col
+.\"   Specifies whether to draw box around the table (when all is 1),
+.\"   between the rows (when row is 1), or between its columns (when
+.\"   col is 1).
+.\"
+.\" .tblrow "column #1" "column #2" ...
+.\"   The compact way of specifying the contents of a table row (instead
+.\"   of calling .tblcol for every column).
+.\"
+.\" .tblcol col
+.\"   Begins column number col for the current row.  With an argument of
+.\"   1, a new row is inserted.
+.\"
+.\" .tblmac mac1 mac2 ...
+.\"   Before writing the contents of each column, the corresponding
+.\"   macro in the list of the arguments of this macro is invoked (e.g.,
+.\"   mac2 is called when starting column #2).
+.\"
+.\"  .tblrst
+.\"    This macro is called just before switching to new rows and columns
+.\"    and drawing the table.  It should reset the indentation (and other
+.\"    variables such as fonts, if necessary).
+.\"
+.\" .tblend
+.\"   Ends a table.
+.\"
+.nr tblgap 1n
+.nr tblboxall 0
+.nr tblboxrow 0
+.nr tblboxcol 0
+.de tblrst
+.	in 0
+..
+.de tblbeg
+.	tblrst
+.	nr tblwid1 0\\$1
+.	if "\\$1"0" .nr tblwid1 \\n(.l
+.	nr tblwid2 0\\$2
+.	if "\\$2"0" .nr tblwid2 \\n(.l-\\n[tblwid1]
+.	nr tblwid3 0\\$3
+.	if "\\$3"0" .nr tblwid3 \\n(.l-\\n[tblwid1]-\\n[tblwid2]
+.	nr tblwid4 0\\$4
+.	if "\\$4"0" .nr tblwid4 \\n(.l-\\n[tblwid1]-\\n[tblwid2]-\\n[tblwid3]
+.	nr tblwid \\n[tblwid1]+\\n[tblwid2]+\\n[tblwid3]+\\n[tblwid4]
+.	nr tblrow.one 1
+..
+.de tblmac
+.	ds tblrst1 "\\$1
+.	ds tblrst2 "\\$2
+.	ds tblrst3 "\\$3
+.	ds tblrst4 "\\$4
+..
+.de tblbox
+.	nr tblboxall 0\\$1
+.	nr tblboxrow 0\\$2
+.	nr tblboxcol 0\\$3
+..
+.de tblcolbeg
+.	nr tblcol.ok 1
+.	sp |\\n[tblrow.top]u
+.	tblrst
+.	\\*[tblrst\\$1]
+.	if \\$1=1 .in +0u
+.	if \\$1=2 .in +\\n[tblwid1]u
+.	if \\$1=3 .in +\\n[tblwid1]u+\\n[tblwid2]u
+.	if \\$1=4 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u
+.	ll \\n(.iu+\\n[tblwid\\$1]u
+.	in +\\n[tblgap]u
+.	ll -\\n[tblgap]u
+..
+.de tblcolend
+.	nr tblcol.ok 0
+.	if \\n(.d>\\n[tblrow.bot] .nr tblrow.bot \\n(.d
+..
+.de tblrowbeg
+.	tblrst
+.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.one]) \l'\\n[tblwid]u'
+.	br
+.	nr tblrow.ok 1
+.	nr tblrow.one 0
+.	mk tblrow.top
+.	mk tblrow.bot
+..
+.de tblrowend
+.	nr tblrow.ok 0
+.	tblrst
+.	sp |\\n[tblrow.bot]u
+.	nr tblht \\n[tblrow.bot]u-\\n[tblrow.top]u+.5v
+.	sp -.5v
+.	if \\n[tblboxall]:\\n[tblboxcol] \{\
+\h'|0'\L'-\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid]u'\L'-\\n[tblht]u'\v'\\n[tblht]u'
+.		sp -1
+.	\}
+.	if \\n[tblboxcol] \{\
+\h'|\\n[tblwid1]u'\L'-\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid1]u+\\n[tblwid2]u'\L'-\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u'\L'-\\n[tblht]u'\v'\\n[tblht]u'
+.		sp -1
+.	\}
+.	if \\n[tblboxrow]:(\\n[tblboxall]&\\$1) \{\
+\h'|0'\l'\\n[tblwid]u'
+.		sp -1
+.	\}
+.	sp
+..
+.de tblcol
+.	br
+.	if \\n[tblcol.ok] .tblcolend \\$1
+.	if \\$1=1 .if \\n[tblrow.ok] .tblrowend 0
+.	if \\$1=1 .tblrowbeg
+.	tblcolbeg \\$1
+..
+.de tblrow
+.	if \\n(.$>=1 .tblcol 1
+.	if \\n(.$>=1 \\$1
+.	if \\n(.$>=2 .tblcol 2
+.	if \\n(.$>=2 \\$2
+.	if \\n(.$>=3 .tblcol 3
+.	if \\n(.$>=3 \\$3
+.	if \\n(.$>=4 .tblcol 4
+.	if \\n(.$>=4 \\$4
+..
+.de tblend
+.	br
+.	if \\n[tblcol.ok] .tblcolend
+.	if \\n[tblrow.ok] .tblrowend 1
+.	tblrst
+..
