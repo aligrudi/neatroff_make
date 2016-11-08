@@ -26,10 +26,10 @@
 .\"   macro in the list of the arguments of this macro is invoked (e.g.,
 .\"   mac2 is called when starting column #2).
 .\"
-.\"  .tblrst
-.\"    This macro is called just before switching to new rows and columns
-.\"    and drawing the table.  It should reset the indentation (and other
-.\"    variables such as fonts, if necessary).
+.\" .tblrst
+.\"   This macro is called just before switching to new rows and columns
+.\"   and drawing the table.  It should reset the indentation (and other
+.\"   variables such as fonts, if necessary).
 .\"
 .\" .tblend
 .\"   Ends a table.
