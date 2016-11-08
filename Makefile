@@ -10,11 +10,6 @@ FDIR = $(PREFIX)/
 # Macro directory
 MDIR = $(PREFIX)/tmac
 
-# HTTP retrieval program
-HGET = wget -c -nv
-# ghostscript-fonts URL
-GSFURL = "http://pkgs.fedoraproject.org/repo/pkgs/ghostscript-fonts/ghostscript-fonts-std-8.11.tar.gz/6865682b095f8c4500c54b285ff05ef6/ghostscript-fonts-std-8.11.tar.gz"
-
 all: help
 
 help:
@@ -33,9 +28,7 @@ init:
 	@test -d neateqn || git clone git://repo.or.cz/neateqn.git
 	@test -d neatrefer || git clone git://repo.or.cz/neatrefer.git
 	@test -d troff || git clone git://repo.or.cz/troff.git
-	@echo "Retrieving $(GSFURL)"
-	@mkdir -p $(FONTS) && cd $(FONTS) && $(HGET) $(GSFURL)
-	@cd $(FONTS) && tar xzf ghostscript-fonts-std-8.11.tar.gz && mv fonts/* . && rmdir fonts/
+	@cd fonts && sh ./fonts.sh
 
 pull:
 	cd neatroff && git pull
