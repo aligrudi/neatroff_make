@@ -13,7 +13,7 @@ all: test.pdf
 	cat $< | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) -pa4 >$@
 
 %.pdf: %.ps
-	ps2pdf -sFONTPATH=$(BASE)/fonts/ $< $@
+	ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true -sFONTPATH=$(BASE)/fonts/ $< $@
 
 clean:
 	rm -f *.ps *.pdf
