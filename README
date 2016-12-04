@@ -4,6 +4,17 @@ NEATROFF TOP-LEVEL MAKEFILE
 This directory contains the top-level makefile of neatroff to obtain,
 build and install neatroff and the helper programs that accompany it.
 
+To use Neatroff without installing it (which is recommended), switch
+to the standalone branch, which obtains the fonts automatically for
+convenience, and to create Farsi documents, switch to the farsi
+branch.  For more information, consult the following documents:
+
+http://litcave.rudi.ir/neatstart.pdf
+http://litcave.rudi.ir/neatfbeg.pdf
+
+INSTALLATION
+============
+
 Before building the programs, edit the makefile.  GSFONTS should point
 to the directory containing the standard ghostscript fonts
 (ghostscript-fonts package, containing files like n021003l.afm).  In
