@@ -7,7 +7,7 @@ GSFURL="http://pkgs.fedoraproject.org/repo/pkgs/ghostscript-fonts/ghostscript-fo
 AMSURL="ftp://ftp.ams.org/pub/tex/amsfonts.zip"
 
 # HTTP retrieval program
-HGET="wget -c -nv -O"
+HGET="wget -c -O"
 
 # Ghostscript fonts
 echo "Retrieving $GSFURL"
