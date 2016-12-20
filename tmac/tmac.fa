@@ -353,6 +353,7 @@
 .	ochar CMR \(>= "\f[CMSY]\(>=\fP
 .	fa.fonts
 .	fa.mfont CMR
+.	HD
 ..
 .fa.init
 .\" For tbl package
