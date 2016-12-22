@@ -55,7 +55,6 @@ neat:
 	@cd troff/tbl && $(MAKE)
 	@cd soin && $(MAKE)
 	@test ! -d shape || (cd shape && $(MAKE))
-	echo $(FONTS)
 	@cd neatmkfn && ./gen.sh $(FONTS) $(FDIR)/devutf >/dev/null
 
 clean:
