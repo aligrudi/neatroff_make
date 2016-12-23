@@ -5,16 +5,6 @@
 .nr LL 6i		\" line length
 .nr PO 1.1i		\" page offset
 .nr FP -1.2i		\" footer position
-.\" Fonts: Times Roman + IR Nazanin + Computer Modern
-.fp 5 FR IRNazanin	\" Farsi regular font
-.fp 6 FI IRNazaninIranic	\" Farsi italic font
-.fp 7 FB IRNazaninBold	\" Farsi bold font
-.fp 8 HD IRNazaninBold	\" Farsi header font
-.fp 14 CMR CMR10
-.fp 15 CMEX CMEX10
-.fp 16 CMSY CMSY10
-.fp 17 CMMI CMMI10
-.fspecial CMR S1 S CMEX CMSY
 .\" Internal registers
 .nr fa.sh 0		\" just following section headers
 .nr fa.in 0		\" current indentation
@@ -214,7 +204,7 @@
 .	br
 .	ft R
 .	in 0
-\\n[fa.footnum]\h'|3n'\c
+\f(FR\\n[fa.footnum]\fP\h'|3n'\c
 ..
 .de FE
 .	br
@@ -328,34 +318,6 @@
 ]\>\\$1\<[
 ..
 .chop ct
-.\" Initialization
-.de fa.init
-.	lg 1
-.	kn 1
-.	RT
-.	wh \\n(FPu FT
-.	hy 14
-.	hycost 800
-.	eos .?!؟ '")]*
-.	nh
-.	ssh 15
-.	ss 12 6
-.	char ‌ \&
-.	ds .eqnbeg "\\?'\\n[.td]@\>'
-.	ds .eqnend "\\?'\\n[.td]@\<'
-.	ds .eqnbeg "\\?'\\n[.td]@\>'
-.	ds .eqnend "\\?'\\n[.td]@\<'
-.	ochar CMR { "\f[CMSY]{\fP
-.	ochar CMR } "\f[CMSY]}\fP
-.	ochar CMR \(<= "\f[CMSY]\(<=\fP
-.	ochar CMR < "\f[CMSY]<\fP
-.	ochar CMR > "\f[CMSY]>\fP
-.	ochar CMR \(>= "\f[CMSY]\(>=\fP
-.	fa.fonts
-.	fa.mfont CMR
-.	HD
-..
-.fa.init
 .\" For tbl package
 .de tblrst
 .	fi
@@ -403,3 +365,37 @@
 .de DE
 .	fi
 ..
+.\" Initialization
+.de fa.init
+.	lg 1
+.	kn 1
+.	wh \\n(FPu FT
+.	hy 14
+.	hycost 800
+.	eos .?!؟ '")]*
+.	nh
+.	ssh 15
+.	ss 12 6
+.	char ‌ \&
+.	\" Fonts: Times Roman + IR Nazanin + Computer Modern
+.	fp 5 FR IRNazanin	\" Farsi regular font
+.	fp 6 FI IRNazaninIranic	\" Farsi italic font
+.	fp 7 FB IRNazaninBold	\" Farsi bold font
+.	fp 8 HD IRNazaninBold	\" Farsi header font
+.	fp 14 CMR CMR10
+.	fp 15 CMEX CMEX10
+.	fp 16 CMSY CMSY10
+.	fp 17 CMMI CMMI10
+.	fspecial CMR S1 S CMEX CMSY
+.	fa.fonts
+.	fa.mfont CMR
+.	ds .eqnbeg "\\\\?'\\\\n[.td]@\>'
+.	ds .eqnend "\\\\?'\\\\n[.td]@\<'
+.	ochar CMR { "\f[CMSY]{\fP
+.	ochar CMR } "\f[CMSY]}\fP
+.	ochar CMR \(<= "\f[CMSY]\(<=\fP
+.	ochar CMR < "\f[CMSY]<\fP
+.	ochar CMR > "\f[CMSY]>\fP
+.	ochar CMR \(>= "\f[CMSY]\(>=\fP
+..
+.fa.init
