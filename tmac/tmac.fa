@@ -6,7 +6,6 @@
 .nr PO 1.1i		\" page offset
 .nr FP -1.2i		\" footer position
 .\" Internal registers
-.nr fa.sh 0		\" just following section headers
 .nr fa.in 0		\" current indentation
 .nr fa.ip 2m		\" IP indentation
 .nr fa.pi 2m		\" RS indentation
@@ -35,12 +34,10 @@
 .\" Paragraphs
 .de LP		\" Paragraphs without temporary indentation
 .	RT
-.	nr fa.sh 0
 ..
 .de PP		\" Ordinary paragraphs
 .	RT
-.	if !\\n[fa.sh] .ti2 +3n
-.	nr fa.sh 0
+.	ti2 +3n
 ..
 .de QP		\" Quoted paragraphs
 .	LP
@@ -93,7 +90,6 @@
 .	ne 1.5
 .	cl \\*[fa.cl]
 .	ft HD
-.	nr fa.sh 1
 .	ps \\n(PS+2
 .	ad r
 .	if \\n(.$ \{\
@@ -108,7 +104,6 @@
 .	ft HD
 .	sp 2
 .	ad c
-.	nr fa.sh 1
 .	ps \\n(PS+4
 .	vs \\n(VS+6
 .	fi
