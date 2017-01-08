@@ -84,7 +84,7 @@
 ..
 .de tblrowbeg
 .	tblrst
-.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.one]) \l'\\n[tblwid]u'
+.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.one]) \D'l \\n[tblwid]u 0'
 .	br
 .	nr tblrow.ok 1
 .	nr tblrow.one 0
@@ -98,18 +98,18 @@
 .	nr tblht \\n[tblrow.bot]u-\\n[tblrow.top]u+.5v
 .	sp -.5v
 .	if \\n[tblboxall]:\\n[tblboxcol] \{\
-\h'|0'\L'-\\n[tblht]u'\v'\\n[tblht]u'\
-\h'|\\n[tblwid]u'\L'-\\n[tblht]u'\v'\\n[tblht]u'
+\h'|0'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'
 .		sp -1
 .	\}
 .	if \\n[tblboxcol] \{\
-\h'|\\n[tblwid1]u'\L'-\\n[tblht]u'\v'\\n[tblht]u'\
-\h'|\\n[tblwid1]u+\\n[tblwid2]u'\L'-\\n[tblht]u'\v'\\n[tblht]u'\
-\h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u'\L'-\\n[tblht]u'\v'\\n[tblht]u'
+\h'|\\n[tblwid1]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid1]u+\\n[tblwid2]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'
 .		sp -1
 .	\}
 .	if \\n[tblboxrow]:(\\n[tblboxall]&\\$1) \{\
-\h'|0'\l'\\n[tblwid]u'
+\h'|0'\D'l \\n[tblwid]u 0'
 .		sp -1
 .	\}
 .	sp
