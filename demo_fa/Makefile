@@ -7,7 +7,6 @@ REFER = $(BASE)/neatrefer/refer
 PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
-JOIN = $(BASE)/roffjoin/roffjoin
 SHAPE = $(BASE)/shape/shape
 
 all: test.pdf fa.pdf
