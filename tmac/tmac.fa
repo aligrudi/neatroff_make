@@ -373,6 +373,7 @@
 .	ssh 15
 .	ss 12 6
 .	char ‌ \&
+.	char ‍ \&
 .	\" Fonts: Times Roman + IR Nazanin + Computer Modern
 .	fp 5 FR IRNazanin	\" Farsi regular font
 .	fp 6 FI IRNazaninIranic	\" Farsi italic font
