@@ -239,9 +239,7 @@
 .de fa.ffont	\" Adjusting old Farsi fonts
 .	ft \\$1
 .	ff \\$1 +ccmp +rlig +rclt +calt +mset +curs +kern +mark +mkmk
-.	fa.cmap ﻫ ﻫ
 .	fa.cmap ﻫ ھ
-.	fa.cmap ﻬ ﻬ
 .	fa.cmap ﻬ ﮫ
 .	fa.cmap ی ﻱ
 .	fa.cmap ﯾ ﻳ
@@ -394,5 +392,6 @@
 .	ochar CMR < "\f[CMSY]<\fP
 .	ochar CMR > "\f[CMSY]>\fP
 .	ochar CMR \(>= "\f[CMSY]\(>=\fP
+.	ochar CMR \(mi "\f[CMSY]\(mi\fP
 ..
 .fa.init
