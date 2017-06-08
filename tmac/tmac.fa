@@ -228,12 +228,15 @@
 ..
 .\" Adjusting fonts
 .de fa.gmap	\" Mapping glyphs
+.	fmap \\n(.f \\$1
 .	if \w'\N'\\$2'' .fmap \\n(.f \\$1 \\$2
 ..
 .de fa.cmap	\" Mapping characters
+.	ochar \\n(.f \\$1
 .	if !\w'\\$1' .ochar \\n(.f \\$1 \\$2
 ..
 .de fa.umap	\" Mapping characters (unconditionally)
+.	ochar \\n(.f \\$1
 .	if \w'\\$2' .ochar \\n(.f \\$1 \\$2
 ..
 .de fa.ffont	\" Adjusting old Farsi fonts
