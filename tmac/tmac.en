@@ -1,0 +1,261 @@
+.\" A package for short English manuscripts
+.\" Registers and their default values
+.nr PS 14		\" point size
+.nr VS \n(PS+12		\" vertical spacing
+.nr LL 6i		\" line length
+.nr PO 1.1i		\" page offset
+.nr FP -1.2i		\" footer position
+.\" Internal registers
+.nr en.in 0		\" current indentation
+.nr en.ip 2m		\" IP indentation
+.nr en.pi 2m		\" RS indentation
+.nr en.pg 1		\" page numbering (0 disables)
+.ds en.cl "0		\" header colour
+.\" Reset variables; when beginning a paragraph, e.g.
+.de RT
+.	fi
+.	ft R
+.	ad p
+.	ps \\n(PS
+.	vs \\n(VS
+.	ll \\n(LLu
+.	lt \\n(LLu
+.	po \\n(POu
+.	in \\n[en.in]u
+.	cl 0
+.	AL
+..
+.\" Alignment
+.de AL
+.	if \\n(.d%\\n(.v 'sp \\n(.vu-(\\n(.du%\\n(.vu)
+..
+.\" Paragraphs
+.de LP		\" Paragraphs without temporary indentation
+.	RT
+..
+.de PP		\" Ordinary paragraphs
+.	RT
+.	ti +3n
+..
+.de QP		\" Quoted paragraphs
+.	LP
+.	in \\n[en.in]u+0.5i
+.	ll -2m
+..
+.de IP		\" Indented paragraphs
+.	br
+.	RT
+.	ne 1
+.	if \\n(.$>1 .nr en.ip \\$2
+.	in +\\n[en.ip]u
+\h'|-\\n[en.ip]u'\\$1
+.	sp -1
+..
+.de RS		\" Indented block start
+.	br
+.	if \\n(.$ .nr en.pi \\$1
+.	nr en.in +\\n[en.pi]
+..
+.de RE		\" Indented block end
+.	br
+.	if \\n(.$ .nr en.pi \\$1
+.	nr en.in -\\n[en.pi]
+..
+.de QS		\" Quote start
+.	br
+.	RS
+.	LP
+..
+.de QE		\" Quote end
+.	br
+.	RE
+..
+.\" Section header
+.de SH
+.	RT
+.	sp
+.	ne 1.5
+.	cl \\*[en.cl]
+.	ft HD
+.	ps \\n(PS+2
+.	ad l
+.	if \\n(.$ \{\
+\\$1
+.		LP
+.	\}
+..
+.\" Document title
+.de TL
+.	RT
+.	cl \\*[en.cl]
+.	ft HD
+.	sp 2
+.	ad c
+.	ps \\n(PS+4
+.	vs \\n(VS+6
+.	fi
+.	if \\n(.$ \{\
+\\$1
+.		sp 2
+.		LP
+.	\}
+..
+.\" Document author
+.de AU
+.	RT
+.	ft R
+.	sp 1
+.	ce
+..
+.\" Preprocessor macros
+.de EQ
+.	RT
+.	nf
+.	di en.eqdiv
+..
+.de EN
+.	di
+.	if \\n(dn \{\
+.		sp .5
+.		ce
+.		en.eqdiv
+.		sp .5
+.	\}
+.	fi
+..
+.de PS
+.	br
+.	RT
+.	in (\\n(.lu-\\$2)/2u
+.	ne \\$1
+..
+.de PE
+.	in
+..
+.de TS
+.	br
+.	RT
+..
+.de TE
+..
+.\" Header and footer macros
+.de FT		\" Page footer
+.	ev en.ft
+.	FP
+'	sp |\\n(.pu+\\n(FPu
+.	RT
+'	sp
+.	FT.pg
+'	bp
+.	ev
+.	HD
+..
+.de HD		\" Page header (called by FT)
+.	ev en.ft
+.	RT
+.	sp 1
+.	HD.pg
+.	ev
+.	ns
+.	keepbop
+..
+.de FT.pg	\" Footer page number
+.	ie \\n[en.pg]=1 'tl ''\>%\<''
+.	el 'sp
+..
+.de HD.pg	\" Header page number
+'	sp 3
+..
+.\" Footnotes
+.de FS
+'	br
+.	ie \\n[en.footnum] .ne 2
+.	el .ne 1
+.	if !\\n[en.footnum] .nr en.footpos 0\\n(FP+\\n(VSp
+.	da en.footdiv
+.	ev en.footenv
+.	RT
+.	ps \\n(PS-4
+.	vs \\n(PS-2
+.	ad l
+.	nr en.footnum +1
+.	if \\n[en.footnum]=1 \l'3i'
+.	in 0
+\\n[en.footnum]\h'|3n'\c
+..
+.de FE
+.	br
+.	ev
+.	di
+\s-4\u\\n[en.footnum]\d\s+4
+.	nr en.footpos -\\n(dn
+.	ch FT \\n[en.footpos]u
+..
+.de FP
+.	if \\n[en.footnum] \{\
+.		ev en.footenv
+'		nf
+.		en.footdiv
+.		rm en.footdiv
+.		ev
+.	\}
+.	nr en.footnum 0
+.	ch FT \\n(FPu
+..
+.\" Citations
+.de ct
+[\\$1]
+..
+.chop ct
+.\" For keep package
+.de KF
+.	keepbeg f
+..
+.de KT
+.	keepbeg t
+..
+.de KS
+.	keepbeg d
+..
+.de KE
+.	keepend
+..
+.de DS
+.	RT
+.	nf
+..
+.de DE
+.	fi
+..
+.\" Font setup for Computer Modern
+.de en.cmr
+.	fp 1 R CMR10
+.	fp 2 I CMTI10
+.	fp 3 B CMB10
+.	fp 4 BI CMBX10
+.	fp 6 HD CMCSC10
+.	fp 14 CMR CMR10
+.	fp 15 CMEX CMEX10
+.	fp 16 CMSY CMSY10
+.	fp 17 CMMI CMMI10
+.	fspecial CMR S1 S CMEX CMSY
+.	ochar CMR { "\f[CMSY]{\fP
+.	ochar CMR } "\f[CMSY]}\fP
+.	ochar CMR \(<= "\f[CMSY]\(<=\fP
+.	ochar CMR < "\f[CMSY]<\fP
+.	ochar CMR > "\f[CMSY]>\fP
+.	ochar CMR \(>= "\f[CMSY]\(>=\fP
+.	ochar CMR \(mu "\f[CMSY]\(mu\fP
+..
+.\" Initialization
+.de en.init
+.	lg 1
+.	kn 1
+.	wh \\n(FPu FT
+.	hy 14
+.	hycost 800
+.	hyp 10
+.	ssh 15
+.	fp 6 HD B
+..
+.en.init
