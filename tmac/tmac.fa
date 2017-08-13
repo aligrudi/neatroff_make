@@ -396,5 +396,6 @@
 .	ochar CMR > "\f[CMSY]>\fP
 .	ochar CMR \(>= "\f[CMSY]\(>=\fP
 .	ochar CMR \(mi "\f[CMSY]\(mi\fP
+.	ochar CMR \(mu "\f[CMSY]\(mu\fP
 ..
 .fa.init
