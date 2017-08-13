@@ -38,6 +38,7 @@
 .nr tblboxall 0
 .nr tblboxrow 0
 .nr tblboxcol 0
+.nr tblrowaut 1
 .de tblrst
 .	in 0
 ..
@@ -92,6 +93,7 @@
 .	mk tblrow.bot
 ..
 .de tblrowend
+.	if \\n[tblcol.ok] .tblcolend \\$1
 .	nr tblrow.ok 0
 .	tblrst
 .	sp |\\n[tblrow.bot]u
@@ -117,8 +119,8 @@
 .de tblcol
 .	br
 .	if \\n[tblcol.ok] .tblcolend \\$1
-.	if \\$1=1 .if \\n[tblrow.ok] .tblrowend 0
-.	if \\$1=1 .tblrowbeg
+.	if \\$1=1&\\n[tblrowaut] .if \\n[tblrow.ok] .tblrowend 0
+.	if \\$1=1&\\n[tblrowaut] .tblrowbeg
 .	tblcolbeg \\$1
 ..
 .de tblrow
