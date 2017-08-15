@@ -1,10 +1,5 @@
 #!/bin/sh
-# Fetch fonts for setting up Neatroff
-
-# ghostscript-fonts URL
-GSFURL="http://pkgs.fedoraproject.org/repo/pkgs/ghostscript-fonts/ghostscript-fonts-std-8.11.tar.gz/6865682b095f8c4500c54b285ff05ef6/ghostscript-fonts-std-8.11.tar.gz"
-# AMS fonts URL
-AMSURL="ftp://ftp.ams.org/pub/tex/amsfonts.zip"
+# Fetch Farsi fonts for setting up Neatroff
 
 # HTTP retrieval program
 HGET="wget -c -O"

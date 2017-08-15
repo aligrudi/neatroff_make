@@ -1,8 +1,8 @@
 #!/bin/sh
 # Fetch fonts for setting up Neatroff
 
-# ghostscript-fonts URL
-GSFURL="http://pkgs.fedoraproject.org/repo/pkgs/ghostscript-fonts/ghostscript-fonts-std-8.11.tar.gz/6865682b095f8c4500c54b285ff05ef6/ghostscript-fonts-std-8.11.tar.gz"
+# urw-base35 URL
+URWURL="http://downloads.ghostscript.com/public/fonts/urw-base35-20160926.zip"
 # AMS fonts URL
 AMSURL="ftp://ftp.ams.org/pub/tex/amsfonts.zip"
 
@@ -10,9 +10,9 @@ AMSURL="ftp://ftp.ams.org/pub/tex/amsfonts.zip"
 HGET="wget -c -O"
 
 # Ghostscript fonts
-echo "Retrieving $GSFURL"
-$HGET ghostscript-fonts.tar.gz $GSFURL
-tar xzf ghostscript-fonts.tar.gz && mv fonts/* . && rmdir fonts/
+echo "Retrieving $URWURL"
+$HGET urw-base35.zip $URWURL
+unzip -q urw-base35.zip
 
 # AMS and computer modern fonts
 echo "Retrieving $AMSURL"
