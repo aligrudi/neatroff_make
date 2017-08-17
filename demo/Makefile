@@ -22,7 +22,8 @@ all: test.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
 
 %.pdf: %.ps
 	@echo "Generating $@"
-	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true -sFONTPATH=$(BASE)/fonts/ $< $@
+	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true \
+		-sFONTPATH=$(BASE)/fonts/ -sFONTMAP=$(BASE)/fonts/Fontmap $< $@
 
 clean:
 	rm -f *.ps *.pdf

@@ -22,7 +22,9 @@ all: test.pdf fa.pdf
 		$(ROFF) -meps -mtbl -mkeep -mfa -msrefs | $(POST) -pa4 >$@
 
 %.pdf: %.ps
-	ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true -sFONTPATH=$(BASE)/fonts/ $< $@
+	@echo "Generating $@"
+	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true \
+		-sFONTPATH=$(BASE)/fonts/ -sFONTMAP=$(BASE)/fonts/Fontmap $< $@
 
 clean:
 	rm -f *.ps *.pdf
