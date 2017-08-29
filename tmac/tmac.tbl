@@ -14,12 +14,12 @@
 .\"   col is 1).
 .\"
 .\" .tblrow "column #1" "column #2" ...
-.\"   The compact way of specifying the contents of a table row (instead
-.\"   of calling .tblcol for every column).
+.\"   Starts a new row.  Parameters provide a compact way of
+.\"   specifying  the contents of a table row (instead of calling
+.\"   .tblcol for every column).
 .\"
 .\" .tblcol col
-.\"   Begins column number col for the current row.  With an argument of
-.\"   1, a new row is inserted.
+.\"   Begins column number col for the current row.
 .\"
 .\" .tblmac mac1 mac2 ...
 .\"   Before writing the contents of each column, the corresponding
@@ -38,7 +38,9 @@
 .nr tblboxall 0
 .nr tblboxrow 0
 .nr tblboxcol 0
-.nr tblrowaut 1
+.nr tblbrdrsz 30	\" border point size
+.nr tblvertsz 16	\" vertical line point size
+.nr tblhorisz 16	\" horizontal line point size
 .de tblrst
 .	in 0
 ..
@@ -80,12 +82,13 @@
 .	ll -\\n[tblgap]u
 ..
 .de tblcolend
+.	br
 .	nr tblcol.ok 0
 .	if \\n(.d>\\n[tblrow.bot] .nr tblrow.bot \\n(.d
 ..
 .de tblrowbeg
 .	tblrst
-.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.one]) \D'l \\n[tblwid]u 0'
+.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.one]) \s[\\n[tblbrdrsz]]\D'l \\n[tblwid]u 0'\s[]
 .	br
 .	nr tblrow.ok 1
 .	nr tblrow.one 0
@@ -100,18 +103,25 @@
 .	nr tblht \\n[tblrow.bot]u-\\n[tblrow.top]u+.5v
 .	sp -.5v
 .	if \\n[tblboxall]:\\n[tblboxcol] \{\
+.		ps \\n[tblbrdrsz]
 \h'|0'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
 \h'|\\n[tblwid]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'
+.		ps
 .		sp -1
 .	\}
 .	if \\n[tblboxcol] \{\
+.		ps \\n[tblvertsz]
 \h'|\\n[tblwid1]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
 \h'|\\n[tblwid1]u+\\n[tblwid2]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
 \h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'
+.		ps
 .		sp -1
 .	\}
 .	if \\n[tblboxrow]:(\\n[tblboxall]&\\$1) \{\
+.		ie \\$1 .ps \\n[tblbrdrsz]
+.		el .ps \\n[tblhorisz]
 \h'|0'\D'l \\n[tblwid]u 0'
+.		ps
 .		sp -1
 .	\}
 .	sp
@@ -119,11 +129,12 @@
 .de tblcol
 .	br
 .	if \\n[tblcol.ok] .tblcolend \\$1
-.	if \\$1=1&\\n[tblrowaut] .if \\n[tblrow.ok] .tblrowend 0
-.	if \\$1=1&\\n[tblrowaut] .tblrowbeg
 .	tblcolbeg \\$1
+.	if \\n(.$>=2 \\$2
 ..
 .de tblrow
+.	if \\n[tblrow.ok] .tblrowend 0
+.	tblrowbeg
 .	if \\n(.$>=1 .tblcol 1
 .	if \\n(.$>=1 \\$1
 .	if \\n(.$>=2 .tblcol 2
