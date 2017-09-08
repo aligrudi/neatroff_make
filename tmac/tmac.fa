@@ -196,16 +196,25 @@
 .	>>
 .	nr fa.footnum +1
 .	if \\n[fa.footnum]=1 \l'3i'
-.	br
+.	ds fa.footsign "\f(FR\\n[fa.footnum]\fP
+.	if \\n(.$>0 .ds fa.footsign "\\$1
 .	ft R
-.	in 0
-\f(FR\\n[fa.footnum]\fP\h'|3n'\c
+.	in 3n
+.	ti -3n
+\\*[fa.footsign]
+.	sp -1
+..
+.de FS.fa
+.	FS \\$1
+.	ad pk
+.	<<
+.	ft FR
 ..
 .de FE
-.	br
+.	in 0
 .	ev
 .	di
-\s-4\d\>\\n[fa.footnum]\<\u\s+4\c
+\s-4\d\>\\*[fa.footsign]\<\u\s+4\c
 .	nr fa.footpos -\\n(dn
 .	ch FT \\n[fa.footpos]u
 ..
@@ -213,6 +222,7 @@
 .	if \\n[fa.footnum] \{\
 .		ev fa.footenv
 '		nf
+'		ad l
 .		fa.footdiv
 .		rm fa.footdiv
 .		ev
