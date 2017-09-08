@@ -177,17 +177,21 @@
 .	RT
 .	ps \\n(PS-4
 .	vs \\n(PS-2
-.	ad l
+.	ad p
 .	nr en.footnum +1
 .	if \\n[en.footnum]=1 \l'3i'
-.	in 0
-\\n[en.footnum]\h'|3n'\c
+.	ds en.footsign "\\n[en.footnum]
+.	if \\n(.$>0 .ds en.footsign "\\$1
+.	in 3n
+.	ti -3n
+\\*[en.footsign]
+.	sp -1
 ..
 .de FE
-.	br
+.	in 0
 .	ev
 .	di
-\s-4\u\\n[en.footnum]\d\s+4
+\s-4\u\\*[en.footsign]\d\s+4
 .	nr en.footpos -\\n(dn
 .	ch FT \\n[en.footpos]u
 ..
