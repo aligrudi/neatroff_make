@@ -148,7 +148,7 @@
 .	FT.pg
 '	bp
 .	ev
-.	HD
+.	if \\n(.t==(\\n(.p+(\\n(FP)) .HD
 ..
 .de HD		\" Page header (called by FT)
 .	ev en.ft
