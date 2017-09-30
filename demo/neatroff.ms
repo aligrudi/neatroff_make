@@ -229,6 +229,13 @@ The second argument sets sentence space size (available in \\n[.sss]).
 .NR "\&.fzoom F N" "1000" "none" "\-"
 Magnify the given font by N/1000.
 
+.NR "\&.fp N F L" "\-" "none" "\-"
+In Neatroff, if instead of the position of the font to be mounted, N
+is a dash, the position of the font is decided automatically: if a
+font with the same name is already mounted, the same position is
+reused.  Otherwise the font is mounted on the first available font
+position.
+
 .NR "\&.ff F +F1 -F2" "\-" "none" "\-"
 Enable or disable font features; the first argument specifies the
 font and the rest of the arguments specify feature names,

@@ -14,14 +14,14 @@
 .	cl 0
 .	sp .5
 ..
-.fp 1 R PA
-.fp 2 I PI
-.fp 3 B PB
-.fp 4 HD PB
-.fp 11 CMEX CMEX10
-.fp 12 CMSY CMSY10
-.fp 13 CMMI CMMI10
-.fp 14 CB CB
+.fp - R PA
+.fp - I PI
+.fp - B PB
+.fp - HD PB
+.fp - CMEX CMEX10
+.fp - CMSY CMSY10
+.fp - CMMI CMMI10
+.fp - CB CB
 .fspecial R CMEX CMSY
 .fspecial I CMMI
 .nr PS 12

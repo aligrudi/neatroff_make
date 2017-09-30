@@ -188,8 +188,8 @@ as the special font of eqn Roman font (the font declared as grfont in
 Neateqn).
 
 .cc.beg
-\&.fp 11 CMEX CMEX10
-\&.fp 12 CMSY CMSY10
+\&.fp - CMEX CMEX10
+\&.fp - CMSY CMSY10
 \&.fspecial R CMEX CMSY
 .cc.end
 
@@ -200,7 +200,7 @@ declared as a special font of eqn italic font (the font declared as
 gfont in Neateqn).
 
 .cc.beg
-\&.fp 13 CMMI RPXMI
+\&.fp - CMMI RPXMI
 \&.fspecial I CMMI
 .cc.end
 
@@ -241,8 +241,8 @@ sqrt {a} + sqrt {a over b} + sqrt { {x + a over b} over {y + c over d} }
 
 .LP
 Palatino and Pxfonts mathematical symbols:
-.fp 11 CMEX Pxex
-.fp 12 CMSY Pxsy
+.fp - CMEX Pxex
+.fp - CMSY Pxsy
 .EQ
 (x + y) sup n = sum from i=0 to n left ( pile {n above i} right ) ^ x sup i y sup n-i
 .EN
@@ -257,11 +257,11 @@ sqrt {a} + sqrt {a over b} + sqrt { {x + a over b} over {y + c over d} }
 
 .LP
 Times Roman and Txfonts mathematical symbols:
-.fp 1 R R
-.fp 2 I I
-.fp 3 B B
-.fp 11 CMEX txex
-.fp 12 CMSY txsy
+.fp - R R
+.fp - I I
+.fp - B B
+.fp - CMEX txex
+.fp - CMSY txsy
 .EQ
 (x + y) sup n = sum from i=0 to n left ( pile {n above i} right ) ^ x sup i y sup n-i
 .EN
@@ -276,13 +276,13 @@ sqrt {a} + sqrt {a over b} + sqrt { {x + a over b} over {y + c over d} }
 
 .LP
 Computer Modern:
-.fp 1 R CMR10
-.fp 2 I CMMI10
-.fp 3 B CMB10
-.fp 4 HD CMBX12
-.fp 11 CMSY CMSY10
-.fp 12 CMEX CMEX10
-.fp 13 CMMI CMMI10
+.fp - R CMR10
+.fp - I CMMI10
+.fp - B CMB10
+.fp - HD CMBX12
+.fp - CMSY CMSY10
+.fp - CMEX CMEX10
+.fp - CMMI CMMI10
 .fspecial R CMSY CMEX10
 .fspecial I CMMI
 .EQ
