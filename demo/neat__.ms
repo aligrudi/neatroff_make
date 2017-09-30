@@ -21,6 +21,7 @@
 .fp 11 CMEX CMEX10
 .fp 12 CMSY CMSY10
 .fp 13 CMMI CMMI10
+.fp 14 CB CB
 .fspecial R CMEX CMSY
 .fspecial I CMMI
 .nr PS 12

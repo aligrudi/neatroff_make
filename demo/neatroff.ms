@@ -14,7 +14,9 @@
 .	ne
 .	ta 4.5i 6iR
 .	nf
+.	lg 0
 \f(CB\m[#237]\\$1\m0\fP	\s-3\m[#237]\fB\\$2\fP	\fB\\$4\m0\fP
+.	lg 1
 .	IP
 ..
 .HD
