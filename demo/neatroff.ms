@@ -4,14 +4,14 @@
 .de MH
 .	sp
 .	LP
-.	ne 1.5
+.	ne 2
 \m[#237]\fI\\$1\fP\m[]
 .	IP
 ..
 .de NR
 .	sp
 .	LP
-.	ne
+.	ne 2
 .	ta 4.5i 6iR
 .	nf
 .	lg 0
@@ -25,7 +25,7 @@
 .AU
 \fIAli Gholami Rudi\fP
 .ce
-\s-3\fIUpdated in June 2017\s+3\fP\&
+\s-3\fIUpdated in October 2017\s+3\fP\&
 .sp 3
 Neatroff is a new implementation of Troff typesetting system in C
 programming language, which tries to address, as neatly as possible,
@@ -72,16 +72,27 @@ be selected with \&.ffsc.  Old-style ligatures (\&.lg) and pairwise
 kerning (\&.kn) are still supported, as described in a later section.
 
 .MH "Whole paragraph text formatting
-Neatroff supports filling whole paragraphs at once, which results in
+Neatroff supports filling whole paragraphs at once, to achieve
 more uniform word spacing.  Like Heirloom Troff, the \&.ad request
-accepts arguments p or pb, pl, and pr, which are equivalent to b, l
+accepts arguments p or pb, pl, and pr, which are equivalent to b, l,
 and r, except that the filling is done for whole paragraphs, i.e.,
-words are collected until a line break is issued.  This inevitably
-changes the behaviour of some requests, including traps: several
+words are collected until a line break is issued.
+This inevitably changes the behaviour of some requests and traps: several
 lines may be collected and ready to be output while executing them.
-Also, when formatting whole paragraphs, \&'br fills the words
+For the end macro, Troff invokes the macro specified
+with \&.em request without flushing the last incomplete line.
+Neatroff follows the same behaviour even when formatting whole
+paragraphs and does not write any of the collected lines to the output.
+Since after the end macro no new page is started, collected lines may
+be unexpectedly written to the end of the last page of the document.
+To change that, the end macro can invoke the \&.br request.
+For requests that cause break, using \(aq as the control character
+prevents writing any line of the collected paragraph to the output,
+as expected.
+The exception to this rule is \(aqbr, which formats the words
 collected so far and outputs all resulting lines except the final
-incomplete line.
+incomplete line (this is useful, for instance, for footnotes, which
+should be inserted in the same page).
 
 .MH "Paragraph formatting algorithm
 For deciding at what points to break a paragraph into lines, Neatroff
@@ -233,7 +244,7 @@ Magnify the given font by N/1000.
 In Neatroff, if instead of the position of the font to be mounted, N
 is a dash, the position of the font is decided automatically: if a
 font with the same name is already mounted, the same position is
-reused.  Otherwise the font is mounted on the first available font
+reused.  Otherwise the font is mounted on the next available
 position.
 
 .NR "\&.ff F +F1 -F2" "\-" "none" "\-"
@@ -425,13 +436,12 @@ bounding box of the argument of \\w.
 
 To use the advanced features present in TrueType and OpenType fonts,
 Neatroff supports lines that define substitution and positioning
-rules, and cursive attachments (lines starting with \(lqgsub,\(rq
-\(lqgpos,\(rq and \(lqgcur\(rq respectively).  Note that unlike
-Heirloom Troff, which implements non-contextual single-character
-substitutions, Neatroff implements many of the
-more complex OpenType substitution and positioning features.
-The following example shows how such features are defined
-in Neatroff font descriptions:
+rules (lines starting with \(lqgsub\(rq and \(lqgpos\(rq respectively).
+Note that unlike Heirloom Troff, which implements non-contextual
+single-character substitutions, Neatroff implements many of the more
+complex OpenType substitution and positioning features.  The following
+example shows how such features are defined in Neatroff font
+descriptions:
 
 .cc.beg
 .ta 5 10 15 20 25
