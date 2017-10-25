@@ -1,0 +1,38 @@
+.\" A package for PostScript-specific requests
+.\"
+.\" Including EPS files
+.so \n(.D/tmac.eps
+.rn EPS ps.eps
+.\" pdfmark document information
+.\" .ps.info title [author] [subject] [keywords]
+.de ps.info
+.	ds ps._info "[
+.	if !'\\$1'' .as ps._info " /Title (\\$1)
+.	if !'\\$2'' .as ps._info " /Author (\\$2)
+.	if !'\\$3'' .as ps._info " /Subject (\\$3)
+.	if !'\\$4'' .as ps._info " /Keywords (\\$4)
+\X'ps \\*[ps._info] /Creator (Neatroff) /DOCINFO pdfmark'
+.	sp -1
+..
+.\" pdfmark bookmarks
+.\" .ps.mark page title count
+.de ps.mark
+.	ds ps._mark "[ /Page \\$1 /Title (\\$2)
+.	if !'\\$3'' .as ps._mark " /Count \\$3
+\X'ps \\*[ps._mark] /OUT pdfmark'
+.	sp -1
+..
+.\" pdfmark link
+.\" .ps.link destination width height
+.de ps.link
+.	nr ps._linkh \\$1
+.	nr ps._linkv \\$2
+\X'link \\$1 \\n[ps._linkh] -\\n[ps._linkv]'
+.	sp -1
+..
+.\" Inline URL
+.\" \*[ps.url url]
+.de ps.url
+\R'ps._linkh \w'\\$1''\R'ps._linkv \\n(.sp'\v'+\\n(.sp*2u/10u'\X'link \\$1 \\n[ps._linkh] -\\n[ps._linkv]'\v'-\\n(.sp*2u/10u'\\$1
+..
+.chop ps.url
