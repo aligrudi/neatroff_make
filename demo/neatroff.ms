@@ -1,6 +1,7 @@
 .\" PSTITLE: Neatroff Introduction
 .so neat__.ms
 .ds en.cl "#237
+.ps.info "Neatroff Introduction" "Ali Gholami Rudi"
 .de MH
 .	sp
 .	LP
@@ -32,11 +33,11 @@ programming language, which tries to address, as neatly as possible,
 some of the shortcomings of the original Troff based on the ideas and
 features available in Plan 9 Troff, Heirloom Troff, and Groff.
 Neatroff, its postscript postprocessor, neatpost, and its eqn
-preprocessor, neateqn, are available at http:/\h'-.3n'/litcave.rudi.ir/.
+preprocessor, neateqn, are available at \*[ps.url http://litcave.rudi.ir/].
 This document enumerates Neatroff's features, its new requests, and
 its differences compared to other Troff implementations.  On the other
 hand, the document \(lqGetting Started with Neatroff,\(rq available at
-http:/\h'-.3n'/litcave.rudi.ir/\:neatstart.pdf, explains how to set up and
+http://litcave.rudi.ir/\:neatstart.pdf, explains how to set up and
 use Neatroff.
 
 .bp
@@ -352,7 +353,7 @@ treated as an invocation of this macro.
 .SH "Notes"
 .sp -1
 .MH "Generating the output device
-The neatmkfn program (available at http:/\h'-.3n'/litcave.rudi.ir/) generates
+The neatmkfn program (available at \*[ps.url http://litcave.rudi.ir/]) generates
 Neatroff font descriptions for AFM or TrueType fonts (OpenType fonts
 are converted to TrueType first).  It includes a script to create
 a complete output device for Neatroff.
@@ -366,7 +367,7 @@ available.
 .MH "The standard macro packages
 The standard Troff macro packages and a top-level build script to
 obtain and install Neatroff are available in neatroff_make git
-repository (available at http:/\h'-.3n'/litcave.rudi.ir/).
+repository (available at \*[ps.url http://litcave.rudi.ir/]).
 
 .MH "Missing requests
 A few requests of the original Troff are not implemented:
@@ -381,8 +382,8 @@ difficult.  Note that Neatroff is released under the ISC licence.
 As mentioned in previous sections, font features can be enabled and
 disabled with \&.ff request.  For the list of OpenType features in
 general and their descriptions, see
-https:/\h'-.3n'/en.wikipedia.org/\:wiki/\:List_of_typographic_features or
-http:/\h'-.3n'/www.microsoft.com/\:typography/\:\s-1OTSPEC\s+1/\:featurelist.htm.
+https://en.wikipedia.org/\:wiki/\:List_of_typographic_features or
+http://www.microsoft.com/\:typography/\:\s-1OTSPEC\s+1/\:featurelist.htm.
 
 .bp
 .SH "Font Description Files"

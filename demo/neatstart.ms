@@ -1,5 +1,6 @@
 .\" PSTITLE: Getting Started with Neatroff
 .so neat__.ms
+.ps.info "Getting Started with Neatroff" "Ali Gholami Rudi"
 .de MH
 .	sp
 .	LP

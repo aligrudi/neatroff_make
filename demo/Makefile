@@ -18,7 +18,7 @@ all: test.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | \
 		$(REFER) -m -e -o ct -p ref.bib | $(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) -meps -mtbl -mkeep -men -msrefs | $(POST) -pa4 >$@
+		$(ROFF) -mps -meps -mtbl -mkeep -men -msrefs | $(POST) -pa4 >$@
 
 %.pdf: %.ps
 	@echo "Generating $@"

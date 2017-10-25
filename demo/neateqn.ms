@@ -1,7 +1,8 @@
 .\" PSTITLE: Typesetting Mathematics with Neateqn
 .so neat__.ms
-.HD
 .ds en.cl "#936
+.ps.info "Typesetting Mathematics with Neateqn" "Ali Gholami Rudi"
+.HD
 .TL
 \f(HD\s+8Typesetting Mathematics with Neateqn\m0\s-8\fP
 .AU

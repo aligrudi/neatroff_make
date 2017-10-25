@@ -19,7 +19,7 @@ all: test.pdf fa.pdf
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | $(SHAPE) | \
 		$(REFER) -m -e -o ct -p ref.bib | $(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) -meps -mtbl -mkeep -mfa -msrefs | $(POST) -pa4 >$@
+		$(ROFF) -mps -meps -mtbl -mkeep -mfa -msrefs | $(POST) -pa4 >$@
 
 %.pdf: %.ps
 	@echo "Generating $@"

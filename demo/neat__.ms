@@ -14,6 +14,11 @@
 .	cl 0
 .	sp .5
 ..
+.rn SH SH_
+.de SH
+.	SH_ "\\$1"
+.	ps.mark "\\$1"
+..
 .fp - R PA
 .fp - I PI
 .fp - B PB
