@@ -6,6 +6,7 @@
 .\" pdfmark document information
 .\" .ps.info title [author] [subject] [keywords]
 .de ps.info
+.	br
 .	ds ps._info "[
 .	if !'\\$1'' .as ps._info " /Title (\\$1)
 .	if !'\\$2'' .as ps._info " /Author (\\$2)
@@ -15,9 +16,11 @@
 .	sp -1
 ..
 .\" pdfmark bookmarks
-.\" .ps.mark page title count
+.\" .ps.mark title page count
 .de ps.mark
-.	ds ps._mark "[ /Page \\$1 /Title (\\$2)
+.	br
+.	ds ps._mark "[ /Title (\\$1)
+.	if !'\\$2'' .as ps._mark " /Page \\$2
 .	if !'\\$3'' .as ps._mark " /Count \\$3
 \X'ps \\*[ps._mark] /OUT pdfmark'
 .	sp -1
@@ -25,14 +28,18 @@
 .\" pdfmark link
 .\" .ps.link destination width height
 .de ps.link
+.	br
 .	nr ps._linkh \\$1
 .	nr ps._linkv \\$2
 \X'link \\$1 \\n[ps._linkh] -\\n[ps._linkv]'
 .	sp -1
 ..
 .\" Inline URL
-.\" \*[ps.url url]
+.\" \*[ps.ref url/page text]
 .de ps.url
-\R'ps._linkh \w'\\$1''\R'ps._linkv \\n(.sp'\v'+\\n(.sp*2u/10u'\X'link \\$1 \\n[ps._linkh] -\\n[ps._linkv]'\v'-\\n(.sp*2u/10u'\\$1
+\R'ps._linkh \\w'\\?'\\n(.$>1@\\$2@\\$1'''\
+\R'ps._linkv \\n(.sp'\
+\v'+\\n(.sp*2u/10u'\X'link \\$1 \\n[ps._linkh] -\\n[ps._linkv]'\v'-\\n(.sp*2u/10u'\
+\\?'\\n(.$>1@\\$2@\\$1'
 ..
 .chop ps.url
