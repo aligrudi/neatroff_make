@@ -4,6 +4,7 @@
 .so \n(.D/tmac.eps
 .rn EPS ps.eps
 .\" pdfmark document information
+.\"
 .\" .ps.info title [author] [subject] [keywords]
 .de ps.info
 .	br
@@ -16,7 +17,8 @@
 .	sp -1
 ..
 .\" pdfmark bookmarks
-.\" .ps.mark title page count
+.\"
+.\" .ps.mark title [page] [count]
 .de ps.mark
 .	br
 .	ds ps._mark "[ /Title (\\$1)
@@ -25,15 +27,30 @@
 \X'ps \\*[ps._mark] /OUT pdfmark'
 .	sp -1
 ..
-.\" pdfmark link
+.\" pdfmark named destintion
+.\"
+.\" .ps.name name [page]
+.de ps.name
+.	br
+.	ds ps._mark "[ /Dest /\\$1
+.	if !'\\$2'' .as ps._mark " /Page \\$2
+\X'ps \\*[ps._mark] /DEST pdfmark'
+.	sp -1
+..
+.\" pdfmark link: The destination can be a URL, a page number,
+.\" or an internal named reference (defined with .ps.name).  For
+.\" named references, the name of the reference should be
+.\" prefixed with '#'.
+.\"
 .\" .ps.link destination width height
 .de ps.link
 .	nr ps._linkh \\$1
 .	nr ps._linkv \\$2
 \X'link "\\$1" \\n[ps._linkh] -\\n[ps._linkv]'
 ..
-.\" Inline URL
-.\" \*[ps.ref url/page text]
+.\" Inline URL: See the comments about the destination of .ps.link.
+.\"
+.\" \*[ps.ref destination text]
 .de ps.url
 \R'ps._linkh \\w'\\?'\\n(.$>1@\\$2@\\$1'''\
 \R'ps._linkv \\n(.sp'\
