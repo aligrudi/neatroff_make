@@ -28,18 +28,16 @@
 .\" pdfmark link
 .\" .ps.link destination width height
 .de ps.link
-.	br
 .	nr ps._linkh \\$1
 .	nr ps._linkv \\$2
-\X'link \\$1 \\n[ps._linkh] -\\n[ps._linkv]'
-.	sp -1
+\X'link "\\$1" \\n[ps._linkh] -\\n[ps._linkv]'
 ..
 .\" Inline URL
 .\" \*[ps.ref url/page text]
 .de ps.url
 \R'ps._linkh \\w'\\?'\\n(.$>1@\\$2@\\$1'''\
 \R'ps._linkv \\n(.sp'\
-\v'+\\n(.sp*2u/10u'\X'link \\$1 \\n[ps._linkh] -\\n[ps._linkv]'\v'-\\n(.sp*2u/10u'\
+\v'+\\n(.sp*2u/10u'\X'link "\\$1" \\n[ps._linkh] -\\n[ps._linkv]'\v'-\\n(.sp*2u/10u'\
 \\?'\\n(.$>1@\\$2@\\$1'
 ..
 .chop ps.url
