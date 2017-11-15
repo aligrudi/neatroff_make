@@ -48,8 +48,8 @@
 .\"
 .\" .ps.link destination width height
 .de ps.link
-.	nr ps._linkh \\$1
-.	nr ps._linkv \\$2
+.	nr ps._linkh \\$2
+.	nr ps._linkv \\$3
 \X'link "\\$1" \\n[ps._linkh] -\\n[ps._linkv]'
 ..
 .\" Inline URL: See the comments about the destination of .ps.link.
