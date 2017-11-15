@@ -16,8 +16,8 @@
 ..
 .rn SH SH_
 .de SH
-.	SH_ "\\$1"
 .	ps.mark "\\$1"
+.	SH_ "\\$1"
 ..
 .fp - R PA
 .fp - I PI
