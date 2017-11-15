@@ -22,7 +22,7 @@
 .de ps.mark
 .	br
 .	ds ps._mark "[ /Title (\\$1)
-.	nr ps._vpos \\n(.p-\\n(nl/10
+.	nr ps._vpos \\n(.p-\\n(nl/1p
 .	ie !'\\$2'' .as ps._mark " /Page \\$2
 .	el .as ps._mark " /View [/XYZ null \\n[ps._vpos] null]
 .	if !'\\$3'' .as ps._mark " /Count \\$3
@@ -35,7 +35,7 @@
 .de ps.name
 .	br
 .	ds ps._mark "[ /Dest /\\$1
-.	nr ps._vpos \\n(.p-\\n(nl/10
+.	nr ps._vpos \\n(.p-\\n(nl/1p
 .	ie !'\\$2'' .as ps._mark " /Page \\$2
 .	el .as ps._mark " /View [/XYZ null \\n[ps._vpos] null]
 \X'ps \\*[ps._mark] /DEST pdfmark'
