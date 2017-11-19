@@ -119,14 +119,28 @@
 .	nf
 .	>>
 .	ft R
+.	ds fa.eqlab "\\$1
 .	di fa.eqdiv
 ..
 .de EN
 .	di
 .	if \\n(dn \{\
 .		sp .5
-.		ce
-.		fa.eqdiv
+.		ad c
+.		ie "\\*[fa.eqlab]"" .fa.eqdiv
+.		el \{\
+.			nr fa.eqwid \\n(dl
+.			if \\n[fa.eqwid]<(\\n(.lu/2u) .nr fa.eqwid \\n(.lu/2u
+.			ll \\n[fa.eqwid]u
+.			ad r
+.			fa.eqdiv
+.			sp -1
+.			ll
+.			in +(\\n[fa.eqwid]u+2m)
+.			ad l
+\\*[fa.eqlab]
+.			in
+.		\}
 .		sp .5
 .	\}
 .	fi
@@ -195,7 +209,7 @@
 .	ad l
 .	>>
 .	nr fa.footnum +1
-.	if \\n[fa.footnum]=1 \l'3i'
+.	if \\n[fa.footnum]=1 \l'\\n(.lu'
 .	ds fa.footsign "\f(FR\\n[fa.footnum]\fP
 .	if \\n(.$>0 .ds fa.footsign "\\$1
 .	ft R
