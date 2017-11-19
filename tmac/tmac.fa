@@ -196,7 +196,7 @@
 '	sp
 ..
 .\" Footnotes
-.de FS
+.de FS.common
 '	br
 .	ie \\n[fa.footnum] .ne 1
 .	el .ne 1.5
@@ -210,19 +210,26 @@
 .	>>
 .	nr fa.footnum +1
 .	if \\n[fa.footnum]=1 \l'\\n(.lu'
-.	ds fa.footsign "\f(FR\\n[fa.footnum]\fP
+.	ds fa.footsign "\\n[fa.footnum]
 .	if \\n(.$>0 .ds fa.footsign "\\$1
-.	ft R
+.	ad pk
 .	in 3n
+.	in2 3n
+..
+.de FS
+.	FS.common \\$1
+.	ft R
 .	ti -3n
 \\*[fa.footsign]
 .	sp -1
 ..
 .de FS.fa
-.	FS \\$1
-.	ad pk
+.	FS.common \\$1
 .	<<
 .	ft FR
+.	ti2 -3n
+\>\\*[fa.footsign]\<
+.	sp -1
 ..
 .de FE
 .	in 0
@@ -245,10 +252,10 @@
 .	ch FT \\n(FPu
 ..
 .\" Including EPS files (overrides -meps)
-.rn EPS _EPS
+.rn EPS __EPS
 .de EPS
 .	>>
-.	_EPS \\$1 \\$2 \\$3 \\$4 \\$5 \\$6 \\$7 \\$8 \\$9
+.	__EPS "\\$1" \\$2 \\$3 \\$4 \\$5 \\$6 \\$7 \\$8 \\$9
 ..
 .\" Adjusting fonts
 .de fa.gmap	\" Mapping glyphs
@@ -326,7 +333,7 @@
 \>\\$1\<
 ..
 .chop num
-.de fs		\" Footnote
+.de fs		\" English Footnote
 \c
 .	FS
 \\$1
@@ -334,6 +341,14 @@
 \&
 ..
 .chop fs
+.de fs.fa	\" Farsi Footnote
+\c
+.	FS.fa
+\\$1
+.	FE
+\&
+..
+.chop fs.fa
 .de ct
 ]\>\\$1\<[
 ..
