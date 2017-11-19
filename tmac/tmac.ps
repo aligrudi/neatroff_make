@@ -2,7 +2,9 @@
 .\"
 .\" Including EPS files
 .so \n(.D/tmac.eps
-.rn EPS ps.eps
+.de ps.eps
+.	EPS "\\$1" \\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+..
 .\" pdfmark document information
 .\"
 .\" .ps.info title [author] [subject] [keywords]
