@@ -32,7 +32,6 @@ init:
 	@cd fonts && sh ./fonts.sh
 
 init_fa: init
-	@cd neatroff && git checkout dir
 	@test -d shape || (wget -c http://litcave.rudi.ir/shape.tar.gz && tar xf shape.tar.gz)
 	@cd fonts && sh ./fonts_fa.sh
 
