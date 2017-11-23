@@ -126,20 +126,19 @@ argument of \&.ss request specifies sentence space, as in Groff or
 Heirloom Troff.
 
 .MH "Text direction
-The dir branch of Neatroff supports text direction to render
-right-to-left languages.  The \&.<< and \&.>> requests specify text
-direction and the \\< and \\> escape sequences change it temporarily
-for including words in the reverse direction.  The value of number
-registers \&.td and \&.cd indicate the current text and temporary
-directions respectively; zero means left-to-right and one means
-right-to-left.
+Neatroff supports text direction to render right-to-left languages.
+\&.<< and \&.>> requests specify text direction and \\< and \\> escape
+sequences change it temporarily for including words in the reverse
+direction.  The value of number registers \&.td and \&.cd indicate the
+current text and temporary directions respectively; zero means
+left-to-right and one means right-to-left.  Neatroff starts processing
+text direction, after the first invocation of \&.<< or \&.>>.
 
 .MH "Keshideh justification and cursive scripts
-In the dir branch of Neatroff, a new adjustment type (.ad k) allows
-inserting Keshideh characters before justifying text with hyphenation
-and spaces.  The dir branch also supports cursive scripts, which
-require connecting glyphs at their cursive attachment positions,
-as defined in the fonts.
+A new adjustment type (.ad k) allows inserting Keshideh characters
+before justifying text with hyphenation and spaces.  Neatroff also
+supports cursive scripts, which require connecting glyphs at their
+cursive attachment positions, as defined in the fonts.
 
 .MH "Font manipulation
 In Neatroff, the mapping between Troff character names and glyphs in a
@@ -226,9 +225,8 @@ shrunk in percentage (available through \\n[.ssh]).
 
 .NR "\&.ad p*" "b" "adjust" "E"
 With values pl, pr, pb, and p, this request instructs Neatroff to perform
-whole-paragraph line formatting.  Also in dir branch of Neatroff, the
-value k enables Keshideh justification (kp is the equivalent for
-whole-paragraph formatting).
+whole-paragraph line formatting.  Also, the value k enables Keshideh
+justification (kp is the equivalent for whole-paragraph formatting).
 
 .NR "\&.eos S T" "S=\&.?!  T='"")]*" "none" "\-"
 Specify sentence characters.  The first argument specifies
@@ -325,16 +323,15 @@ Assign the hyphenation code of b to a and the hyphenation code of d to c.
 Remove the last character of a string register.
 
 .NR "\&.>>  \&.<<" "left-to-right" "\-" "E"
-Render text in left-to-right or right-to-left direction (available
-only in dir branch of Neatroff).  See the first section for
-an explanation of escape sequences \\> and \\<.
+Render text in left-to-right or right-to-left direction.  See the
+first section for an explanation of escape sequences \\> and \\<.
 
 .NR "\&.in2" "0" "previous" "E"
-Right-side indentation (available only in dir branch of Neatroff).
-The current right-side indentation is available in register \\n(.I.
+Right-side indentation.  The current right-side indentation is
+available in register \\n(.I.
 
 .NR "\&.ti2" "0" "\-" "E"
-Right-side temporary indentation (available only in dir branch of Neatroff).
+Right-side temporary indentation.
 
 .NR "\&.char C DEF" "\-" "\-" "\-"
 Define Troff character C.
