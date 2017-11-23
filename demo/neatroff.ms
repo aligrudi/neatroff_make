@@ -26,7 +26,7 @@
 .AU
 \fIAli Gholami Rudi\fP
 .ce
-\s-3\fIUpdated in October 2017\s+3\fP\&
+\s-3\fIUpdated in November 2017\s+3\fP\&
 .sp 3
 Neatroff is a new implementation of Troff typesetting system in C
 programming language, which tries to address, as neatly as possible,
@@ -218,6 +218,12 @@ Change text colour.  The current colour is available in the number
 register \\n(.m.  With no arguments, the previous colour is selected.
 The format of the argument and the \\m escape sequence are described
 in the previous section.
+
+.NR "\&.co R >F" "\-" "none" "\-"
+Copy the contents of register R into file F.
+
+.NR "\&.co R <F" "\-" "none" "\-"
+Copy the contents of register R from file F.
 
 .NR "\&.ssh N" "0" "0" "E"
 Set the amount stretchable spaces in formatted lines may be
