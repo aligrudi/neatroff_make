@@ -1,25 +1,30 @@
 # Neatroff demonstration directory
 BASE = $(PWD)/..
 ROFF = $(BASE)/neatroff/roff
+ROFF = $(BASE)/neatroff/roff
 POST = $(BASE)/neatpost/post
 EQN = $(BASE)/neateqn/eqn
-REFER = $(BASE)/neatrefer/refer
+REFR = $(BASE)/neatrefer/refer
 PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
 SHAPE = $(BASE)/shape/shape
 
+ROFFOPTS = -mps -meps -mtbl -mkeep -mfa -msrefs
+POSTOPTS = -pa4
+REFROPTS = -m -e -o ct -p ref.bib
+
 all: test.pdf fa.pdf
 
 %.ps: %.tr
 	@echo "Generating $@"
-	@cat $< | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) -pa4 >$@
+	@cat $< | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) $(POSTOPTS) >$@
 
 %.ps: %.ms
 	@echo "Generating $@"
-	@cat $< | $(SOIN) | $(SHAPE) | \
-		$(REFER) -m -e -o ct -p ref.bib | $(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) -mps -meps -mtbl -mkeep -mfa -msrefs | $(POST) -pa4 >$@
+	@cat $< | $(SOIN) | $(REFR) $(REFROPTS) | $(SHAPE) | \
+		$(PIC) | $(TBL) | $(EQN) | \
+		$(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
 
 %.pdf: %.ps
 	@echo "Generating $@"

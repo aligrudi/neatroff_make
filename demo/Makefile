@@ -3,22 +3,26 @@ BASE = $(PWD)/..
 ROFF = $(BASE)/neatroff/roff
 POST = $(BASE)/neatpost/post
 EQN = $(BASE)/neateqn/eqn
-REFER = $(BASE)/neatrefer/refer
+REFR = $(BASE)/neatrefer/refer
 PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
+
+ROFFOPTS = -mps -meps -mtbl -mkeep -men -msrefs
+POSTOPTS = -pa4
+REFROPTS = -m -e -o ct -p ref.bib
 
 all: test.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
 
 %.ps: %.tr
 	@echo "Generating $@"
-	@cat $< | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) -pa4 >$@
+	@cat $< | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) $(POSTOPTS) >$@
 
 %.ps: %.ms
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | \
-		$(REFER) -m -e -o ct -p ref.bib | $(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) -mps -meps -mtbl -mkeep -men -msrefs | $(POST) -pa4 >$@
+		$(REFR) $(REFROPTS) | $(PIC) | $(TBL) | $(EQN) | \
+		$(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
 
 %.pdf: %.ps
 	@echo "Generating $@"
