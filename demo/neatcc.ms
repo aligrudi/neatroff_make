@@ -86,7 +86,7 @@ struct ic {
 	long a3;	/* third argument, jump target, argument count */
 	long *args;	/* call arguments */
 };
-.ccend
+.cc.end
 
 .sp
 .LP
@@ -188,7 +188,7 @@ require them.
 [ SAVED REGISTERS               ]
 [ FUNCTION ARGUMENTS            ]
 [ NEXT FRAME                    ]  <- SP points here
-.ccend
+.cc.end
 
 .SH "Final Code Generation"
 The functions whose names begin with \(lqi_\(rq are the low-level
