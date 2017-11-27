@@ -197,8 +197,7 @@ be any character that cannot be part of the condition; for numerical
 expressions, for instance, it cannot be a digit, an operator sign, or
 a scale indicator, unless separated from the condition with \\&.  The
 final delimiter, and even expr2, may be omitted, thus \\?'cond@expr'
-is valid; Neatroff interpolates expr if cond is true.  Note that this
-escape sequence is not interpolated in copy mode.
+is valid; Neatroff interpolates expr if cond is true.
 
 .MH "Neatpost-specific device commands
 Neatroff supports \\X'rotate deg' for rotating the current page
