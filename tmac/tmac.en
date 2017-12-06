@@ -207,10 +207,7 @@
 .	ch FT \\n(FPu
 ..
 .\" Citations
-.de ct
-[\\$1]
-..
-.chop ct
+.ds ct [\\$1]
 .\" For keep package
 .de KF
 .	keepbeg f

@@ -325,14 +325,9 @@
 .	fa.efont CMMI
 ..
 .\" Small auxiliary macros
-.de en		\" English phrases
-\>\fR\\$1\fP\<
-..
-.chop en
-.de num		\" Farsi numbers
-\>\\$1\<
-..
-.chop num
+.ds en "\>\fR\\$1\fP\<
+.ds num "\>\\$1\<
+.ds ct "]\>\\$1\<[
 .de fs		\" English Footnote
 \c
 .	FS
@@ -349,10 +344,6 @@
 \&
 ..
 .chop fs.fa
-.de ct
-]\>\\$1\<[
-..
-.chop ct
 .\" For tbl package
 .de tblrst
 .	fi

@@ -56,22 +56,10 @@
 .	nf
 ..
 .\" map graph positions to roff position
-.de grx
-\\n[grxoff]+((\\$1-\\n[grxmin])*\\n[grwd]/\\n[grxwid])
-..
-.de gry
-\\n[gryoff]-((\\$1-\\n[grymin])*\\n[grht]/\\n[grywid])
-..
-.de grwd
-((\\$1)*\\n[grwd]/\\n[grxwid])
-..
-.de grht
-((\\$1)*\\n[grht]/\\n[grywid])
-..
-.chop grx
-.chop gry
-.chop grwd
-.chop grht
+.ds grx \\n[grxoff]+((\\$1-\\n[grxmin])*\\n[grwd]/\\n[grxwid])
+.ds gry \\n[gryoff]-((\\$1-\\n[grymin])*\\n[grht]/\\n[grywid])
+.ds grwd ((\\$1)*\\n[grwd]/\\n[grxwid])
+.ds grht ((\\$1)*\\n[grht]/\\n[grywid])
 .\" read graph options
 .de gropt
 .	if \\n(.$>=1 .if !"\\$1"" .nr gr\\$1
