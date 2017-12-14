@@ -36,6 +36,7 @@
 .nr grlnsz 24		\" Line point size
 .nr grptsz 12		\" Text point size
 .nr grbarwid 1		\" Bar width
+.nr grratio 133		\" Aspect ratio (width / height * 100)
 .ds grclr.ln "#725	\" Line colour
 .ds grclr.fl "#fff	\" Fill colour
 .de grbeg
@@ -48,7 +49,7 @@
 .	nr grxwid 0\\n[grxmax]-\\n[grxmin]
 .	nr grywid 0\\n[grymax]-\\n[grymin]
 .	nr grwd \\n(.l-\\n(.i
-.	nr grht \\n[grwd]*3/4
+.	nr grht \\n[grwd]*100/\\n[grratio]
 .	nr grxoff \\n(.i
 .	nr gryoff \\n(.d+\\n[grht]
 .	ne \\n[grht]u
