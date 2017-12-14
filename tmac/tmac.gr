@@ -100,6 +100,15 @@
 .	if \\n(.$>2&\\$3 \v'|\\n[gry1]u'\h'|\\n[grx1]u'\D'l \\n[grwd]u 0'
 .	if \\n(.$>2&\\$3 .sp -1
 ..
+.de grlab.x
+\v'|\\n[gryoff]u+2v\\$2'\h'|\\n[grxoff]u+(\\n[grwd]u/2u)-(\\w'\\$2'u/2u)'\\$1
+.	sp -1
+..
+.de grlab.y
+\v'|\\n[gryoff]u-(\\n[grht]u/2u)'\h'|\\n[grxoff]u-2v\\$2'\
+\X'rotate 90'\h'-(\\w'\\$1'u/2u)'\\$1\X'rotate 0'
+.	sp -1
+..
 .de grcurbeg
 .	gropt "\\$1" "\\$2" "\\$3" "\\$4" "\\$5"
 .	ds grcur.s "
