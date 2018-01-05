@@ -298,7 +298,7 @@
 .de fa.efont	\" Adjusting English fonts
 .	fzoom \\$1 900
 ..
-.de fa.mfont	\" Adjusting equation fonts
+.de fa.mfont	\" Adjusting math fonts
 .	ft \\$1
 .	fzoom \\$1 900
 .	fa.umap 0 "\f(FR۰\fP
@@ -328,7 +328,7 @@
 .ds en "\>\fR\\$1\fP\<
 .ds num "\>\\$1\<
 .ds ct "]\>\\$1\<[
-.de fs		\" English Footnote
+.de fs		\" English footnote
 \c
 .	FS
 \\$1
@@ -336,7 +336,7 @@
 \&
 ..
 .chop fs
-.de fs.fa	\" Farsi Footnote
+.de fs.fa	\" Farsi footnote
 \c
 .	FS.fa
 \\$1
