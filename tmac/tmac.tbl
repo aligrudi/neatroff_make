@@ -41,6 +41,7 @@
 .nr tblbrdrsz 30	\" border point size
 .nr tblvertsz 16	\" vertical line point size
 .nr tblhorisz 16	\" horizontal line point size
+.nr tblcolrev 0		\" reverse .tblcol column number (R2L tables)
 .de tblrst
 .	in 0
 ..
@@ -82,15 +83,17 @@
 .	nr tblcol.ok 1
 .	sp |\\n[tblrow.top]u
 .	tblrst
-.	\\*[tblrst\\$1]
-.	if \\$1=1 .in +0u
-.	if \\$1=2 .in +\\n[tblwid1]u
-.	if \\$1=3 .in +\\n[tblwid1]u+\\n[tblwid2]u
-.	if \\$1=4 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u
-.	if \\$1=5 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u
-.	if \\$1=6 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u+\\n[tblwid5]u
-.	if \\$1=7 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u+\\n[tblwid5]u+\\n[tblwid6]u
-.	ll \\n(.iu+\\n[tblwid\\$1]u
+.	nr tblcur \\$1
+.	if \\n[tblcolrev] .nr tblcur \\n[tblcnt]-\\$1+1
+.	\\*[tblrst\\n[tblcur]]
+.	if \\n[tblcur]=1 .in +0u
+.	if \\n[tblcur]=2 .in +\\n[tblwid1]u
+.	if \\n[tblcur]=3 .in +\\n[tblwid1]u+\\n[tblwid2]u
+.	if \\n[tblcur]=4 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u
+.	if \\n[tblcur]=5 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u
+.	if \\n[tblcur]=6 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u+\\n[tblwid5]u
+.	if \\n[tblcur]=7 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u+\\n[tblwid5]u+\\n[tblwid6]u
+.	ll \\n(.iu+\\n[tblwid\\n[tblcur]]u
 .	in +\\n[tblgap]u
 .	ll -\\n[tblgap]u
 ..
