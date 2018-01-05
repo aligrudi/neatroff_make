@@ -5,7 +5,7 @@
 .\"
 .\" .tblbeg colwid1 colwid2 ...
 .\"   This macro begins a table.  Its arguments are the widths of the
-.\"   columns.  At most four columns are supported.  The width of the
+.\"   columns.  At most seven columns are supported.  The width of the
 .\"   last column can be 0 to expand it to the end of the line.
 .\"
 .\" .tblbox all row col
@@ -54,7 +54,14 @@
 .	if "\\$3"0" .nr tblwid3 \\n(.l-\\n[tblwid1]-\\n[tblwid2]
 .	nr tblwid4 0\\$4
 .	if "\\$4"0" .nr tblwid4 \\n(.l-\\n[tblwid1]-\\n[tblwid2]-\\n[tblwid3]
-.	nr tblwid \\n[tblwid1]+\\n[tblwid2]+\\n[tblwid3]+\\n[tblwid4]
+.	nr tblwid5 0\\$5
+.	if "\\$5"0" .nr tblwid5 \\n(.l-\\n[tblwid1]-\\n[tblwid2]-\\n[tblwid3]-\\n[tblwid4]
+.	nr tblwid6 0\\$6
+.	if "\\$6"0" .nr tblwid6 \\n(.l-\\n[tblwid1]-\\n[tblwid2]-\\n[tblwid3]-\\n[tblwid4]-\\n[tblwid5]
+.	nr tblwid7 0\\$7
+.	if "\\$7"0" .nr tblwid7 \\n(.l-\\n[tblwid1]-\\n[tblwid2]-\\n[tblwid3]-\\n[tblwid4]-\\n[tblwid5]-\\n[tblwid6]
+.	nr tblcnt \\n(.$
+.	nr tblwid \\n[tblwid1]+\\n[tblwid2]+\\n[tblwid3]+\\n[tblwid4]+\\n[tblwid5]+\\n[tblwid6]+\\n[tblwid7]
 .	nr tblrow.one 1
 ..
 .de tblmac
@@ -62,6 +69,9 @@
 .	ds tblrst2 "\\$2
 .	ds tblrst3 "\\$3
 .	ds tblrst4 "\\$4
+.	ds tblrst5 "\\$5
+.	ds tblrst6 "\\$6
+.	ds tblrst7 "\\$7
 ..
 .de tblbox
 .	nr tblboxall 0\\$1
@@ -77,6 +87,9 @@
 .	if \\$1=2 .in +\\n[tblwid1]u
 .	if \\$1=3 .in +\\n[tblwid1]u+\\n[tblwid2]u
 .	if \\$1=4 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u
+.	if \\$1=5 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u
+.	if \\$1=6 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u+\\n[tblwid5]u
+.	if \\$1=7 .in +\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u+\\n[tblwid5]u+\\n[tblwid6]u
 .	ll \\n(.iu+\\n[tblwid\\$1]u
 .	in +\\n[tblgap]u
 .	ll -\\n[tblgap]u
@@ -113,7 +126,10 @@
 .		ps \\n[tblvertsz]
 \h'|\\n[tblwid1]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
 \h'|\\n[tblwid1]u+\\n[tblwid2]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
-\h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'
+\h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u+\\n[tblwid5]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
+\h'|\\n[tblwid1]u+\\n[tblwid2]u+\\n[tblwid3]u+\\n[tblwid4]u+\\n[tblwid5]u+\\n[tblwid6]u'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'
 .		ps
 .		sp -1
 .	\}
@@ -143,6 +159,12 @@
 .	if \\n(.$>=3 \\$3
 .	if \\n(.$>=4 .tblcol 4
 .	if \\n(.$>=4 \\$4
+.	if \\n(.$>=5 .tblcol 5
+.	if \\n(.$>=5 \\$5
+.	if \\n(.$>=6 .tblcol 6
+.	if \\n(.$>=6 \\$6
+.	if \\n(.$>=7 .tblcol 7
+.	if \\n(.$>=7 \\$7
 ..
 .de tblend
 .	br
