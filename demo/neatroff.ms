@@ -32,13 +32,13 @@ Neatroff is a new implementation of Troff typesetting system in C
 programming language, which tries to address, as neatly as possible,
 some of the shortcomings of the original Troff based on the ideas and
 features available in Plan 9 Troff, Heirloom Troff, and Groff.
-Neatroff, its postscript postprocessor, neatpost, and its eqn
-preprocessor, neateqn, are available at \*[ps.url http://litcave.rudi.ir/].
+The latest versions of Neatroff, its postscript postprocessor, Neatpost,
+and its eqn preprocessor, Neateqn, are available at their \*[ps.url http://litcave.rudi.ir/ "home\ page"].
 This document enumerates Neatroff's features, its new requests, and
 its differences compared to other Troff implementations.  On the other
-hand, the document \(lqGetting Started with Neatroff,\(rq available at
-http://litcave.rudi.ir/\:neatstart.pdf, explains how to set up and
-use Neatroff.
+hand, the document \(lqGetting Started with Neatroff\(rq
+(available \*[ps.url http://litcave.rudi.ir/neatstart.pdf here])
+explains how to set up and use Neatroff.
 
 .bp
 .SH "Noteworthy Features"
@@ -169,7 +169,8 @@ character mappings from the addresses specified via its arguments.
 The specified files should contain nothing but utf-8 patterns,
 exceptions and mappings respectively (i.e. no TeX code), just like the
 files whose names end with \&.pat.txt, \&.hyp.txt and \&.chr.txt in
-ftp:/\h'-.3n'/ftp.ctan.org/\:tex-archive/\:language/\:hyph-utf8/\:tex/\:generic/\:hyph-utf8/\:patterns/\:txt/.
+\*[ps.url ftp://ftp.ctan.org/tex-archive/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/ "this\ directory"]
+for TeX.
 The \&.hpfa request is like \&.hpf, except that it does not clear the
 previous hyphenation patterns and exceptions.  The second and third
 arguments of these requests are optional.  With no arguments, these
@@ -384,8 +385,8 @@ difficult.  Note that Neatroff is released under the ISC licence.
 As mentioned in previous sections, font features can be enabled and
 disabled with \&.ff request.  For the list of OpenType features in
 general and their descriptions, see
-https://en.wikipedia.org/\:wiki/\:List_of_typographic_features or
-http://www.microsoft.com/\:typography/\:\s-1OTSPEC\s+1/\:featurelist.htm.
+\*[ps.url "https://en.wikipedia.org/wiki/List_of_typographic_features" "this Wikipedia page"]
+or the \*[ps.url http://www.microsoft.com/typography/OTSPEC/featurelist.htm "OpenType specification"].
 
 .bp
 .SH "Font Description Files"
