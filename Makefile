@@ -22,17 +22,15 @@ help:
 	@echo
 
 init:
-	@test -d neatroff || git clone git://repo.or.cz/neatroff.git
-	@test -d neatpost || git clone git://repo.or.cz/neatpost.git
-	@test -d neatmkfn || git clone git://repo.or.cz/neatmkfn.git
-	@test -d neateqn || git clone git://repo.or.cz/neateqn.git
-	@test -d neatrefer || git clone git://repo.or.cz/neatrefer.git
+	@test -d neatroff || git clone git://github.com/aligrudi/neatroff.git
+	@test -d neatpost || git clone git://github.com/aligrudi/neatpost.git
+	@test -d neatmkfn || git clone git://github.com/aligrudi/neatmkfn.git
+	@test -d neateqn || git clone git://github.com/aligrudi/neateqn.git
+	@test -d neatrefer || git clone git://github.com/aligrudi/neatrefer.git
 	@test -d troff || git clone git://repo.or.cz/troff.git
-	@test -d soin || (wget -c http://litcave.rudi.ir/soin.tar.gz && tar xf soin.tar.gz)
 	@cd fonts && sh ./fonts.sh
 
 init_fa: init
-	@test -d shape || (wget -c http://litcave.rudi.ir/shape.tar.gz && tar xf shape.tar.gz)
 	@cd fonts && sh ./fonts_fa.sh
 
 pull:
