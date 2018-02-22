@@ -12,7 +12,7 @@ HGET="wget -c -O"
 # Ghostscript fonts
 echo "Retrieving $URWURL"
 $HGET urw-base35.zip $URWURL
-unzip -q urw-base35.zip
+unzip -o -q urw-base35.zip
 
 # AMS and computer modern fonts
 echo "Retrieving $AMSURL"
