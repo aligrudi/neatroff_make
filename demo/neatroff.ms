@@ -26,7 +26,7 @@
 .AU
 \fIAli Gholami Rudi\fP
 .ce
-\s-3\fIUpdated in November 2017\s+3\fP\&
+\s-3\fIUpdated in March 2018\s+3\fP\&
 .sp 3
 Neatroff is a new implementation of Troff typesetting system in C
 programming language, which tries to address, as neatly as possible,
@@ -125,6 +125,15 @@ Also, the second
 argument of \&.ss request specifies sentence space, as in Groff or
 Heirloom Troff.
 
+.MH "Macros and their arguments
+In a macro, \\$* is replaced with macro's argument separated
+by spaces.  \\$@ is like \\$*, but quotes the arguments as well.
+\\$\(ha is like \\$@, except that it escapes the double quotes
+in the arguments.
+The arguments can be shifted with \&.shift request.
+Neatroff also supports blank line macro (.blm) and
+leading space macro (.lsm).
+
 .MH "Text direction
 Neatroff supports text direction to render right-to-left languages.
 \&.<< and \&.>> requests specify text direction and \\< and \\> escape
@@ -213,6 +222,18 @@ This is the list of new request available in Neatroff compared
 to those documented in \(lqTroff User's Manual\(rq by Ossanna
 and Kernighan.
 
+.NR "\&.ad p*" "b" "adjust" "E"
+With values pl, pr, pb, and p, this request instructs Neatroff to perform
+whole-paragraph line formatting.  Also, the value k enables Keshideh
+justification (kp is the equivalent for whole-paragraph formatting).
+
+.NR "\&.blm M" "\-" "disabled" "\-"
+Specify the blank line macro.  If specified, each blank line is
+treated as an invocation of this macro.
+
+.NR "\&.chop xx" "\-" "none" "\-"
+Remove the last character of a string register.
+
 .NR "\&.cl C" "0" "previous" "E"
 Change text colour.  The current colour is available in the number
 register \\n(.m.  With no arguments, the previous colour is selected.
@@ -225,22 +246,19 @@ Copy the contents of register R into file F.
 .NR "\&.co R <F" "\-" "none" "\-"
 Copy the contents of register R from file F.
 
-.NR "\&.ssh N" "0" "0" "E"
-Set the amount stretchable spaces in formatted lines may be
-shrunk in percentage (available through \\n[.ssh]).
+.NR "\&.char C DEF" "\-" "\-" "\-"
+Define Troff character C.
+If DEF is missing, previous definitions for character C are removed.
 
-.NR "\&.ad p*" "b" "adjust" "E"
-With values pl, pr, pb, and p, this request instructs Neatroff to perform
-whole-paragraph line formatting.  Also, the value k enables Keshideh
-justification (kp is the equivalent for whole-paragraph formatting).
+.NR "\&.ochar FN C DEF" "\-" "\-" "\-"
+Define Troff character C only for font FN.
+If DEF is missing, previous definitions
+for character C are removed.
 
 .NR "\&.eos S T" "S=\&.?!  T='"")]*" "none" "\-"
 Specify sentence characters.  The first argument specifies
 the characters that end a sentence and the second argument
 specifies the characters ignored after them.
-
-.NR "\&.ss M N" "M=12 N=12" "none" "E"
-The second argument sets sentence space size (available in \\n[.sss]).
 
 .NR "\&.fzoom F N" "1000" "none" "\-"
 Magnify the given font by N/1000.
@@ -266,9 +284,6 @@ rules for each script, grouped into several features.  With this
 request, only the rules for the specified script are enabled.
 By default, or when SC is missing, all scripts are selected.
 
-.NR "\&.kn N" "1" "none" "E"
-Enable or disable pairwise kerning (current value available through \\n[.kn]).
-
 .NR "\&.fspecial F S1 S2" "\-" "none" "\-"
 Set special fonts when the current font is F.
 
@@ -277,21 +292,6 @@ Map Troff character CH to glyph with device dependent name GID for
 font FN.  When gid is missing, the effect of mapping CH is cancelled.
 Neatroff implicitly calls \&.fmap for all aliases in font descriptions
 (character definitions whose second column is ").
-
-.NR "\&.tkf FN S1 N1 S2 N2" "\-" "none" "\-"
-Enable track kerning for font FN.  If the point size is at most
-S1, the width of each character is increased by N1 points, if it
-is at least S2, the width of each character is increased by N2
-points, and if it is between S1 and S2, the width of each character
-is increased by a value between N1 and N2, relative to the
-difference between the current point size and S1.
-
-.NR "\&.pmll N C" "0" "0" "E"
-Set paragraph minimum line length in percentage.  To shorter lines,
-Neatroff assigns a cost proportional to the value specified as the
-second argument (or 100, if missing) when formatting paragraphs.
-Number registers \\n[.pmll] and \\n[.pmllcost] store the
-values passed to \&.pmll.
 
 .NR "\&.hycost N N2 N3" "0" "none" "E"
 Change the cost of hyphenating words when adjusting lines.
@@ -325,13 +325,6 @@ Like, \&.hpf, but do not clear the previous hyphenation patterns.
 .NR "\&.hcode abcd..." "\-" "none" "\-"
 Assign the hyphenation code of b to a and the hyphenation code of d to c.
 
-.NR "\&.chop xx" "\-" "none" "\-"
-Remove the last character of a string register.
-
-.NR "\&.>>  \&.<<" "left-to-right" "\-" "E"
-Render text in left-to-right or right-to-left direction.  See the
-first section for an explanation of escape sequences \\> and \\<.
-
 .NR "\&.in2" "0" "previous" "E"
 Right-side indentation.  The current right-side indentation is
 available in register \\n(.I.
@@ -339,18 +332,42 @@ available in register \\n(.I.
 .NR "\&.ti2" "0" "\-" "E"
 Right-side temporary indentation.
 
-.NR "\&.char C DEF" "\-" "\-" "\-"
-Define Troff character C.
-If DEF is missing, previous definitions for character C are removed.
+.NR "\&.kn N" "1" "none" "E"
+Enable or disable pairwise kerning (current value available through \\n[.kn]).
 
-.NR "\&.ochar FN C DEF" "\-" "\-" "\-"
-Define Troff character C only for font FN.
-If DEF is missing, previous definitions
-for character C are removed.
+.NR "\&.lsm M" "\-" "disabled" "\-"
+Specify the leading space macro.  If specified, for each line with
+leading spaces, this macro is invoked.  The register \\n[lsn] holds
+the number of leading spaces removed from the line.
 
-.NR "\&.blm" "\-" "\-" "\-"
-Specify the blank line macro.  If specified, each blank line is
-treated as an invocation of this macro.
+.NR "\&.pmll N C" "0" "0" "E"
+Set paragraph minimum line length in percentage.  To shorter lines,
+Neatroff assigns a cost proportional to the value specified as the
+second argument (or 100, if missing) when formatting paragraphs.
+Number registers \\n[.pmll] and \\n[.pmllcost] store the
+values passed to \&.pmll.
+
+.NR "\&.>>  \&.<<" "left-to-right" "\-" "E"
+Render text in left-to-right or right-to-left direction.  See the
+first section for an explanation of escape sequences \\> and \\<.
+
+.NR "\&.shift N" "\-" "N=1" "\-"
+Shift macro arguments by N positions.
+
+.NR "\&.ssh N" "0" "0" "E"
+Set the amount stretchable spaces in formatted lines may be
+shrunk in percentage (available through \\n[.ssh]).
+
+.NR "\&.ss M N" "M=12 N=12" "none" "E"
+The second argument sets sentence space size (available in \\n[.sss]).
+
+.NR "\&.tkf FN S1 N1 S2 N2" "\-" "none" "\-"
+Enable track kerning for font FN.  If the point size is at most
+S1, the width of each character is increased by N1 points, if it
+is at least S2, the width of each character is increased by N2
+points, and if it is between S1 and S2, the width of each character
+is increased by a value between N1 and N2, relative to the
+difference between the current point size and S1.
 
 .bp
 .SH "Notes"
