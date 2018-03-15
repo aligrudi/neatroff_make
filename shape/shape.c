@@ -1,5 +1,5 @@
 /*
- * shape - a farsi/arabic shaping preprocessor for troff
+ * FARSI/ARABIC SHAPING PREPROCESSOR FOR NEATROFF
  *
  * Copyright (C) 2010-2014 Ali Gholami Rudi <ali at rudi dot ir>
  *
