@@ -278,11 +278,13 @@ When a feature is enabled, all substitution and positioning rules
 of a font with that feature name are applied when laying out the
 glyphs.
 
-.NR "\&.ffsc F SC" "\-" "none" "\-"
-Specify font's script.  A font description specifies a set of
-rules for each script, grouped into several features.  With this
-request, only the rules for the specified script are enabled.
-By default, or when SC is missing, all scripts are selected.
+.NR "\&.ffsc F SC LN" "\-" "none" "\-"
+Specify font's script and language.  A Neatroff font description
+specifies a set of rules for each script and language, grouped into
+several features.  With this request, only the rules for the specified
+script and language are enabled.  By default, or when SC is missing,
+all scripts are selected.  When LN is missing, the rules of the
+default language of the selected script are enabled.
 
 .NR "\&.fspecial F S1 S2" "\-" "none" "\-"
 Set special fonts when the current font is F.
