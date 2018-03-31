@@ -317,11 +317,11 @@ Specify hyphenation inhibiting characters.  Words containing any of
 the given characters are not hyphenated, unless after dashes
 (characters specified via \&.hydash) or hyphenation indicators (\\%).
 
-.NR "\&.hpf H P C" "\-" "English" "\-"
+.NR "\&.hpf P H C" "\-" "English" "\-"
 Set hyphenation files for patterns, exceptions, and mappings.
 With no arguments, loads English hyphenation patterns and exceptions.
 
-.NR "\&.hpfa H P C" "\-" "English" "\-"
+.NR "\&.hpfa P H C" "\-" "English" "\-"
 Like, \&.hpf, but do not clear the previous hyphenation patterns.
 
 .NR "\&.hcode abcd..." "\-" "none" "\-"
