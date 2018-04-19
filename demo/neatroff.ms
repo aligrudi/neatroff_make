@@ -32,8 +32,9 @@ Neatroff is a new implementation of Troff typesetting system in C
 programming language, which tries to address, as neatly as possible,
 some of the shortcomings of the original Troff based on the ideas and
 features available in Plan 9 Troff, Heirloom Troff, and Groff.
-The latest versions of Neatroff, its postscript postprocessor, Neatpost,
-and its eqn preprocessor, Neateqn, are available at their \*[ps.url http://litcave.rudi.ir/ "home\ page"].
+The latest versions of Neatroff, its PostScript and PDF post-tprocessor,
+Neatpost, and its eqn preprocessor, Neateqn,
+are available at their \*[ps.url http://litcave.rudi.ir/ "home\ page"].
 This document enumerates Neatroff's features, its new requests, and
 its differences compared to other Troff implementations.  On the other
 hand, the document \(lqGetting Started with Neatroff\(rq
@@ -64,13 +65,18 @@ Note that like Groff, Neatroff supports named environments and
 is not limited to original Troff's three fixed environments.
 
 .MH "Advanced font features, ligature, and pairwise kerning
-Neatroff and neatmkfn (which generates Neatroff's font descriptions)
-support many of the advanced font features available in modern fonts.
-In a font, a set of substitution and positioning rules may be
+Neatroff and Neatmkfn (which generates Neatroff's font descriptions)
+support many of the advanced font features available in OpenType
+fonts.  In a font, a set of substitution and positioning rules may be
 specified, which are grouped into several features and scripts.  In
-Neatroff, features can be enabled with \&.ff and the active script can
-be selected with \&.ffsc.  Old-style ligatures (\&.lg) and pairwise
-kerning (\&.kn) are still supported, as described in a later section.
+Neatroff, features can be enabled with \&.ff and the active script and
+language can be selected with \&.ffsc.
+Neatmkfn supports PostScript Type 1 fonts, TrueType fonts (TTF), and
+OpenType fonts (OTF).  For the latter, however, it cannot extract
+glyph bounding boxes, which is used by the Neateqn preprocessor.
+Therefore, if an OpenType font is supposed to be used in Neateqn
+blocks, it should be converted to TrueType first (the script that
+comes with Neatmkfn does this automatically).
 
 .MH "Whole paragraph text formatting
 Neatroff supports filling whole paragraphs at once, to achieve
@@ -210,11 +216,15 @@ final delimiter, and even expr2, may be omitted, thus \\?'cond@expr'
 is valid; Neatroff interpolates expr if cond is true.
 
 .MH "Neatpost-specific device commands
-Neatroff supports \\X'rotate deg' for rotating the current page
-around the current point.  Also \\X'eps file [width [height]]'
-includes the given EPS file with its lower left corner at the current
-point.  If width and height are given (in basic units), the file is
-scaled appropriately.
+Neatpost can produce both PostScript and PDF.  The escape sequences
+\\X'eps img.eps [width [height]]' and \\X'pdf img.pdf [width [height]]'
+in Neatroff instruct Neatpost to include the given EPS or PDF file;
+the former works only when the output is PostScript and the latter
+when the output is PDF.  They include the given EPS/PDF file with its
+lower left corner at the current point.  If the width or height are
+given (in basic units), the image is scaled appropriately.  Neatroff
+also supports \\X'rotate deg' for rotating the current page around the
+current point.
 
 .bp
 .SH "Summary of New Requests"
@@ -396,7 +406,7 @@ A few requests of the original Troff are not implemented:
 \&.pi, .cf, .rd, .pm, .ul, .cu, .uf, \\H, and \\S.
 
 .MH "Porting and distribution
-Given that Neatroff, neatpost and neateqn can be compiled with Neatcc,
+Given that Neatroff, Neatpost and Neateqn can be compiled with Neatcc,
 porting them to other Unix variants besides Linux should not be
 difficult.  Note that Neatroff is released under the ISC licence.
 
@@ -414,7 +424,7 @@ backward compatible, has been slightly changed.  The value of special,
 spacewidth, and ligatures parameters retain their old meanings; sizes
 and name parameters are ignored, however.  The value of the fontname
 parameter in Neatroff specifies the device name of the font
-(e.g. Times-Roman); neatpost uses it to map Troff fonts to postscript fonts.
+(e.g. Times-Roman); Neatpost uses it to map Troff fonts to PostScript fonts.
 In the charset section, the forth field is always the
 device-specific name of the glyph (accessible with \\N escape sequence)
 and the optional fifth field specifies glyph's code (the fourth field
