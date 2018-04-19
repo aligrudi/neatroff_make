@@ -32,7 +32,7 @@ Neatroff is a new implementation of Troff typesetting system in C
 programming language, which tries to address, as neatly as possible,
 some of the shortcomings of the original Troff based on the ideas and
 features available in Plan 9 Troff, Heirloom Troff, and Groff.
-The latest versions of Neatroff, its PostScript and PDF post-tprocessor,
+The latest versions of Neatroff, its PostScript and PDF post-processor,
 Neatpost, and its eqn preprocessor, Neateqn,
 are available at their \*[ps.url http://litcave.rudi.ir/ "home\ page"].
 This document enumerates Neatroff's features, its new requests, and
@@ -238,7 +238,7 @@ and Farsi documents.
 
 .bp
 .SH "Summary of New Requests"
-This is the list of new request available in Neatroff compared
+This is the list of new requests available in Neatroff compared
 to those documented in \(lqTroff User's Manual\(rq by Ossanna
 and Kernighan.
 
