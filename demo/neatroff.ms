@@ -118,7 +118,7 @@ The escape sequence \\\(ti introduces non-breakable stretchable space.
 Also, to prevent paragraphs with
 very short last lines, the \&.pmll (paragraph minimum line length)
 sets the minimum length of a formatted line, specified as a
-percentage of \\n(.l; \(lq.pmll 15\(rq, for instance, makes sure that
+percentage of \\n(.l; \(lq.pmll 15\(rq, for instance, ensures that
 the length of last line of each paragraph is at least 15% of its other
 lines; otherwise, a cost proportional to the value specified
 as its second argument is added.
