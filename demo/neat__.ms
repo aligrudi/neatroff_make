@@ -16,7 +16,9 @@
 ..
 .rn SH SH_
 .de SH
+.	nr oldns \\n[.ns]
 .	ps.mark "\\$1"
+.	nr .ns \\n[oldns]
 .	SH_ "\\$1"
 ..
 .fp - R PA
