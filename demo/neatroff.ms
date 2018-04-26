@@ -260,11 +260,17 @@ register \\n(.m.  With no arguments, the previous colour is selected.
 The format of the argument and the \\m escape sequence are described
 in the previous section.
 
-.NR "\&.co R >F" "\-" "none" "\-"
+.NR "\&.co SRC DST" "\-" "none" "\-"
+Copy the contents of register SRC into register DST.
+
+.NR "\&.co+ SRC DST" "\-" "none" "\-"
+Append the contents of register SRC to register DST.
+
+.NR "\&.co> R F" "\-" "none" "\-"
 Copy the contents of register R into file F.
 
-.NR "\&.co R <F" "\-" "none" "\-"
-Copy the contents of register R from file F.
+.NR "\&.co< R F" "\-" "none" "\-"
+Read the contents of register R from file F.
 
 .NR "\&.char C DEF" "\-" "\-" "\-"
 Define Troff character C.
@@ -274,6 +280,9 @@ If DEF is missing, previous definitions for character C are removed.
 Define Troff character C only for font FN.
 If DEF is missing, previous definitions
 for character C are removed.
+
+.NR "\&.rchar C" "\-" "\-" "\-"
+Remove the definition of character C.
 
 .NR "\&.eos S T" "S=\&.?!  T='"")]*" "none" "\-"
 Specify sentence characters.  The first argument specifies
