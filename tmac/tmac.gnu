@@ -25,3 +25,12 @@
 .de writem
 .	co+ gnudata\\$1 \\$2
 ..
+.de pso . sy
+.	sy \\$1 >/tmp/pso.\n($$
+.	so /tmp/pso.\n($$
+.	sy rm /tmp/pso.\n($$
+..
+.de mso
+.	so \n(.D/\\$1.tmac
+.	so \n(.D/tmac.\\$1
+..
