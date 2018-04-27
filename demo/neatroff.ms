@@ -233,8 +233,9 @@ few convenient helper macro packages as follows (these macros are
 included in neatroff_make): for drawing simple tables without the tbl
 preprocessor -mtbl, for including EPS and PDF images -meps, for
 drawing simple charts and graphs -mgr, for floating objects -mkeep.
-Also, -men and -mfa include -ms-like macros for creating short English
-and Farsi documents.
+Some Groff-specific macros are implemented in -mgnu, such as open,
+opena, close, write, pso, and mso.  Also, -men and -mfa include
+-ms-like macros for creating short English and Farsi documents.
 
 .bp
 .SH "Summary of New Requests"
@@ -251,7 +252,7 @@ justification (kp is the equivalent for whole-paragraph formatting).
 Specify the blank line macro.  If specified, each blank line is
 treated as an invocation of this macro.
 
-.NR "\&.chop xx" "\-" "none" "\-"
+.NR "\&.chop R" "\-" "none" "\-"
 Remove the last character of a string register.
 
 .NR "\&.cl C" "0" "previous" "E"
