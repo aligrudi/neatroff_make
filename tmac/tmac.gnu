@@ -34,3 +34,6 @@
 .	so \n(.D/\\$1.tmac
 .	so \n(.D/tmac.\\$1
 ..
+.de device . dv
+.	dv \\$1
+..
