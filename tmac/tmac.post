@@ -1,0 +1,18 @@
+.\" Wrappers Around Neatroff Device Control Functions (\X'...')
+.\"
+.\" .post.info Keyword Value
+.de post.info
+.	dv info \\$1 \\$2
+..
+.\" Links: The destination can be a URL, a page number, or an internal
+.\" named reference (defined with .post.name).  For named references,
+.\" the name of the reference should be prefixed with '#'.
+.\"
+.\" \*[post.url destination text]
+.de post.url
+\R'ps._linkh \\w'\\?'\\n(.$>1@\\$2@\\$1'''\
+\R'ps._linkv \\n(.sp'\
+\v'+\\n(.sp*2u/10u'\X'link "\\$1" \\n[ps._linkh] -\\n[ps._linkv]'\v'-\\n(.sp*2u/10u'\
+\\?'\\n(.$>1@\\$2@\\$1'
+..
+.chop post.url
