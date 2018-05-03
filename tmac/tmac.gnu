@@ -37,3 +37,10 @@
 .de device . dv
 .	dv \\$1
 ..
+.de dei . de
+.	de \\*[\\$1] \\*[\\$2]
+..
+.de kern
+.	ie (\\n(.$=0):(\\$1) .kn 1
+.	el .kn 0
+..
