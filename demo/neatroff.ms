@@ -1,7 +1,8 @@
 .\" PSTITLE: Neatroff Introduction
 .so neat__.ms
 .ds en.cl "#237
-.ps.info "Neatroff Introduction" "Ali Gholami Rudi"
+.post.info Title "Neatroff Introduction"
+.post.info Author "Ali Gholami Rudi"
 .de MH
 .	sp
 .	LP
@@ -34,11 +35,11 @@ some of the shortcomings of the original Troff based on the ideas and
 features available in Plan 9 Troff, Heirloom Troff, and Groff.
 The latest versions of Neatroff, its PostScript and PDF post-processor,
 Neatpost, and its eqn preprocessor, Neateqn,
-are available at their \*[ps.url http://litcave.rudi.ir/ "home\ page"].
+are available at their home page (\*[post.url http://litcave.rudi.ir/ link]).
 This document enumerates Neatroff's features, its new requests, and
 its differences compared to other Troff implementations.  On the other
 hand, the document \(lqGetting Started with Neatroff\(rq
-(available \*[ps.url http://litcave.rudi.ir/neatstart.pdf here])
+(\*[post.url http://litcave.rudi.ir/neatstart.pdf link])
 explains how to set up and use Neatroff.
 
 .bp
@@ -184,8 +185,7 @@ character mappings from the addresses specified via its arguments.
 The specified files should contain nothing but utf-8 patterns,
 exceptions and mappings respectively (i.e. no TeX code), just like the
 files whose names end with \&.pat.txt, \&.hyp.txt and \&.chr.txt in
-\*[ps.url ftp://ftp.ctan.org/tex-archive/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/ "this\ directory"]
-for TeX.
+CTAN for TeX (\*[post.url ftp://ftp.ctan.org/tex-archive/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/ link]).
 The \&.hpfa request is like \&.hpf, except that it does not clear the
 previous hyphenation patterns and exceptions.  The second and third
 arguments of these requests are optional.  With no arguments, these
@@ -404,38 +404,43 @@ difference between the current point size and S1.
 .bp
 .SH "Notes"
 .sp -1
-.MH "Generating the output device
-The Neatmkfn program (available at \*[ps.url http://litcave.rudi.ir/]) generates
-Neatroff font descriptions for AFM or TrueType fonts (OpenType fonts
-are converted to TrueType first).  It includes a script to create
-a complete output device for Neatroff.
+.MH "The standard macro packages
+The standard Troff macro packages and a top-level build script to
+obtain and install Neatroff are available in neatroff_make git
+repository (\*[post.url http://litcave.rudi.ir/ link]).
+\(lqGetting Started with Neatroff\(rq (\*[post.url http://litcave.rudi.ir/neatstart.pdf link])
+explains how to use this repository.
 
 .MH "Formatting equations with Neateqn
 Neateqn is an eqn preprocessor for Neatroff.  It implements many
 of the extensions introduced in Groff's eqn preprocessor.  It
 can use TeX's Computer Modern-style bracket-building symbols, if
 available.
+\(lqTypesetting Mathematics with Neateqn\(rq (\*[post.url http://litcave.rudi.ir/neateqn.pdf link])
+introduces Neateqn.
 
-.MH "The standard macro packages
-The standard Troff macro packages and a top-level build script to
-obtain and install Neatroff are available in neatroff_make git
-repository (available at \*[ps.url http://litcave.rudi.ir/]).
+.MH "Generating the output device
+The Neatmkfn program (\*[post.url https://github.com/aligrudi/neatmkfn link])
+generates Neatroff font descriptions for AFM or TrueType fonts
+(OpenType fonts are converted to TrueType first).  It includes a
+script to create a complete output device for Neatroff.
 
 .MH "Missing requests
 A few requests of the original Troff are not implemented:
 \&.pi, .cf, .rd, .pm, .ul, .cu, .uf, \\H, and \\S.
 
 .MH "Porting and distribution
-Given that Neatroff, Neatpost and Neateqn can be compiled with Neatcc,
-porting them to other Unix variants besides Linux should not be
-difficult.  Note that Neatroff is released under the ISC licence.
+Given that Neatroff, Neatpost, Neatmkfn, and Neateqn can be compiled
+with Neatcc, porting them to other Unix variants besides Linux should
+not be difficult.  Note that Neatroff is released under the ISC
+licence.
 
 .MH "List of OpenType font features
 As mentioned in previous sections, font features can be enabled and
 disabled with \&.ff request.  For the list of OpenType features in
 general and their descriptions, see
-\*[ps.url "https://en.wikipedia.org/wiki/List_of_typographic_features" "this Wikipedia page"]
-or the \*[ps.url http://www.microsoft.com/typography/OTSPEC/featurelist.htm "OpenType specification"].
+the list of typographic features in Wikipedia (\*[post.url https://en.wikipedia.org/wiki/List_of_typographic_features link])
+or OpenType specification (\*[post.url http://www.microsoft.com/typography/OTSPEC/featurelist.htm link]).
 
 .bp
 .SH "Font Description Files"

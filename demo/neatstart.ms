@@ -1,6 +1,7 @@
 .\" PSTITLE: Getting Started with Neatroff
 .so neat__.ms
-.ps.info "Getting Started with Neatroff" "Ali Gholami Rudi"
+.post.info Title "Getting Started with Neatroff"
+.post.info Author "Ali Gholami Rudi"
 .de MH
 .	sp
 .	LP
@@ -21,7 +22,7 @@ a set of standard macro packages and a top-level makefile to obtain
 and build Neatroff and its helper programs, which are referred to as
 Neat* throughout this document.  More details about Neatroff and the
 programs that accompany it are available in its homepage at
-\*[ps.url http://litcave.rudi.ir/].
+\*[post.url http://litcave.rudi.ir/].
 
 .SH "Using Neatroff Without Installation"
 To use Neatroff without installing it, neatroff_make can be retrieved

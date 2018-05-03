@@ -1,7 +1,8 @@
 .\" PSTITLE: The NEATCC C Compiler
 .so neat__.ms
 .ds en.cl "#468
-.ps.info "The NEATCC C Compiler" "Ali Gholami Rudi"
+.post.info Title "The NEATCC C Compiler"
+.post.info Author "Ali Gholami Rudi"
 .de uc
 \s-1\\$1\s+1
 ..
