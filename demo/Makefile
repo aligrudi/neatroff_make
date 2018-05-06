@@ -2,6 +2,7 @@
 BASE = $(PWD)/..
 ROFF = $(BASE)/neatroff/roff
 POST = $(BASE)/neatpost/post
+PPDF = $(BASE)/neatpost/pdf
 EQN = $(BASE)/neateqn/eqn
 REFR = $(BASE)/neatrefer/refer
 PIC = $(BASE)/troff/pic/pic
@@ -23,6 +24,12 @@ all: test.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
 	@cat $< | $(SOIN) | \
 		$(REFR) $(REFROPTS) | $(PIC) | $(TBL) | $(EQN) | \
 		$(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
+
+%.PDF: %.ms
+	@echo "Generating $@"
+	@cat $< | $(SOIN) | \
+		$(REFR) $(REFROPTS) | $(PIC) | $(TBL) | $(EQN) | \
+		$(ROFF) $(ROFFOPTS) | $(PPDF) $(POSTOPTS) >$@
 
 %.pdf: %.ps
 	@echo "Generating $@"
