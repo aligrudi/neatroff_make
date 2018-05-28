@@ -2,7 +2,7 @@
 # Fetch fonts for setting up Neatroff
 
 # urw-base35 URL
-URWURL="http://downloads.ghostscript.com/public/fonts/urw-base35-20160926.zip"
+URWURL="https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20170801.1.tar.gz"
 # AMS fonts URL
 AMSURL="ftp://ftp.ams.org/pub/tex/amsfonts.zip"
 
@@ -11,8 +11,11 @@ HGET="wget -c -O"
 
 # Ghostscript fonts
 echo "Retrieving $URWURL"
-$HGET urw-base35.zip $URWURL
-unzip -o -q urw-base35.zip
+$HGET urw-base35.tar.gz $URWURL
+tar xf urw-base35.tar.gz
+mv urw-base35*/fonts/*.t1 .
+mv urw-base35*/fonts/*.afm .
+rm -r urw-base35*/
 
 # AMS and computer modern fonts
 echo "Retrieving $AMSURL"
