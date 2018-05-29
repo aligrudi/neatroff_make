@@ -12,7 +12,7 @@ HGET="wget -c -O"
 # Ghostscript fonts
 echo "Retrieving $URWURL"
 $HGET urw-base35.tar.gz $URWURL
-tar xf urw-base35.tar.gz
+tar xzf urw-base35.tar.gz
 mv urw-base35*/fonts/*.t1 .
 mv urw-base35*/fonts/*.afm .
 rm -r urw-base35*/
