@@ -76,8 +76,7 @@ Neatmkfn supports PostScript Type 1 fonts, TrueType fonts (TTF), and
 OpenType fonts (OTF).  For the latter, however, it cannot extract
 glyph bounding boxes, which is used by the Neateqn preprocessor.
 Therefore, if an OpenType font is supposed to be used in Neateqn
-blocks, it should be converted to TrueType first (the script that
-comes with Neatmkfn does this automatically).
+blocks, it should be converted to TrueType first.
 
 .MH "Whole paragraph text formatting
 Neatroff supports filling whole paragraphs at once, to achieve
@@ -421,9 +420,8 @@ introduces Neateqn.
 
 .MH "Generating the output device
 The Neatmkfn program (\*[post.url https://github.com/aligrudi/neatmkfn link])
-generates Neatroff font descriptions for AFM or TrueType fonts
-(OpenType fonts are converted to TrueType first).  It includes a
-script to create a complete output device for Neatroff.
+generates Neatroff font descriptions for AFM, TrueType, and OpenType fonts.
+It includes a script to create a complete output device for Neatroff.
 
 .MH "Missing requests
 A few requests of the original Troff are not implemented:
