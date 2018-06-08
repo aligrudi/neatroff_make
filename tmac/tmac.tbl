@@ -31,6 +31,10 @@
 .\"   and drawing the table.  It should reset the indentation (and other
 .\"   variables such as fonts, if necessary).
 .\"
+.\" .tblrec
+.\"   Reconfigures table columns; expects the same arguments as .tblbeg
+.\"   (can be used for multi-column cells).
+.\"
 .\" .tblend
 .\"   Ends a table.
 .\"
@@ -45,8 +49,8 @@
 .de tblrst
 .	in 0
 ..
-.de tblbeg
-.	tblrst
+.de tblrec
+.	if \\n[tblrow.ok] .tblrowend 0
 .	nr tblwid1 0\\$1
 .	if "\\$1"0" .nr tblwid1 \\n(.l
 .	nr tblwid2 0\\$2
@@ -63,6 +67,10 @@
 .	if "\\$7"0" .nr tblwid7 \\n(.l-\\n[tblwid1]-\\n[tblwid2]-\\n[tblwid3]-\\n[tblwid4]-\\n[tblwid5]-\\n[tblwid6]
 .	nr tblcnt \\n(.$
 .	nr tblwid \\n[tblwid1]+\\n[tblwid2]+\\n[tblwid3]+\\n[tblwid4]+\\n[tblwid5]+\\n[tblwid6]+\\n[tblwid7]
+..
+.de tblbeg
+.	tblrst
+.	tblrec \\$^
 .	nr tblrow.one 1
 ..
 .de tblmac
@@ -75,6 +83,7 @@
 .	ds tblrst7 "\\$7
 ..
 .de tblbox
+.	if \\n[tblrow.ok] .tblrowend 0
 .	nr tblboxall 0\\$1
 .	nr tblboxrow 0\\$2
 .	nr tblboxcol 0\\$3
