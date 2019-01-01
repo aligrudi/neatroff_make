@@ -1570,7 +1570,7 @@ operating system\\$1
 .in -\\n(BIu
 .nr BW +2*\\n(BI
 .sp -1
-\l'\\n(BWu\(ul'\L'-\\n(BHu'\l'|0\(ul'\h'|0'\L'\\n(BHu'
+\D'p 0 .3v \\n(BWu 0 0 -\\n(BHu -\\n(BWu 0 0 \\n(BHu 0 -.3v'
 .nr BW -2*\\n(BI
 .if \\n(BC>0 .in -(\\n(.lu-\\n(BWu)/2u
 .if \\n(BQ .fi
@@ -1590,8 +1590,7 @@ Attached:
 .el Copy to:
 ..
 .de BX
-.ie t \(br\|\\$1\|\(br\l'|0\(rn'\l'|0\(ul'
-.el \(br\\kA\|\\$1\|\\kB\(br\v'-1v'\h'|\\nBu'\l'|\\nAu'\v'1v'\l'|\\nAu'
+\|\\$1\|\D'p 0 .3v |0 0 0 -1v \\w'\|\\$1\|'u 0 0 .7v'
 ..
 .IZ
 .rm IZ
