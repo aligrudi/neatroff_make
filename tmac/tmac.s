@@ -974,7 +974,7 @@ Computing Science Technical Report No. \\*(MN
 .fi
 .if (\\n(nl+1v)>(\\n(.p-\\n(FM) \{\
 .	if \\n(NX>1 .RC
-.	if \\n(NX<1 .bp\}
+.	if \\n(NX<=1 .bp\}
 .nr TD 0
 ..
 .de KD
@@ -1022,7 +1022,7 @@ Computing Science Technical Report No. \\*(MN
 .if !\\n(dn .nr WF 0
 .if \\n(FC<=1 .if \\n(XX=0 \{\
 .	if \\n(NX>1 .RC
-.	if \\n(NX<1 'bp\}
+.	if \\n(NX<=1 'bp\}
 .nr FC -1
 .if \\n(ML>0 .ne \\n(MLu
 ..
