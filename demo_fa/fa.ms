@@ -110,8 +110,8 @@ $LIST$
 .	tblmac fa.tblhd fa.tblhd
 .	tblrow "توصیف" "نام ماکرو"
 .	tblmac fa.tblfb fa.tblhd
-.	tblrow "عنوان مستند" "\*[en TL]"
 .	tblbox 1 0 1
+.	tblrow "عنوان مستند" "\*[en TL]"
 .	tblrow "عنوان بخش" "\*[en SH]"
 .	tblrow "پاراگراف ساده" "\*[en LP]"
 .	tblrow "پاراگرافی که خط اول آن کمی به سمت چپ حرکت داده شده است" "\*[en PP]"
@@ -137,12 +137,11 @@ $LIST$
 .	tblmac fa.tblhd fa.tblhd
 .	tblrow "توصیف" "نام رجیستر"
 .	tblmac fa.tblfb fa.tblhd
-.	tblrow "اندازه‌ی قلم" "\*[en PS]"
 .	tblbox 1 0 1
+.	tblrow "اندازه‌ی قلم" "\*[en PS]"
 .	tblrow "فاصله‌ی بین خطوط" "\*[en VS]"
 .	tblrow "طول خط" "\*[en LL]"
 .	tblrow "شروع خط" "\*[en PO]"
-.	tblbox 1 0 1
 .tblend
 .nr VS +8
 .KE
