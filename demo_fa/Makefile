@@ -3,6 +3,7 @@ BASE = $(PWD)/..
 ROFF = $(BASE)/neatroff/roff
 ROFF = $(BASE)/neatroff/roff
 POST = $(BASE)/neatpost/post
+PPDF = $(BASE)/neatpost/pdf
 EQN = $(BASE)/neateqn/eqn
 REFR = $(BASE)/neatrefer/refer
 PIC = $(BASE)/troff/pic/pic
@@ -30,6 +31,12 @@ all: test.pdf fa.pdf
 	@echo "Generating $@"
 	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true \
 		-sFONTPATH=$(BASE)/fonts/ -sFONTMAP=$(BASE)/fonts/Fontmap $< $@
+
+%.PDF: %.ms
+	@echo "Generating $@"
+	@cat $< | $(SOIN) | $(REFR) $(REFROPTS) | $(SHAPE) | \
+		$(PIC) | $(TBL) | $(EQN) | \
+		$(ROFF) $(ROFFOPTS) | $(PPDF) $(POSTOPTS) >$@
 
 clean:
 	rm -f *.ps *.pdf
