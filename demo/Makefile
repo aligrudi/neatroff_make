@@ -9,7 +9,7 @@ PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
 
-ROFFOPTS = -mps -mpost -mtbl -mkeep -men -msrefs
+ROFFOPTS = -mpost -mtbl -mkeep -men -msrefs
 POSTOPTS = -pa4
 REFROPTS = -m -e -o ct -p ref.bib
 

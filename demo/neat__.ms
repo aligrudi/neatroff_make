@@ -16,7 +16,7 @@
 ..
 .rn SH SH_
 .de SH
-.	ps.mark "\\$1"
+.	post.mark "\\$1"
 .	SH_ "\\$1"
 ..
 .fp - R PA
