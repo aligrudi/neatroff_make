@@ -25,6 +25,7 @@
 .de writem
 .	co+ gnudata\\$1 \\$2
 ..
+.\" Miscellaneous macros
 .de pso . sy
 .	sy \\$1 >/tmp/pso.\n($$
 .	so /tmp/pso.\n($$
@@ -39,6 +40,9 @@
 ..
 .de dei . de
 .	de \\*[\\$1] \\*[\\$2]
+..
+.de ami . am
+.	am \\*[\\$1] \\*[\\$2]
 ..
 .de kern
 .	ie (\\n(.$=0):(\\$1) .kn 1
