@@ -4,6 +4,16 @@
 .de post.info
 .	dv info \\$1 \\$2
 ..
+.\" .post.mark description level
+.de post.mark
+.	br
+.	dv mark "\\$1" \\n% \\n(nl \\$2
+..
+.\" .post.name name
+.de post.name
+.	br
+.	dv name \\$1 \\n% \\n(nl
+..
 .\" Links: The destination can be a URL, a page number, or an internal
 .\" named reference (defined with .post.name).  For named references,
 .\" the name of the reference should be prefixed with '#'.
