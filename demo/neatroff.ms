@@ -214,7 +214,7 @@ a scale indicator, unless separated from the condition with \\&.  The
 final delimiter, and even expr2, may be omitted, thus \\?'cond@expr'
 is valid; Neatroff interpolates expr if cond is true.
 
-.MH "Neatpost-specific device commands
+.MH "Neatpost-specific device functions
 Neatpost can produce both PostScript and PDF.  The escape sequences
 \\X'eps img.eps [width [height]]' and \\X'pdf img.pdf [width [height]]'
 in Neatroff instruct Neatpost to include the given EPS or PDF file;
@@ -223,15 +223,21 @@ when the output is PDF.  They include the given EPS/PDF file with its
 lower left corner at the current point.  If the width or height are
 given (in basic units), the image is scaled appropriately.  Neatroff
 also supports \\X'rotate deg' for rotating the current page around the
-current point.
+current point.  For creating a document outline (bookmark tree),
+Neatpost supports \\X'mark desc page offset level', and for creating
+named references, Neatpost supports \\X'name label page offset'.
+Also, \\X'link destination width height' can be used to create links;
+its first argument for internal references (defined with \\X'name ...')
+should start with a # sign.
 
 .MH "Helper Macro Packages
 In addition to the standard Troff macro packages, such as -ms, -mm,
 and -me, which are imported from Plan 9 Troff, Neatroff comes with a
 few convenient helper macro packages as follows (these macros are
 included in neatroff_make): for drawing simple tables without the tbl
-preprocessor -mtbl, for including EPS and PDF images -meps, for
-drawing simple charts and graphs -mgr, for floating objects -mkeep.
+preprocessor -mtbl, for invoking Neatpost device functions like
+including EPS and PDF images -mpost, for drawing simple charts and
+graphs -mgr, for floating objects -mkeep.
 Some Groff-specific macros are implemented in -mgnu, such as open,
 opena, close, write, pso, and mso.  Also, -men and -mfa include
 -ms-like macros for creating short English and Farsi documents.
