@@ -4,6 +4,14 @@
 .de post.info
 .	dv info \\$1 \\$2
 ..
+.\" .post.title "Document Title"
+.de post.title
+.	post.info Title "\\$1"
+..
+.\" .post.author "Document Author"
+.de post.author
+.	post.info Author "\\$1"
+..
 .\" .post.mark description level
 .de post.mark
 .	br
