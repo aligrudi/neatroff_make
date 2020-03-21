@@ -27,7 +27,7 @@
 .AU
 \fIAli Gholami Rudi\fP
 .ce
-\s-3\fIUpdated in April 2018\s+3\fP\&
+\s-3\fIUpdated in January 2020\s+3\fP\&
 .sp 3
 Neatroff is a new implementation of Troff typesetting system in C
 programming language, which tries to address, as neatly as possible,
