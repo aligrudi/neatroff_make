@@ -9,8 +9,8 @@ PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
 
-ROFFOPTS = -mpost -mtbl -mkeep -men -msrefs
-POSTOPTS = -pa4
+ROFFOPTS = -F$(BASE) -M$(BASE)/tmac -mpost -mtbl -mkeep -men -msrefs
+POSTOPTS = -F$(BASE) -pa4
 REFROPTS = -m -e -o ct -p ref.bib
 
 all: test.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf

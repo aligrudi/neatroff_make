@@ -1,7 +1,6 @@
 # Neatroff demonstration directory
 BASE = $(PWD)/..
 ROFF = $(BASE)/neatroff/roff
-ROFF = $(BASE)/neatroff/roff
 POST = $(BASE)/neatpost/post
 PPDF = $(BASE)/neatpost/pdf
 EQN = $(BASE)/neateqn/eqn
@@ -11,8 +10,8 @@ TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
 SHAPE = $(BASE)/shape/shape
 
-ROFFOPTS = -mps -meps -mtbl -mkeep -mfa -msrefs
-POSTOPTS = -pa4
+ROFFOPTS = -F$(BASE) -M$(BASE)/tmac -mps -meps -mtbl -mkeep -mfa -msrefs
+POSTOPTS = -F$(BASE) -pa4
 REFROPTS = -m -e -o ct -p ref.bib
 
 all: test.pdf fa.pdf
