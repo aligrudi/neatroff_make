@@ -105,8 +105,8 @@ may be considered an improvement but a more important advantage in
 the author's opinion is that these characters may be redefined.  For
 instance, one may redefine open and close parenthesis as follows:
 .cc.beg
-define ( @{ left (@
-define ) @right ) }@
+define ( @{ left "(" @
+define ) @right ")" }@
 .cc.end
 .LP
 Then, it is possible to write \(lq(a over b) sup (c + 5)\(rq
