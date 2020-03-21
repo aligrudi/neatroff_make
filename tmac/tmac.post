@@ -15,12 +15,12 @@
 .\" .post.mark description level
 .de post.mark
 .	br
-.	dv mark "\\$1" \\n% \\n(nl \\$2
+.	dv mark "\\$1" \\n(.% \\n(nl \\$2
 ..
 .\" .post.name name
 .de post.name
 .	br
-.	dv name \\$1 \\n% \\n(nl
+.	dv name \\$1 \\n(.% \\n(nl
 ..
 .\" Links: The destination can be a URL, a page number, or an internal
 .\" named reference (defined with .post.name).  For named references,
