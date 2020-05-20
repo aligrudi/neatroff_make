@@ -4,7 +4,7 @@
 # urw-base35 URL
 URWURL="https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20170801.1.tar.gz"
 # AMS fonts URL
-AMSURL="ftp://ftp.ams.org/pub/tex/amsfonts.zip"
+AMSURL="https://www.ams.org/arc/tex/amsfonts.zip"
 
 # HTTP retrieval program
 HGET="wget -c -O"
