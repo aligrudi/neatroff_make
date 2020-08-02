@@ -7,7 +7,7 @@ URWURL="https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20170801.1.t
 AMSURL="https://www.ams.org/arc/tex/amsfonts.zip"
 
 # HTTP retrieval program
-HGET="wget -c -O"
+HGET="wget -c --no-check-certificate -O"
 
 # Ghostscript fonts
 echo "Retrieving $URWURL"
