@@ -16,26 +16,27 @@ REFROPTS = -m -e -o ct -p ref.bib
 
 all: test.pdf fa.pdf
 
-%.ps: %.tr
+.SUFFIXES: .tr .ms .ps .pdf .PDF
+.tr.ps:
 	@echo "Generating $@"
 	@cat $< | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) $(POSTOPTS) >$@
 
-%.ps: %.ms
+.ms.ps:
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | $(REFR) $(REFROPTS) | $(SHAPE) | \
 		$(PIC) | $(TBL) | $(EQN) | \
 		$(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
 
-%.pdf: %.ps
+.ps.pdf:
 	@echo "Generating $@"
 	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true \
 		-sFONTPATH=$(BASE)/fonts/ -sFONTMAP=$(BASE)/fonts/Fontmap $< $@
 
-%.PDF: %.ms
+.ms.PDF:
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | $(REFR) $(REFROPTS) | $(SHAPE) | \
 		$(PIC) | $(TBL) | $(EQN) | \
 		$(ROFF) $(ROFFOPTS) | $(PPDF) $(POSTOPTS) >$@
 
 clean:
-	rm -f *.ps *.pdf
+	rm -f *.ps *.pdf *.PDF
