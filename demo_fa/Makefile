@@ -10,7 +10,8 @@ TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
 SHAPE = $(BASE)/shape/shape
 
-ROFFOPTS = -F$(BASE) -M$(BASE)/tmac -mps -meps -mtbl -mkeep -mfa -msrefs
+ROFFOPTS = -F$(BASE) -M$(BASE)/tmac
+ROFFMACS = -mps -meps -mtbl -mkeep -mfa -msrefs
 POSTOPTS = -F$(BASE) -pa4
 REFROPTS = -m -e -o ct -p ref.bib
 
@@ -19,13 +20,14 @@ all: test.pdf fa.pdf
 .SUFFIXES: .tr .ms .ps .pdf .PDF
 .tr.ps:
 	@echo "Generating $@"
-	@cat $< | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) $(POSTOPTS) >$@
+	@cat $< | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | \
+		$(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
 
 .ms.ps:
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | $(REFR) $(REFROPTS) | $(SHAPE) | \
 		$(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
+		$(ROFF) $(ROFFOPTS) $(ROFFMACS) | $(POST) $(POSTOPTS) >$@
 
 .ps.pdf:
 	@echo "Generating $@"

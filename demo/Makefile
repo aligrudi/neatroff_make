@@ -9,7 +9,8 @@ PIC = $(BASE)/troff/pic/pic
 TBL = $(BASE)/troff/tbl/tbl
 SOIN = $(BASE)/soin/soin
 
-ROFFOPTS = -F$(BASE) -M$(BASE)/tmac -mpost -mtbl -mkeep -men -msrefs
+ROFFOPTS = -F$(BASE) -M$(BASE)/tmac
+ROFFMACS = -mpost -mtbl -mkeep -men -msrefs
 POSTOPTS = -F$(BASE) -pa4
 REFROPTS = -m -e -o ct -p ref.bib
 
@@ -18,13 +19,13 @@ all: test.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
 .SUFFIXES: .tr .ms .ps .pdf .PDF
 .tr.ps:
 	@echo "Generating $@"
-	@cat $< | $(PIC) | $(TBL) | $(EQN) | $(ROFF) | $(POST) $(POSTOPTS) >$@
+	@cat $< | $(PIC) | $(TBL) | $(EQN) | $(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
 
 .ms.ps:
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | \
 		$(REFR) $(REFROPTS) | $(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
+		$(ROFF) $(ROFFOPTS) $(ROFFMACS) | $(POST) $(POSTOPTS) >$@
 
 .ms.PDF:
 	@echo "Generating $@"
