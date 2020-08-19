@@ -46,7 +46,7 @@
 .ds grclr.ln "#725	\" Line colour
 .ds grclr.fl "#fff	\" Fill colour
 .de grbeg
-.	gr
+.	br
 .	nr grxmin 0
 .	nr grxmax 0
 .	nr grymin 0
