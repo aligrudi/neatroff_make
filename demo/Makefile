@@ -31,7 +31,7 @@ all: test.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | \
 		$(REFR) $(REFROPTS) | $(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) $(ROFFOPTS) | $(PPDF) $(POSTOPTS) >$@
+		$(ROFF) $(ROFFOPTS) $(ROFFMACS) | $(PPDF) $(POSTOPTS) >$@
 
 .ps.pdf:
 	@echo "Generating $@"

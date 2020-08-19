@@ -38,7 +38,7 @@ all: test.pdf fa.pdf
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | $(REFR) $(REFROPTS) | $(SHAPE) | \
 		$(PIC) | $(TBL) | $(EQN) | \
-		$(ROFF) $(ROFFOPTS) | $(PPDF) $(POSTOPTS) >$@
+		$(ROFF) $(ROFFOPTS) $(ROFFMACS) | $(PPDF) $(POSTOPTS) >$@
 
 clean:
 	rm -f *.ps *.pdf *.PDF
