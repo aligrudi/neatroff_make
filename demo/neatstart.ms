@@ -18,7 +18,7 @@
 .sp 3
 The present document explains the steps necessary for setting up and
 using Neatroff.  It uses neatroff_make Git repository, which contains
-a set of standard macro packages and a top-level makefile to obtain
+a set of standard macro packages and a top-level Makefile to obtain
 and build Neatroff and its helper programs, which are referred to as
 Neat* throughout this document.  More details about Neatroff and the
 programs that accompany it are available in its homepage at
@@ -48,6 +48,11 @@ $ cd demo && make
 .cc.end
 
 .LP
+To compile Neatroff documents outside neatroff_make/demo, the Makefile
+in this directory is a good template.  Copy this Makefile to that
+directory and modify its \s-1BASE\s+1 macro to point to neatroff_make/
+directory.
+
 To add new fonts, simply place them in the fonts/ subdirectory and
 re-make the \(lqneat\(rq target.  To use the new font in Neatroff, the
 file name without its extension may be mounted.  For instance, if the
@@ -62,49 +67,22 @@ Text in NewFont
 
 .SH "Installing Neatroff"
 This section describes how to install Neatroff in system directories.
-The following commands fetch neatroff_make and
-obtain the latest versions of Neat*:
+First modify \s-1PREFIX\s+1 macro in neatroff_make/Makefile to point
+to the installation prefix.  Then, after compilining Neatroff as
+described in the previous section, use Makefile's install target to
+install Neatroff to \s-1PREFIX\s+1/share/neatroff.
 
 .cc.beg
-$ git clone -b install git://repo.or.cz/neatroff_make.git
-$ cd neatroff_make/
-$ make pull
-.cc.end
-
-.LP
-This obtains Neatroff, Neatpost, Neateqn, Neatrefer, and a port of
-Plan 9 troff to use its pic and tbl preprocessors (sadly there is no
-Neatpic and Neattbl!).
-
-To build Neat*, neatroff_make/makefile should be modified to set the
-values of \s-1GSFONTS\s+1 and \s-1PREFIX\s+1 macros.  \s-1GSFONTS\s+1
-should point to the directory containing the standard Ghostscript
-fonts (ghostscript-fonts package, containing files such as
-n021003l.afm).  In most environments these files are installed in
-/usr/\:share/\:ghostscript/\:fonts or
-/usr/\:share/\:fonts/\:type1/\:gsfonts; you can manually obtain the
-ghostscript-fonts package and extract it to a temporary directory, if
-they are missing.  Also \s-1PREFIX\s+1 specifies the installation
-prefix.  The following commands build and install Neat*.
-
-.cc.beg
-$ make
 $ make install
 .cc.end
 
 .LP
-Note that the second command may need to be executed by a superuser
-depending on the directory specified as \s-1PREFIX\s+1.
-
-At this point Neat* should be installed.  If Neatroff is set up
-properly, the following command should create test.pdf from the input
-troff source test.tr (you need to add other preprocessors if you use
-them).
-
-.cc.beg
-$ echo "Hello Neatroff!" >test.tr
-$ cat test.tr | neatroff | neatpost | ps2pdf - test.pdf
-.cc.end
+Note that this command may need to be executed by a superuser
+depending on the directory specified as \s-1PREFIX\s+1.  At this point
+Neat* should be installed.  As described in the previous section, the
+Makefile in demo/ subdirectory is a good template for compiling
+Neatroff documents.  You need to modify the value of \s-1BASE\s+1
+macro to point to \s-1PREFIX\s+1/share/neatroff.
 
 .LP
 \fBAdding Fonts\fP:
@@ -118,9 +96,9 @@ program as follows:
 .LP
 .cc.beg
 $ neatmkfn -b -a <fontpath.afm \\
-\&	>PREFIX/share/neatroff/font/devutf/fontname
+\&	>PREFIX/share/neatroff/devutf/fontname
 $ neatmkfn -b -o <fontpath.ttf \\
-\&	>PREFIX/share/neatroff/font/devutf/fontname
+\&	>PREFIX/share/neatroff/devutf/fontname
 .cc.end
 
 .LP
@@ -132,27 +110,18 @@ troff just as other fonts with \&.fp request:
 .cc.end
 
 .LP
-Alternatively, you can place your fonts in the directory specified as
-\s-1GSFONTS\s+1 when building neatroff_make; the makefile generates
+Alternatively, you can place your fonts in neatroff_make/fonts/
+directory before running make neat; the neat Makefile target generates
 and installs font descriptions for all fonts in that directory
 automatically.  This is specially convenient when the number of fonts
 is large.
 
-There is another method of using fonts in Neatroff that creates
-the font descriptions on the fly.  Despite its overhead, this
-method may be convenient when testing new fonts.  It uses the
-fp macro package, which is included in neatroff_make.
-Assuming that the new fonts are in /path/to/fonts, the following
-command informs the macros defined in this package and Ghostscript
-about the location of the fonts (note that -mfp is passed to
-Neatroff to read this package).
-
-.cc.beg
-$ cat test.tr | neatroff -dfp.src=/path/to/fonts -mfp | \\
-\&	neatpost | ps2pdf -sFONTPATH=/path/to/fonts - test.pdf
-.cc.end
-
-.LP
+There is another method of using fonts in Neatroff that creates the
+font descriptions on the fly.  Despite its overhead, this method may
+be convenient when testing new fonts.  It uses the fp macro package,
+which is included in neatroff_make (-mfp should be passed to
+Neatroff).  First, the value of fp.src string register should specify
+the directory containing new fonts.
 The package defines \&.fp.ttf, \&.fp.otf, and \&.fp.afm macros, whose
 behaviour is quite similar to the standard \&.fp request, except that
 the third argument should be the name of the font file without its
@@ -160,6 +129,7 @@ extension.  Thus, for mounting /path/\:to/\:fonts/\:NewFont.ttf,
 test.tr can contain:
 
 .cc.beg
+\&.ds fp.src "/path/\:to/\:fonts/
 \&.fp.ttf - F3 NewFont
 \&.ft FN
 Testing the new font...
