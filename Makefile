@@ -55,7 +55,7 @@ neat:
 	@cd soin && $(MAKE)
 	@cd shape && $(MAKE)
 	@echo "Generating font descriptions"
-	@cd neatmkfn && ./gen.sh $(PWD)/fonts $(FDIR)/devutf >/dev/null
+	@cd neatmkfn && ./gen.sh $(PWD)/fonts $(PWD)/devutf >/dev/null
 
 install:
 	@echo "Copying binaries to $(BASE)"
@@ -103,4 +103,4 @@ clean:
 	@cd troff/pic && $(MAKE) clean
 	@cd soin && $(MAKE) clean
 	@test ! -d shape || (cd shape && $(MAKE) clean)
-	@rm -r $(FDIR)/devutf
+	@rm -r $(PWD)/devutf
