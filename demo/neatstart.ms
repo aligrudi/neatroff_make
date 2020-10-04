@@ -67,10 +67,9 @@ Text in NewFont
 
 .SH "Installing Neatroff"
 This section describes how to install Neatroff in system directories.
-First modify \s-1PREFIX\s+1 macro in neatroff_make/Makefile to point
-to the installation prefix.  Then, after compilining Neatroff as
-described in the previous section, use Makefile's install target to
-install Neatroff to \s-1PREFIX\s+1/share/neatroff.
+First modify \s-1BASE\s+1 macro in neatroff_make/Makefile to point to
+the installation location.  Then, after compilining Neatroff as
+described in the previous section, build Makefile's install target.
 
 .cc.beg
 $ make install
@@ -78,11 +77,11 @@ $ make install
 
 .LP
 Note that this command may need to be executed by a superuser
-depending on the directory specified as \s-1PREFIX\s+1.  At this point
+depending on the directory specified as \s-1BASE\s+1.  At this point
 Neat* should be installed.  As described in the previous section, the
 Makefile in demo/ subdirectory is a good template for compiling
-Neatroff documents.  You need to modify the value of \s-1BASE\s+1
-macro to point to \s-1PREFIX\s+1/share/neatroff.
+Neatroff documents.  You need to update its value of \s-1BASE\s+1
+macro.
 
 .LP
 \fBAdding Fonts\fP:
@@ -92,13 +91,11 @@ typesetting program.  This separation requires generating
 device-independent font descriptions, listing available glyphs for
 each font and their metrics.
 Neatroff's font descriptions can be generated with the Neatmkfn
-program as follows:
+program as follows (BASE is Neatroff's installation directory):
 .LP
 .cc.beg
-$ neatmkfn -b -a <fontpath.afm \\
-\&	>PREFIX/share/neatroff/devutf/fontname
-$ neatmkfn -b -o <fontpath.ttf \\
-\&	>PREFIX/share/neatroff/devutf/fontname
+$ neatmkfn -b -a <fontpath.afm >$BASE/devutf/fontname
+$ neatmkfn -b -o <fontpath.ttf >$BASE/devutf/fontname
 .cc.end
 
 .LP

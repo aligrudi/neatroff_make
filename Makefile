@@ -1,8 +1,10 @@
 # Neatroff top-level Makefile
 
-# There is no need to install it, but if you wish it, this is the prefix.
-PREFIX = /opt
-BASE = $(PREFIX)/share/neatroff
+# Neatroff base directory
+BASE = $(PWD)
+
+# There is no need to install it, but if you wish it, this is the location.
+#BASE = /opt/share/neatroff
 
 INSTALL = install
 MKDIR = mkdir -p -m 755
@@ -17,7 +19,7 @@ help:
 	@echo "   neat        Compile the programs and generate the fonts"
 	@echo "   pull        Update git repositories (git pull)"
 	@echo "   clean       Remove the generated files"
-	@echo "   install     Install Neatroff in $(PREFIX)"
+	@echo "   install     Install Neatroff in $(BASE)"
 	@echo
 
 init:
@@ -43,7 +45,7 @@ pull:
 	cd troff && git pull
 	git pull
 
-neat:
+comp:
 	@echo "Compiling programs"
 	@cd neatroff && $(MAKE) FDIR="$(BASE)" MDIR="$(BASE)/tmac"
 	@cd neatpost && $(MAKE) FDIR="$(BASE)" MDIR="$(BASE)/tmac"
@@ -54,6 +56,8 @@ neat:
 	@cd troff/tbl && $(MAKE)
 	@cd soin && $(MAKE)
 	@cd shape && $(MAKE)
+
+neat: comp
 	@echo "Generating font descriptions"
 	@cd neatmkfn && ./gen.sh $(PWD)/fonts $(PWD)/devutf >/dev/null
 
