@@ -157,8 +157,8 @@
 .if !"\\$1"LT" .ta 3.9i 4.45i
 .	sp .2i
 .	nf
-.	if "\\$1"LT" 	\s36\(FA\s0
-.	if !"\\$1"LT" 	\s36\(LH\s0
+.	if "\\$1"LT" 	\s(36\(FA\s0
+.	if !"\\$1"LT" 	\s(36\(LH\s0
 .	br
 \s7\l'7i'\s0
 .sp
@@ -1256,21 +1256,21 @@ ABSTRACT
 ..
 .	\"IP - indented paragraph
 .de IP
-.RT
-.if !\\n(IP .nr IP +1
-.ie \\n(ID>0 .sp \\n(IDu
-.el .sp \\n(PDu
-.nr IU \\n(IR+1
-.if \\n(.$>1 .nr I\\n(IU \\n(I\\n(IRu+\\$2n
-.if \\n(I\\n(IU=0 .nr I\\n(IU \\n(PIu+\\n(I\\n(IRu
-.in \\n(I\\n(IUu
-.nr TY \\n(TZ-\\n(.i
-.nr JQ \\n(I\\n(IU-\\n(I\\n(IR
-.ta \\n(JQu \\n(TYuR
-.if \\n(.$ \{\
-.ti \\n(I\\n(IRu
+.	RT
+.	if !\\n(IP .nr IP +1
+.	ie \\n(ID>0 .sp \\n(IDu
+.	el .sp \\n(PDu
+.	nr IU \\n(IR+1
+.	if \\n(.$>1 .nr I\\n(IU \\n(I\\n(IRu+\\$2n
+.	if \\n(I\\n(IU=0 .nr I\\n(IU \\n(PIu+\\n(I\\n(IRu
+.	in \\n(I\\n(IUu
+.	nr TY \\n(TZ-\\n(.i
+.	nr JQ \\n(I\\n(IU-\\n(I\\n(IR
+.	ta \\n(JQu \\n(TYuR
+.	if \\n(.$ \{\
+.		ti \\n(I\\n(IRu
 \&\\$1\t\c
-.\}
+.	\}
 ..
 .	\"LP - left aligned (block) paragraph
 .de LP
@@ -1294,24 +1294,25 @@ ABSTRACT
 ..
 .	\"RS - prepare for double indenting
 .de RS
-.nr IS \\n(IP
-.RT
-.nr IP \\n(IS
-.nr IR \\n(IU
-.nr IU +1
-.if !\\n(I\\n(IR .nr I\\n(IR \\n(I\\n(IU+\\n(PIu
-.in \\n(I\\n(IRu
-.nr TY \\n(TZ-\\n(.i
-.ta \\n(TYuR
+.	nr IS \\n(IP
+.	RT
+.	nr IP \\n(IS
+.	nr IU \\n(IR+1
+.	if !\\n(I\\n(IU .nr I\\n(IU \\n(I\\n(IR+\\n(PIu
+.	nr IR +1
+.	nr IU +1
+.	in \\n(I\\n(IRu
+.	nr TY \\n(TZ-\\n(.i
+.	ta \\n(TYuR
 ..
 .	\"RE - retreat to the left
 .de RE
-.nr IS \\n(IP
-.RT
-.nr IP \\n(IS
-.nr IU \\n(IR
-.if \\n(IR>0 .nr IR -1
-.in \\n(I\\n(IRu
+.	nr IS \\n(IP
+.	RT
+.	nr IP \\n(IS
+.	nr IU \\n(IR
+.	if \\n(IR>0 .nr IR -1
+.	in \\n(I\\n(IRu
 ..
 .de TC
 .nr TZ \\n(.lu
