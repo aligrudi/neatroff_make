@@ -30,6 +30,9 @@
 .\" .grval y label
 .\"   Specify y-axis label at y.
 .\"
+.\" .grtxt x y "text"
+.\"   Write "text" in the given position.
+.\"
 .\" .grclr line fill
 .\"   Specify graph colours.
 .\"
@@ -120,6 +123,14 @@
 .	ps \\n[grptsz]
 \v'|\\n[gryoff]u-(\\n[grht]u/2u)'\h'|\\n[grxoff]u-2v\\$2'\
 \X'rotate 90'\h'-(\\w'\\$1'u/2u)'\\$1\X'rotate 0'
+.	ps
+.	sp -1
+..
+.de grtxt
+.	nr grx1 \\*[grx \\$1]
+.	nr gry1 \\*[gry \\$2]
+.	ps \\n[grptsz]
+\v'|\\n[gry1]u'\h'|\\n[grx1]u'\h'-\\w'\\$3'u/2u)'\\$3
 .	ps
 .	sp -1
 ..
