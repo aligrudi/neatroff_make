@@ -59,44 +59,44 @@ comp:
 
 neat: comp
 	@echo "Generating font descriptions"
-	@cd neatmkfn && ./gen.sh $(PWD)/fonts $(PWD)/devutf >/dev/null
+	@cd neatmkfn && ./gen.sh "$(PWD)/fonts" "$(PWD)/devutf" >/dev/null
 
 install:
 	@echo "Copying binaries to $(BASE)"
-	@$(MKDIR) $(BASE)/neatroff
-	@$(MKDIR) $(BASE)/neatpost
-	@$(MKDIR) $(BASE)/neateqn
-	@$(MKDIR) $(BASE)/neatmkfn
-	@$(MKDIR) $(BASE)/neatrefer
-	@$(MKDIR) $(BASE)/troff/pic
-	@$(MKDIR) $(BASE)/troff/tbl
-	@$(MKDIR) $(BASE)/soin
-	@$(MKDIR) $(BASE)/shape
-	@$(INSTALL) neatroff/roff $(BASE)/neatroff/
-	@$(INSTALL) neatpost/post $(BASE)/neatpost/
-	@$(INSTALL) neatpost/pdf $(BASE)/neatpost/
-	@$(INSTALL) neateqn/eqn $(BASE)/neateqn/
-	@$(INSTALL) neatmkfn/mkfn $(BASE)/neatmkfn/
-	@$(INSTALL) neatrefer/refer $(BASE)/neatrefer/
-	@$(INSTALL) soin/soin $(BASE)/soin/
-	@$(INSTALL) shape/shape $(BASE)/shape/
-	@$(INSTALL) troff/pic/pic $(BASE)/troff/pic/
-	@$(INSTALL) troff/tbl/tbl $(BASE)/troff/tbl/
+	@$(MKDIR) "$(BASE)/neatroff"
+	@$(MKDIR) "$(BASE)/neatpost"
+	@$(MKDIR) "$(BASE)/neateqn"
+	@$(MKDIR) "$(BASE)/neatmkfn"
+	@$(MKDIR) "$(BASE)/neatrefer"
+	@$(MKDIR) "$(BASE)/troff/pic"
+	@$(MKDIR) "$(BASE)/troff/tbl"
+	@$(MKDIR) "$(BASE)/soin"
+	@$(MKDIR) "$(BASE)/shape"
+	@$(INSTALL) neatroff/roff "$(BASE)/neatroff/"
+	@$(INSTALL) neatpost/post "$(BASE)/neatpost/"
+	@$(INSTALL) neatpost/pdf "$(BASE)/neatpost/"
+	@$(INSTALL) neateqn/eqn "$(BASE)/neateqn/"
+	@$(INSTALL) neatmkfn/mkfn "$(BASE)/neatmkfn/"
+	@$(INSTALL) neatrefer/refer "$(BASE)/neatrefer/"
+	@$(INSTALL) soin/soin "$(BASE)/soin/"
+	@$(INSTALL) shape/shape "$(BASE)/shape/"
+	@$(INSTALL) troff/pic/pic "$(BASE)/troff/pic/"
+	@$(INSTALL) troff/tbl/tbl "$(BASE)/troff/tbl/"
 	@echo "Copying font descriptions to $(BASE)/tmac"
-	@$(MKDIR) $(BASE)/tmac
-	@cp -r tmac/* $(BASE)/tmac/
-	@chmod -R 644 $(BASE)/tmac
-	@find $(BASE)/tmac -type d -exec chmod 755 {} \;
+	@$(MKDIR) "$(BASE)/tmac"
+	@cp -r tmac/* "$(BASE)/tmac/"
+	@chmod -R 644 "$(BASE)/tmac"
+	@find "$(BASE)/tmac" -type d -exec chmod 755 {} \;
 	@echo "Copying devutf device to $(BASE)/devutf"
-	@$(MKDIR) $(BASE)/devutf
-	@cp devutf/* $(BASE)/devutf/
-	@chmod 644 $(BASE)/devutf/*
+	@$(MKDIR) "$(BASE)/devutf"
+	@cp devutf/* "$(BASE)/devutf/"
+	@chmod 644 "$(BASE)/devutf"/*
 	@echo "Copying fonts to $(BASE)/fonts"
-	@$(MKDIR) $(BASE)/fonts
-	@cp fonts/* $(BASE)/fonts/
-	@chmod 644 $(BASE)/fonts/*
+	@$(MKDIR) "$(BASE)/fonts"
+	@cp fonts/* "$(BASE)/fonts/"
+	@chmod 644 "$(BASE)/fonts"/*
 	@echo "Updating fontpath in font descriptions"
-	@for f in $(BASE)/devutf/*; do sed "/^fontpath /s=$(PWD)/fonts=$(BASE)/devutf=" <$$f >.fd.tmp; mv .fd.tmp $$f; done
+	@for f in "$(BASE)/devutf"/*; do sed "/^fontpath /s=$(PWD)/fonts=$(BASE)/devutf=" <$$f >.fd.tmp; mv .fd.tmp $$f; done
 
 clean:
 	@cd neatroff && $(MAKE) clean
