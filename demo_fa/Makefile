@@ -1,18 +1,18 @@
 # Neatroff demonstration directory
 BASE = $(PWD)/..
-ROFF = $(BASE)/neatroff/roff
-POST = $(BASE)/neatpost/post
-PPDF = $(BASE)/neatpost/pdf
-EQN = $(BASE)/neateqn/eqn
-REFR = $(BASE)/neatrefer/refer
-PIC = $(BASE)/troff/pic/pic
-TBL = $(BASE)/troff/tbl/tbl
-SOIN = $(BASE)/soin/soin
-SHAPE = $(BASE)/shape/shape
+ROFF = "$(BASE)/neatroff/roff"
+POST = "$(BASE)/neatpost/post"
+PPDF = "$(BASE)/neatpost/pdf"
+EQN = "$(BASE)/neateqn/eqn"
+REFR = "$(BASE)/neatrefer/refer"
+PIC = "$(BASE)/troff/pic/pic"
+TBL = "$(BASE)/troff/tbl/tbl"
+SOIN = "$(BASE)/soin/soin"
+SHAPE = "$(BASE)/shape/shape"
 
-ROFFOPTS = -F$(BASE) -M$(BASE)/tmac
+ROFFOPTS = "-F$(BASE)" "-M$(BASE)/tmac"
 ROFFMACS = -mps -meps -mtbl -mkeep -mfa -msrefs
-POSTOPTS = -F$(BASE) -pa4
+POSTOPTS = "-F$(BASE)" -pa4
 REFROPTS = -m -e -o ct -p ref.bib
 
 all: test.pdf fa.pdf
@@ -32,7 +32,7 @@ all: test.pdf fa.pdf
 .ps.pdf:
 	@echo "Generating $@"
 	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true \
-		-sFONTPATH=$(BASE)/fonts/ -sFONTMAP=$(BASE)/fonts/Fontmap $< $@
+		"-sFONTPATH=$(BASE)/fonts/" "-sFONTMAP=$(BASE)/fonts/Fontmap" $< $@
 
 .ms.PDF:
 	@echo "Generating $@"
