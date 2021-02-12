@@ -85,7 +85,7 @@ install:
 	@echo "Copying font descriptions to $(BASE)/tmac"
 	@$(MKDIR) "$(BASE)/tmac"
 	@cp -r tmac/* "$(BASE)/tmac/"
-	@chmod -R 644 "$(BASE)/tmac"
+	@chmod -R 644 "$(BASE)/tmac/*"
 	@find "$(BASE)/tmac" -type d -exec chmod 755 {} \;
 	@echo "Copying devutf device to $(BASE)/devutf"
 	@$(MKDIR) "$(BASE)/devutf"
