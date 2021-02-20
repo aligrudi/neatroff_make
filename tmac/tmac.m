@@ -616,7 +616,7 @@
 ..
 .de )B
 .br
-.nr :g -1
+.nr :g -1 1
 .)C nr :a ]a \\*(]a
 .)C nr :b ]b \\*(]b
 'in \\n(:bu
