@@ -217,6 +217,22 @@ define prod @{vcenter roman "\\N'productdisplay'"}@
 define tprod @{vcenter roman "\\N'producttext'"}@
 .cc.end
 
+.SH "Retrieving and installing Pxfonts and Txfonts"
+Download both fonts from CPAN:
+.cc.beg
+https://ctan.org/pkg/pxfonts (\*[post.url https://ctan.org/pkg/pxfonts link])
+https://ctan.org/pkg/txfonts (\*[post.url https://ctan.org/pkg/txfonts link])
+.cc.end
+.LP
+Unpack both archives in separate folders. In each folder copy the contents of the contained 
+"afb" and "tfm" folder into the "fonts" folder under neatroff_make. 
+.LP
+Edit neateqn.ms (source of this document): Search for "Change this section" and comment/uncomment
+a few lines as described there.
+.LP
+Submit 'make neat' in neatroff_make again, then submit 'make clean all' in this folder ("demo").
+.LP
+
 .EQ
 define sum @{vcenter roman "\N'summationdisplay'"}@
 define tsum @{vcenter roman "\N'summationtext'"}@
@@ -243,8 +259,23 @@ sqrt {a} + sqrt {a over b} + sqrt { {x + a over b} over {y + c over d} }
 
 .LP
 Palatino and Pxfonts mathematical symbols:
-.fp - CMEX Pxex
-.fp - CMSY Pxsy
+\" Change this section
+\" After installing the PxFonts uncomment
+\" both reguests below
+\".fp - CMEX Pxex
+\".fp - CMSY Pxsy
+\"
+\" and remove all lines up to and the one including "END OF REMOVAL"
+\" the following three lines are placeholders
+\" until Pxfonts are installed. After installation, remove
+\" these definitions.
+.tm
+.tm ===== Info: Placeholder fonts are activated. Please install Pxfonts.  =====
+.tm ===== See the document neateqn.pdf for instructions.                  =====
+.tm
+.fp - CMEX CMEX10
+.fp - CMSY CMSY10
+\" END OF REMOVAL
 .EQ
 (x + y) sup n = sum from i=0 to n left ( pile {n above i} right ) ^ x sup i y sup n-i
 .EN
@@ -262,8 +293,23 @@ Times Roman and Txfonts mathematical symbols:
 .fp - R R
 .fp - I I
 .fp - B B
-.fp - CMEX txex
-.fp - CMSY txsy
+\" Change this section
+\" After installing the TxFonts uncomment
+\" both reguests below
+\" .fp - CMEX txex
+\" .fp - CMSY txsy
+\"
+\" and remove all lines up to and the one including "END OF REMOVAL"
+\" the following three lines are placeholders
+\" until Pxfonts are installed. After installation, remove
+\" these definitions.
+.tm
+.tm ===== Info: Placeholder fonts are activated. Please install Txfonts.  =====
+.tm ===== See the document neateqn.pdf for instructions.                  =====
+.tm
+.fp - CMEX CMEX10
+.fp - CMSY CMSY10
+\" END OF REMOVAL
 .EQ
 (x + y) sup n = sum from i=0 to n left ( pile {n above i} right ) ^ x sup i y sup n-i
 .EN
