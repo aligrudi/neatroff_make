@@ -1610,7 +1610,7 @@ PRIVATE\h'-\w'PRIVATE'u'\l'\w'PRIVATE'u'
 APPROVED:
 'br \}
 .sp 2
-\l'3i'\h'.3i\l'1.5i'
+\l'3i'\h'.3i'\l'1.5i'
 \\$1\h'|4i-(\w'Da'u)'Date
 .in
 .fi
