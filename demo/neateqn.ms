@@ -218,6 +218,9 @@ define tprod @{vcenter roman "\\N'producttext'"}@
 .cc.end
 
 .SH "Retrieving and installing Pxfonts and Txfonts"
+These fonts are optional. Neatroff will run fine without them.
+This document can make use of this fonts - see instructions below.
+.br
 Download both fonts from CPAN:
 .cc.beg
 https://ctan.org/pkg/pxfonts (\*[post.url https://ctan.org/pkg/pxfonts link])
@@ -225,12 +228,12 @@ https://ctan.org/pkg/txfonts (\*[post.url https://ctan.org/pkg/txfonts link])
 .cc.end
 .LP
 Unpack both archives in separate folders. In each folder copy the contents of the contained 
-"afb" and "tfm" folder into the "fonts" folder under neatroff_make. 
+\(lqafb\(rq and \(lqtfm\(rq folder into the \(lqfonts\(rq folder under neatroff_make. 
 .LP
-Edit neateqn.ms (source of this document): Search for "Change this section" and comment/uncomment
+Edit neateqn.ms (source of this document): Search for \(lqChange this section\(rq and comment/uncomment
 a few lines as described there.
 .LP
-Submit 'make neat' in neatroff_make again, then submit 'make clean all' in this folder ("demo").
+Submit 'make neat' in neatroff_make again, then submit 'make clean all' in this folder (\(lqdemo\(rq).
 .LP
 
 .EQ
@@ -269,10 +272,6 @@ Palatino and Pxfonts mathematical symbols:
 \" the following three lines are placeholders
 \" until Pxfonts are installed. After installation, remove
 \" these definitions.
-.tm
-.tm ===== Info: Placeholder fonts are activated. Please install Pxfonts.  =====
-.tm ===== See the document neateqn.pdf for instructions.                  =====
-.tm
 .fp - CMEX CMEX10
 .fp - CMSY CMSY10
 \" END OF REMOVAL
@@ -303,10 +302,6 @@ Times Roman and Txfonts mathematical symbols:
 \" the following three lines are placeholders
 \" until Pxfonts are installed. After installation, remove
 \" these definitions.
-.tm
-.tm ===== Info: Placeholder fonts are activated. Please install Txfonts.  =====
-.tm ===== See the document neateqn.pdf for instructions.                  =====
-.tm
 .fp - CMEX CMEX10
 .fp - CMSY CMSY10
 \" END OF REMOVAL
