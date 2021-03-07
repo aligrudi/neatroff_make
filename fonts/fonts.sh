@@ -20,7 +20,7 @@ rm -r urw-base35*/
 # AMS and computer modern fonts
 echo "Retrieving $AMSURL"
 $HGET amsfonts.zip $AMSURL
-unzip -q amsfonts.zip 'fonts/*'
+unzip -q amsfonts.zip 'fonts/**'
 for x in fonts/afm/public/amsfonts/cm/*.afm
 do
 	cp $x `basename $x .afm | tr a-z A-Z`.afm
