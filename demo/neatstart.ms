@@ -94,8 +94,8 @@ Neatroff's font descriptions can be generated with the Neatmkfn
 program as follows (BASE is Neatroff's installation directory):
 .LP
 .cc.beg
-$ neatmkfn -b -a <fontpath.afm >$BASE/devutf/fontname
-$ neatmkfn -b -o <fontpath.ttf >$BASE/devutf/fontname
+$ mkfn -b -a <fontpath.afm >$BASE/devutf/fontname
+$ mkfn -b -o <fontpath.ttf >$BASE/devutf/fontname
 .cc.end
 
 .LP
