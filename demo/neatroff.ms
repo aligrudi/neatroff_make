@@ -43,6 +43,23 @@ hand, the document \(lqGetting Started with Neatroff\(rq
 explains how to set up and use Neatroff.
 
 .bp
+.SH "Nomenklature"
+
+Since there are several implementations of this family of roff typesetting
+suites available the Neatroff documentation needs to distinguish this
+implementation from others to avoid confusion. \(lqroff\(rq for example is the
+main typesetting application, which may also exist under the name with other
+typesetting suits of the same kind. To avoid misinterpretation, the name
+\(lqNeatroff\(rq is used in these documents when addressing either the whole
+typesetting suite as such or the roff binary of this typeseeting suit in the
+sens of a brand name. If these documents addresses the commandline usage of
+\(lqroff\(rq or -- more general -- handling the binary itsself, it uses the
+name \(lqroff\(rq to name the binary being the result of the compilation
+process. Same goes for \(lqneatpost\{rq, \(lqneateqn\{rq, \(lqneatmkfn\{rq and
+\(lqneatrefer\(rq accordingly.
+
+
+.bp
 .SH "Noteworthy Features"
 The following list describes the main extensions of Neatroff compared
 to the original Troff (many of these extensions are available in
