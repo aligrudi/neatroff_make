@@ -25,6 +25,7 @@
 .	if '\\$2'R' .nr eps.in (\\n(.l-\\n(.i-\\n[eps.w])
 .	\" printing the image
 .	br
+.	rs
 .	ne \\n[eps.h]u
 .	sp \\n[eps.h]u
 .	ie '\\$0'.PDF' \h'|\\n[eps.in]u'\\X'pdf "\\$1" \\n[eps.w]'\h'\\n[eps.w]u'
