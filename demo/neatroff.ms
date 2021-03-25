@@ -201,7 +201,7 @@ character mappings from the addresses specified via its arguments.
 The specified files should contain nothing but utf-8 patterns,
 exceptions and mappings respectively (i.e. no TeX code), just like the
 files whose names end with \&.pat.txt, \&.hyp.txt and \&.chr.txt in
-CTAN for TeX (\*[post.url ftp://ftp.ctan.org/tex-archive/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/ link]).
+CTAN for TeX (\*[post.url https://mirror.ctan.org/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/ link]).
 The \&.hpfa request is like \&.hpf, except that it does not clear the
 previous hyphenation patterns and exceptions.  The second and third
 arguments of these requests are optional.  With no arguments, these
