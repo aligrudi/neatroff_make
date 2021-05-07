@@ -9,7 +9,7 @@
 '''\"	
 '''\"	The following string is used by the macro MT.
 '''\"	]S defined as logo character
-.ds ]S \s36\(LH\s0
+.ds ]S \s(36\(LH\s0
 '''\"	}Z defined as Company Name
 .ds }Z Alcatel-Lucent Bell Laboratories
 '''\"
