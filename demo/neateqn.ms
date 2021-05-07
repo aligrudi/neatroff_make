@@ -218,8 +218,8 @@ define tprod @{vcenter roman "\\N'producttext'"}@
 .cc.end
 
 .SH "Retrieving and installing Pxfonts and Txfonts"
-These fonts are optional. Neatroff will run fine without them.
-This document can make use of this fonts - see instructions below.
+These fonts are optional and Neatroff will run fine without them.
+This document can make use of this fonts; see instructions below.
 .br
 Download both fonts from CPAN:
 .cc.beg
@@ -227,14 +227,13 @@ https://ctan.org/pkg/pxfonts (\*[post.url https://ctan.org/pkg/pxfonts link])
 https://ctan.org/pkg/txfonts (\*[post.url https://ctan.org/pkg/txfonts link])
 .cc.end
 .LP
-Unpack both archives in separate folders. In each folder copy the
-contents of the contained \(lqafb\(rq and \(lqtfm\(rq folder into the
-\(lqfonts\(rq folder under neatroff_make.
+Unpack both archives in separate directories.  In each directory copy
+the contents of the contained \(lqafm\(rq and \(lqpfb\(rq directories
+into the \(lqfonts\(rq directory under neatroff_make.
 Then, edit neateqn.ms (source of this document): Search for \(lqChange this
 section\(rq and comment/uncomment a few lines as described there.
 Finally, submit 'make neat' in neatroff_make again, then submit 'make clean
 all' in this folder (\(lqdemo\(rq).
-.LP
 
 .EQ
 define sum @{vcenter roman "\N'summationdisplay'"}@
