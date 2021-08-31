@@ -23,8 +23,8 @@
 .vs 12p
 .nf
 .if t \{
-.if \\n(ZZ<1 \h'7n'\s24\(FA\s12\f3  Bell Laboratories             \s16\f1Cover Sheet for Technical Memorandum
-.if \\n(ZZ>=1 \h'7n'\s24\(FA\s12\f3  Bell Laboratories             \s16\f1Cover Sheet for Technical Memorandum\}
+.if \\n(ZZ<1 \h'7n'\s(24\(FA\s(12\f3  Bell Laboratories             \s(16\f1Cover Sheet for Technical Memorandum
+.if \\n(ZZ>=1 \h'7n'\s(24\(FA\s(12\f3  Bell Laboratories             \s(16\f1Cover Sheet for Technical Memorandum\}
 .if n Bell Laboratories             Cover Sheet for Technical Memorandum
 .if t .sp .5v
 .if n .sp
@@ -49,7 +49,7 @@
 .if t .ta 0.5i 4.5i 4.9i
 .if n .ta 9 39 46
 .mk
-Title- \f3\s10
+Title- \f3\s(10
 .rt
 .if t .in 0.5i
 .if n .in 10
@@ -62,7 +62,7 @@ Title- \f3\s10
 .if t .in 4.5i
 .if n .in 40
 .nf
-\s9\f1Date- \s10\f3
+\s9\f1Date- \s(10\f3
 .rt
 .if t .in 4.9i
 .if n .in 47
@@ -71,7 +71,7 @@ Title- \f3\s10
 .if t .ti 4.5i
 .if n .ti 40
 .mk
-\s9\f1TM- \f3\s10
+\s9\f1TM- \f3\s(10
 .br
 .rt
 .CZ \\*(MN
@@ -98,10 +98,10 @@ Title- \f3\s10
 .ti 0
 .nr SJ \\n(.j
 .na
-Author	Location	Extension	Charging Case- \s10\f3\\*(CA
+Author	Location	Extension	Charging Case- \s(10\f3\\*(CA
 .ps 10
 .ti 4.3i
-\f1\s9Filing Case- \s10\f3\\*(CC
+\f1\s9Filing Case- \s(10\f3\\*(CC
 .nf
 .in 0
 .ad \\n(SJ
@@ -225,11 +225,11 @@ Pages Text   \\*(K1	Other   \\*(K2	Total   \\*(K3
 .br
 .if t .vs .15i
 .if t \{
-.if \\n(ZZ<1 \t\s36\(FA\s0
-.if \\n(ZZ>=1 \t\s36\(FA\s0\}
+.if \\n(ZZ<1 \t\s(36\(FA\s0
+.if \\n(ZZ>=1 \t\s(36\(FA\s0\}
 .br
 .if n .sp 24p
-\s11\l'7i'\s0
+\s(11\l'7i'\s0
 .ps 10
 .br
 .if \\n(IM=1 \f(HBBell Laboratories\fP
@@ -257,8 +257,8 @@ Pages Text   \\*(K1	Other   \\*(K2	Total   \\*(K3
 .ft 1
 .fi
 .in 0
-.if !\\(IM .if \\n(MC>0 \\s8Case- \\*(CA\\s10
-.if !\\(IM .if \\n(MG>0 --\s8 File- \\*(CC\\s10
+.if !\\(IM .if \\n(MC>0 \\s8Case- \\*(CA\\s(10
+.if !\\(IM .if \\n(MG>0 --\s8 File- \\*(CC\\s(10
 .br
 .rt
 .if n .ll 70

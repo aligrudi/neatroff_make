@@ -425,7 +425,35 @@
 .	ochar CMR < "\f[CMSY]<\fP
 .	ochar CMR > "\f[CMSY]>\fP
 .	ochar CMR \(>= "\f[CMSY]\(>=\fP
-.	ochar CMR \(mi "\f[CMSY]\(mi\fP
 .	ochar CMR \(mu "\f[CMSY]\(mu\fP
+.	ochar CMR \(mi "\f[CMSY]\(mi\fP
+.	ochar CMR \(+- "\f[CMSY]\(+-\fP
+.	ochar CMR \(-+ "\f[CMSY]\(-+\fP
+.	ochar CMR \(O+ "\f[CMSY]\(O+\fP
+.	ochar CMR \(Ox "\f[CMSY]\(Ox\fP
+.	ochar CMR \(bu "\f[CMSY]\(bu\fP
+.	ochar CMR \(== "\f[CMSY]\(==\fP
+.	ochar CMR \(ap "\f[CMSY]\(ap\fP
+.	ochar CMR \(sb "\f[CMSY]\(sb\fP
+.	ochar CMR \(sp "\f[CMSY]\(sp\fP
+.	ochar CMR \(<- "\f[CMSY]\(<-\fP
+.	ochar CMR \(-> "\f[CMSY]\(->\fP
+.	ochar CMR \(ua "\f[CMSY]\(ua\fP
+.	ochar CMR \(da "\f[CMSY]\(da\fP
+.	ochar CMR \(<> "\f[CMSY]\(<>\fP
+.	ochar CMR \(pt "\f[CMSY]\(pt\fP
+.	ochar CMR \(if "\f[CMSY]\(if\fP
+.	ochar CMR \(mo "\f[CMSY]\(mo\fP
+.	ochar CMR \(fa "\f[CMSY]\(fa\fP
+.	ochar CMR \(-, "\f[CMSY]\(-,\fP
+.	ochar CMR \(es "\f[CMSY]\(es\fP
+.	ochar CMR \(pp "\f[CMSY]\(pp\fP
+.	ochar CMR \(cu "\f[CMSY]\(cu\fP
+.	ochar CMR \(ca "\f[CMSY]\(ca\fP
+.	ochar CMR \(l& "\f[CMSY]\(l&\fP
+.	ochar CMR \(l| "\f[CMSY]\(l|\fP
+.	ochar CMR \(is "\f[CMSY]\(is\fP
+.	ochar CMR \(sc "\f[CMSY]\(sc\fP
+.	ochar CMR \(dg "\f[CMSY]\(dg\fP
 ..
 .fa.init

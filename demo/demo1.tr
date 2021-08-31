@@ -1,0 +1,85 @@
+.\" Neatroff Tutorial #1
+.\"
+.\" The demo subdirectory of neatroff_make contains a few examples of
+.\" using Neatroff; they help particularly those users who have good
+.\" experience in using Troff.  What follows demonstrates the basics of
+.\" using Neatroff, assuming that the reader has never used Troff before.
+.\" Nevertheless, this section would probably help any new user of
+.\" Neatroff.
+.\"
+.\" ===================
+.\" SETTING UP NEATROFF
+.\" ===================
+.\"
+.\" You can set up Neatroff as follows.
+.\"
+.\" $ git clone git://github.com/aligrudi/neatroff_make.git
+.\" $ cd neatroff_make
+.\" $ make init		# Downloads the required programs and some fonts
+.\" $ make neat		# Compiles the programs
+.\"
+.\" For rendering this file, you can perform the following steps.
+.\"
+.\" + Create a directory to store your Neatroff documents.
+.\" + Copy the Makefile in neatroff_make/demo to this directory.
+.\" + Edit the value of BASE in the Makefile to point to neatroff_make.
+.\" + Edit the line beginning with "all:"; remove the names of files
+.\"   that appear after it in this line.
+.\" + Create a file name demo1.tr with the contents of this file.
+.\" + Add demo1.pdf after "all:" in the Makefile.
+.\"
+.\" ============
+.\" TROFF BASICS
+.\" ============
+.\"
+.\" As you have already guessed, lines starting with .\" are comments.
+Hello Neatroff.
+.\" Blank lines cause a line break and some vertical spacing (unless
+.\" using blm request).
+
+Basic requests:
+.\" The br request causes a line break as well.
+.br
+.\" Requests can start with a dot or quote in a separate line, or
+.\" combined with the text after a backslash.
+Words \s[16]can\s0 be \s+[5]Larger\s0 or \s-[5]Smaller\s0.
+.\" You can also insert vertical space using sp request.
+.sp 3
+.\" You can also use ps request to change font size, and vs to change
+.\" the vertical space between lines.
+.ps 14
+.vs 14
+.\" Defaults fonts: R (roman), B (bold), I (italic); P is the previous
+.\" font.
+Fonts can be \fBchanged\fP.
+.\" You can also use fp request.
+.fp I
+This is \m[cyan]cyan\m[]; \m[#382]colour\m[] does help
+.\" The colour can be also changed using cl request
+.cl #244
+sometimes.
+.cl
+.sp
+.\" ===============
+.\" DEFINING MACROS
+.\" ===============
+.\"
+.\" A multi-line macro can be defined as follows; the definition ends
+.\" at a line containing "..".
+.de mac1
+.	ft B
+.	cl #824
+\\$1
+.	ft P
+.	cl
+..
+.\" This is a single-line macro.
+.ds mac2 "\m[\\$2]\\$1\m[] (\\$2)
+.\" They can be invoked as follows (\\$N is replaced by argument N).
+.mac1 Macros
+in \*[mac2 colour red].
+.sp
+.\" Numbers and strings can be saved in registers.
+.nr count 20
+.ds name "Page
+There are \n[count] of \*[name]s.

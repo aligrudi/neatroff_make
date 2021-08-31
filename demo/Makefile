@@ -14,7 +14,7 @@ ROFFMACS = -mpost -mtbl -mkeep -men -msrefs
 POSTOPTS = "-F$(BASE)" -pa4
 REFROPTS = -m -e -o ct -p ref.bib
 
-all: test.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
+all: test.pdf demo1.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
 
 .SUFFIXES: .tr .ms .ps .pdf .PDF
 .tr.ps:
