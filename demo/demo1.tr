@@ -33,6 +33,12 @@
 .\" ============
 .\"
 .\" As you have already guessed, lines starting with .\" are comments.
+.\"
+.\" We'll center the next line and make the text temporarily larger.
+.ce 1
+.ps +8
+I'm some centered input.
+.ps -8
 Hello Neatroff.
 .\" Blank lines cause a line break and some vertical spacing (unless
 .\" using blm request).
@@ -83,3 +89,48 @@ in \*[mac2 colour red].
 .nr count 20
 .ds name "Page
 There are \n[count] of \*[name]s.
+.br
+.\" \h triggers horizontal movement and can be used for indentation.
+.\" \w'input' tells you the length of the input.
+.de Found
+\h'5'
+\\$1: [\m[green]X\m[]]
+.br
+..
+.de Needtobuy
+\h'5'
+\\$1: []
+.br
+..
+\h'2'Grocery list:
+.br
+.Found     Coffee
+.Needtobuy Milk
+.Needtobuy Bread
+
+.\" \w'theinput' gives you input's width
+figuring out the spacing is difficult as Coffee, Milk and Bread
+have different widths (\w'Coffee', \w'Milk', \w'Bread').  So let's use
+tabs instead:
+
+.ta 2.2i 3.2i
+
+.fp CR
+.in +1.5
+hello world
+.in -1.5
+
+.DE
+.fp P
+.ds Found [\m[green]X\m[]]
+.ds Needtobuy [   ]
+.de Wrap
+    \\$2:	\\*[\\$1]
+.   br
+..
+Grocery list:
+.br
+.Wrap Found     Coffee
+.Wrap Needtobuy Milk
+.Wrap Needtobuy Bread
+
