@@ -109,6 +109,16 @@ formatting.
 .ad r
 Right adjusted text.
 .sp
+.ad l
+.\" You can specify identation with in, temporary indentation
+.\" with ti, and line length with ll.
+.in 1c
+.ll 15c
+.ti 2c
+Text indentation is applied to the all lines (its current value is \n[.i]),
+whereas temporary indentation is applied only on the next line.
+.in 0
+.sp
 .\" =============
 .\" OTHER REQUSTS
 .\" =============
@@ -124,7 +134,9 @@ Right adjusted text.
 .ad l
 .nf
 Horizontal \h'1c'movement and vertical \v'1m'movement.
+Width of \(lqabc\(rq is \w'abc' in basic units.
 .sp
+.\" Drawing commands:
 Lines: horizontal \l'1m' and vertical \L'-1m'
 Lines: \D'l 1m -1n'
 Circles: \D'c 1n'
