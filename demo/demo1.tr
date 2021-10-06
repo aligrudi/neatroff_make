@@ -52,13 +52,16 @@ Words \s[16]can\s0 be \s+[5]Larger\s0 or \s-[5]Smaller\s0.
 .\" Defaults fonts: R (Roman), B (bold), I (italic); P is the previous
 .\" font.
 Fonts can be \fBchanged\fP.
-.\" You can also use fp request.
-.fp I
+.\" You can also use ft request.
+.ft I
 This is \m[cyan]cyan\m[]; \m[#382]colour\m[] does help
 .\" The colour can be also changed using cl request
 .cl #244
 sometimes.
+.\" Without argument, requests like cl, ft, and ps change font face,
+.\" colour, and size respectively to its previous value.
 .cl
+.ft
 .sp
 .\" ===============
 .\" DEFINING MACROS
@@ -109,7 +112,7 @@ formatting.
 .ad r
 Right adjusted text.
 .sp
-.ad l
+.ad b
 .\" You can specify identation with in, temporary indentation
 .\" with ti, and line length with ll.
 .in 1c
