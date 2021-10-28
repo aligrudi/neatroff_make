@@ -24,12 +24,12 @@ help:
 
 init:
 	@echo "Cloning Git repositories"
-	@test -d neatroff || git clone https://github.com/aligrudi/neatroff.git
-	@test -d neatpost || git clone https://github.com/aligrudi/neatpost.git
-	@test -d neatmkfn || git clone https://github.com/aligrudi/neatmkfn.git
-	@test -d neateqn || git clone https://github.com/aligrudi/neateqn.git
-	@test -d neatrefer || git clone https://github.com/aligrudi/neatrefer.git
-	@test -d troff || git clone -b neat https://repo.or.cz/troff.git
+	@test -d neatroff || git clone git@github.com:aligrudi/aligrudi/neatroff.git
+	@test -d neatpost || git clone git@github.com:aligrudi/aligrudi/neatpost.git
+	@test -d neatmkfn || git clone git@github.com:aligrudi/aligrudi/neatmkfn.git
+	@test -d neateqn || git clone git@github.com:aligrudi/neateqn.git
+	@test -d neatrefer || git clone git@github.com:aligrudi/neatrefer.git
+	@test -d troff || git clone -b neat git://repo.or.cz/troff.git
 	@echo "Downloading fonts"
 	@cd fonts && sh ./fonts.sh
 
