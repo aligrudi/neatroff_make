@@ -5,8 +5,9 @@ neatmkfn/*
 neatpost/*
 troff/*
 
-fonts/*.t1
 fonts/*.afm
 fonts/*.pfb
-fonts/*.zip
+fonts/*.t1
 fonts/*.tar.gz
+fonts/*.ttf
+fonts/*.zip
