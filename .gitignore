@@ -1,0 +1,12 @@
+neatroff/*
+neatrefer/*
+neateqn/*
+neatmkfn/*
+neatpost/*
+troff/*
+
+fonts/*.t1
+fonts/*.afm
+fonts/*.pfb
+fonts/*.zip
+fonts/*.tar.gz
