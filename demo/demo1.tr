@@ -55,16 +55,19 @@ Words \s[16]can\s0 be \s+[5]Larger\s0 or \s-[5]Smaller\s0.
 .\" the vertical space between lines.
 .ps 14
 .vs 14
-.\" Defaults fonts: R (roman), B (bold), I (italic); P is the previous
+.\" Defaults fonts: R (Roman), B (bold), I (italic); P is the previous
 .\" font.
 Fonts can be \fBchanged\fP.
-.\" You can also use fp request.
-.fp I
+.\" You can also use ft request.
+.ft I
 This is \m[cyan]cyan\m[]; \m[#382]colour\m[] does help
 .\" The colour can be also changed using cl request
 .cl #244
 sometimes.
+.\" Without argument, requests like cl, ft, and ps change font face,
+.\" colour, and size respectively to its previous value.
 .cl
+.ft
 .sp
 .\" ===============
 .\" DEFINING MACROS
@@ -89,48 +92,81 @@ in \*[mac2 colour red].
 .nr count 20
 .ds name "Page
 There are \n[count] of \*[name]s.
-.br
-.\" \h triggers horizontal movement and can be used for indentation.
-.\" \w'input' tells you the length of the input.
-.de Found
-\h'5'
-\\$1: [\m[green]X\m[]]
-.br
-..
-.de Needtobuy
-\h'5'
-\\$1: []
-.br
-..
-\h'2'Grocery list:
-.br
-.Found     Coffee
-.Needtobuy Milk
-.Needtobuy Bread
-
-.\" \w'theinput' gives you input's width
-figuring out the spacing is difficult as Coffee, Milk and Bread
-have different widths (\w'Coffee', \w'Milk', \w'Bread').  So let's use
-tabs instead:
-
-.ta 2.2i 3.2i
-
-.fp CR
-.in +1.5
-hello world
-.in -1.5
-
-.DE
-.fp P
-.ds Found [\m[green]X\m[]]
-.ds Needtobuy [   ]
-.de Wrap
-    \\$2:	\\*[\\$1]
-.   br
-..
-Grocery list:
-.br
-.Wrap Found     Coffee
-.Wrap Needtobuy Milk
-.Wrap Needtobuy Bread
-
+.sp
+.\" ===============
+.\" TEXT ADJUSTMENT
+.\" ===============
+.ce
+Centred line
+.sp
+.\" Without paragraph formatting, line breaks are respected.
+.nf
+With no paragraph
+formatting.
+.sp
+.\" With paragraph formatting, words are collected and lines
+.\" are filled.
+.fi
+Enable paragraph
+formatting.
+.sp
+.\" Paragraph adjustment type (lp, rp, and bp enable whole paragraph
+.\" formatting algorithm):
+.\" + l, lp: Left
+.\" + r, rp: Right
+.\" + b, bp: Adjust both margins
+.ad r
+Right adjusted text.
+.sp
+.ad b
+.\" You can specify identation with in, temporary indentation
+.\" with ti, and line length with ll.
+.in 1c
+.ll 15c
+.ti 2c
+Text indentation is applied to the all lines (its current value is \n[.i]),
+whereas temporary indentation is applied only on the next line.
+.in 0
+.sp
+.\" =============
+.\" OTHER REQUSTS
+.\" =============
+.\" Scale indicators:
+.\" + i: Inch
+.\" + c: Centimeters
+.\" + m: Em (current size points)
+.\" + n: En (Em / 2)
+.\" + p: Points (1/72 inch)
+.\" + u: Basic unit
+.\" + v: Vertical space
+.\" + none: Default (depends on the request)
+.ad l
+.nf
+Horizontal \h'1c'movement and vertical \v'1m'movement.
+Width of \(lqabc\(rq is \w'abc' in basic units.
+.sp
+.\" Drawing commands:
+Lines: horizontal \l'1m' and vertical \L'-1m'
+Lines: \D'l 1m -1n'
+Circles: \D'c 1n'
+Polygons: \D'p 1n 0 0 -1n -1n 1n'
+Filled polygons: \D'P 1n 0 0 -1n -1n 1n'
+.sp
+.\" Fonts can be mounted using fp; the second argument is font
+.\" short name and the third argument is font name (the name of
+.\" the font descriptor file).
+.fp - AB CB
+.fp - MYFONT URWGothic-Book
+Fonts: \f[AB]number 1\fP and \f[MYFONT]number 2\fP.
+.\" You can also replace standard fonts
+.fp - R CB
+This is the new Roman font.
+.\" ==========
+.\" NEXT STEPS
+.\" ==========
+.\"
+.\" + Read "Troff User's Manual," "Neatroff Introduction," and
+.\"   "UNIX Text Processing".
+.\" + Use macro packages.
+.\" + Read available macro packages like those in neatroff_make/tmac.
+.\" + Write your own macro package.
