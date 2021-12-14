@@ -11,7 +11,7 @@ SOIN = "$(BASE)/soin/soin"
 SHAPE = "$(BASE)/shape/shape"
 
 ROFFOPTS = "-F$(BASE)" "-M$(BASE)/tmac"
-ROFFMACS = -mps -meps -mtbl -mkeep -mfa -msrefs
+ROFFMACS = -mpost -mtbl -mkeep -mfa -msrefs
 POSTOPTS = "-F$(BASE)" -pa4
 REFROPTS = -m -e -o ct -p ref.bib
 
