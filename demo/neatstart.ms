@@ -29,7 +29,7 @@ To use Neatroff without installing it, neatroff_make can be retrieved
 as follows:
 
 .cc.beg
-$ git clone git://repo.or.cz/neatroff_make.git
+$ git clone https://repo.or.cz/neatroff_make.git
 .cc.end
 
 .LP

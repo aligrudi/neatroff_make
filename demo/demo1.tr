@@ -13,7 +13,7 @@
 .\"
 .\" You can set up Neatroff as follows.
 .\"
-.\" $ git clone git://github.com/aligrudi/neatroff_make.git
+.\" $ git clone https://github.com/aligrudi/neatroff_make.git
 .\" $ cd neatroff_make
 .\" $ make init		# Downloads the required programs and some fonts
 .\" $ make neat		# Compiles the programs

@@ -227,7 +227,7 @@ To do so, use the following commands:
 
 .cc.beg
 .ta 12m
-$ git clone git://repo.or.cz/neatcc_make.git
+$ git clone https://repo.or.cz/neatcc_make.git
 $ cd neatcc_make
 $ make init	# fetches the required programs
 $ make neat	# compiles the programs using the host compiler
