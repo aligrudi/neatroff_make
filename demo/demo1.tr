@@ -33,6 +33,12 @@
 .\" ============
 .\"
 .\" As you have already guessed, lines starting with .\" are comments.
+.\"
+.\" We'll center the next line and make the text temporarily larger.
+.ce 1
+.ps +8
+I'm some centered input.
+.ps -8
 Hello Neatroff.
 .\" Blank lines cause a line break and some vertical spacing (unless
 .\" using blm request).
