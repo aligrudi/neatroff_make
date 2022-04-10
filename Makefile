@@ -102,7 +102,7 @@ install:
 	@cp fonts/* "$(BASE)/fonts/"
 	@chmod 644 "$(BASE)/fonts"/*
 	@echo "Updating fontpath in font descriptions"
-	@for f in "$(BASE)/devutf"/*; do sed "/^fontpath /s=$(PWD)/fonts=$(BASE)/devutf=" <$$f >.fd.tmp; mv .fd.tmp $$f; done
+	@for f in "$(BASE)/devutf"/*; do sed "/^fontpath /s=$(PWD)/fonts=$(BASE)/fonts=" <$$f >.fd.tmp; mv .fd.tmp $$f; done
 
 clean:
 	@cd neatroff && $(MAKE) clean
