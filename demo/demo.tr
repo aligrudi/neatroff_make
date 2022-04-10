@@ -25,8 +25,8 @@
 .\" + Edit the value of BASE in the Makefile to point to neatroff_make.
 .\" + Edit the line beginning with "all:"; remove the names of files
 .\"   that appear after it in this line.
-.\" + Create a file name demo1.tr with the contents of this file.
-.\" + Add demo1.pdf after "all:" in the Makefile.
+.\" + Create a file name demo.tr with the contents of this file.
+.\" + Add demo.pdf after "all:" in the Makefile.
 .\"
 .\" ============
 .\" TROFF BASICS
