@@ -8,6 +8,7 @@ BASE = $(PWD)
 
 INSTALL = install
 MKDIR = mkdir -p -m 755
+PWD = $${PWD}
 
 all: help
 
@@ -47,8 +48,8 @@ pull:
 
 comp:
 	@echo "Compiling programs"
-	@cd neatroff && $(MAKE) FDIR="$(BASE)" MDIR="$(BASE)/tmac"
-	@cd neatpost && $(MAKE) FDIR="$(BASE)" MDIR="$(BASE)/tmac"
+	@base="$(BASE)" && cd neatroff && $(MAKE) FDIR="$$base" MDIR="$$base/tmac"
+	@base="$(BASE)" && cd neatpost && $(MAKE) FDIR="$$base" MDIR="$$base/tmac"
 	@cd neateqn && $(MAKE)
 	@cd neatmkfn && $(MAKE)
 	@cd neatrefer && $(MAKE)
@@ -59,7 +60,7 @@ comp:
 
 neat: comp
 	@echo "Generating font descriptions"
-	@cd neatmkfn && ./gen.sh "$(PWD)/fonts" "$(PWD)/devutf" >/dev/null
+	@pwd="$(PWD)" && cd neatmkfn && ./gen.sh "$$pwd/fonts" "$$pwd/devutf" >/dev/null
 
 install:
 	@echo "Copying binaries to $(BASE)"
