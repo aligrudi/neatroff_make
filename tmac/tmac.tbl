@@ -46,6 +46,7 @@
 .nr tblvertsz 16	\" vertical line point size
 .nr tblhorisz 16	\" horizontal line point size
 .nr tblcolrev 0		\" reverse .tblcol column number (R2L tables)
+.ds tblboxclr "0
 .de tblrst
 .	in 0
 ..
@@ -113,7 +114,7 @@
 ..
 .de tblrowbeg
 .	tblrst
-.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.one]) \s[\\n[tblbrdrsz]]\D'l \\n[tblwid]u 0'\s[]
+.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.one]) \m[\\*[tblboxclr]]\s[\\n[tblbrdrsz]]\D'l \\n[tblwid]u 0'\s[]\m[]
 .	br
 .	nr tblrow.ok 1
 .	nr tblrow.one 0
@@ -127,6 +128,7 @@
 .	sp |\\n[tblrow.bot]u
 .	nr tblht \\n[tblrow.bot]u-\\n[tblrow.top]u+.5v
 .	sp -.5v
+.	cl \\*[tblboxclr]
 .	if \\n[tblboxall]:\\n[tblboxcol] \{\
 .		ps \\n[tblbrdrsz]
 \h'|0'\D'l 0 -\\n[tblht]u'\v'\\n[tblht]u'\
@@ -152,6 +154,7 @@
 .		ps
 .		sp -1
 .	\}
+.	cl
 .	sp
 ..
 .de tblcol
