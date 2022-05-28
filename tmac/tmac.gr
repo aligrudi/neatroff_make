@@ -130,7 +130,7 @@
 .	nr grx1 \\*[grx \\$1]
 .	nr gry1 \\*[gry \\$2]
 .	ps \\n[grptsz]
-\v'|\\n[gry1]u'\h'|\\n[grx1]u'\h'-\\w'\\$3'u/2u)'\\$3
+\v'|\\n[gry1]u'\h'|\\n[grx1]u'\h'-(\\w'\\$3'u/2u)'\\$3
 .	ps
 .	sp -1
 ..
