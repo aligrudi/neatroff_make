@@ -30,7 +30,7 @@ init:
 	@test -d neatmkfn || git clone https://github.com/aligrudi/neatmkfn.git
 	@test -d neateqn || git clone https://github.com/aligrudi/neateqn.git
 	@test -d neatrefer || git clone https://github.com/aligrudi/neatrefer.git
-	@test -d troff || git clone -b neat https://repo.or.cz/troff.git
+	@test -d troff || git clone https://github.com/aligrudi/troffp9.git troff
 	@echo "Downloading fonts"
 	@cd fonts && sh ./fonts.sh
 
