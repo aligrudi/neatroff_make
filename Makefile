@@ -20,7 +20,7 @@ help:
 	@echo "   neat        Compile the programs and generate the fonts"
 	@echo "   pull        Update git repositories (git pull)"
 	@echo "   clean       Remove the generated files"
-	@echo "   install     Install Neatroff in $(BASE)"
+	@echo "   install     Install Neatroff in $(DESTDIR)$(BASE)"
 	@echo
 
 init:
@@ -63,47 +63,47 @@ neat: comp
 	@pwd="$(PWD)" && cd neatmkfn && ./gen.sh "$$pwd/fonts" "$$pwd/devutf" >/dev/null
 
 install:
-	@echo "Copying binaries to $(BASE)"
-	@$(MKDIR) "$(BASE)/neatroff"
-	@$(MKDIR) "$(BASE)/neatpost"
-	@$(MKDIR) "$(BASE)/neateqn"
-	@$(MKDIR) "$(BASE)/neatmkfn"
-	@$(MKDIR) "$(BASE)/neatrefer"
-	@$(MKDIR) "$(BASE)/troff/pic"
-	@$(MKDIR) "$(BASE)/troff/tbl"
-	@$(MKDIR) "$(BASE)/soin"
-	@$(MKDIR) "$(BASE)/shape"
-	@$(MKDIR) -p "$(BASE)/share/man/man1"
-	@$(INSTALL) neatroff/roff "$(BASE)/neatroff/"
-	@$(INSTALL) neatpost/post "$(BASE)/neatpost/"
-	@$(INSTALL) neatpost/pdf "$(BASE)/neatpost/"
-	@$(INSTALL) neateqn/eqn "$(BASE)/neateqn/"
-	@$(INSTALL) neatmkfn/mkfn "$(BASE)/neatmkfn/"
-	@$(INSTALL) neatrefer/refer "$(BASE)/neatrefer/"
-	@$(INSTALL) soin/soin "$(BASE)/soin/"
-	@$(INSTALL) shape/shape "$(BASE)/shape/"
-	@$(INSTALL) troff/pic/pic "$(BASE)/troff/pic/"
-	@$(INSTALL) troff/tbl/tbl "$(BASE)/troff/tbl/"
-	@$(INSTALL) man/neateqn.1 "$(BASE)/share/man/man1"
-	@$(INSTALL) man/neatmkfn.1 "$(BASE)/share/man/man1"
-	@$(INSTALL) man/neatpost.1 "$(BASE)/share/man/man1"
-	@$(INSTALL) man/neatrefer.1 "$(BASE)/share/man/man1"
-	@$(INSTALL) man/neatroff.1 "$(BASE)/share/man/man1"
-	@echo "Copying font descriptions to $(BASE)/tmac"
-	@$(MKDIR) "$(BASE)/tmac"
-	@cp -r tmac/* "$(BASE)/tmac/"
-	@find "$(BASE)/tmac" -type d -exec chmod 755 {} \;
-	@find "$(BASE)/tmac" -type f -exec chmod 644 {} \;
-	@echo "Copying devutf device to $(BASE)/devutf"
-	@$(MKDIR) "$(BASE)/devutf"
-	@cp devutf/* "$(BASE)/devutf/"
-	@chmod 644 "$(BASE)/devutf"/*
-	@echo "Copying fonts to $(BASE)/fonts"
-	@$(MKDIR) "$(BASE)/fonts"
-	@cp fonts/* "$(BASE)/fonts/"
-	@chmod 644 "$(BASE)/fonts"/*
+	@echo "Copying binaries to $(DESTDIR)$(BASE)"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/neatroff"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/neatpost"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/neateqn"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/neatmkfn"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/neatrefer"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/troff/pic"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/troff/tbl"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/soin"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/shape"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/share/man/man1"
+	@$(INSTALL) neatroff/roff "$(DESTDIR)$(BASE)/neatroff/"
+	@$(INSTALL) neatpost/post "$(DESTDIR)$(BASE)/neatpost/"
+	@$(INSTALL) neatpost/pdf "$(DESTDIR)$(BASE)/neatpost/"
+	@$(INSTALL) neateqn/eqn "$(DESTDIR)$(BASE)/neateqn/"
+	@$(INSTALL) neatmkfn/mkfn "$(DESTDIR)$(BASE)/neatmkfn/"
+	@$(INSTALL) neatrefer/refer "$(DESTDIR)$(BASE)/neatrefer/"
+	@$(INSTALL) soin/soin "$(DESTDIR)$(BASE)/soin/"
+	@$(INSTALL) shape/shape "$(DESTDIR)$(BASE)/shape/"
+	@$(INSTALL) troff/pic/pic "$(DESTDIR)$(BASE)/troff/pic/"
+	@$(INSTALL) troff/tbl/tbl "$(DESTDIR)$(BASE)/troff/tbl/"
+	@$(INSTALL) man/neateqn.1 "$(DESTDIR)$(BASE)/share/man/man1"
+	@$(INSTALL) man/neatmkfn.1 "$(DESTDIR)$(BASE)/share/man/man1"
+	@$(INSTALL) man/neatpost.1 "$(DESTDIR)$(BASE)/share/man/man1"
+	@$(INSTALL) man/neatrefer.1 "$(DESTDIR)$(BASE)/share/man/man1"
+	@$(INSTALL) man/neatroff.1 "$(DESTDIR)$(BASE)/share/man/man1"
+	@echo "Copying font descriptions to $(DESTDIR)$(BASE)/tmac"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/tmac"
+	@cp -r tmac/* "$(DESTDIR)$(BASE)/tmac/"
+	@find "$(DESTDIR)$(BASE)/tmac" -type d -exec chmod 755 {} \;
+	@find "$(DESTDIR)$(BASE)/tmac" -type f -exec chmod 644 {} \;
+	@echo "Copying devutf device to $(DESTDIR)$(BASE)/devutf"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/devutf"
+	@cp devutf/* "$(DESTDIR)$(BASE)/devutf/"
+	@chmod 644 "$(DESTDIR)$(BASE)/devutf"/*
+	@echo "Copying fonts to $(DESTDIR)$(BASE)/fonts"
+	@$(MKDIR) "$(DESTDIR)$(BASE)/fonts"
+	@cp fonts/* "$(DESTDIR)$(BASE)/fonts/"
+	@chmod 644 "$(DESTDIR)$(BASE)/fonts"/*
 	@echo "Updating fontpath in font descriptions"
-	@for f in "$(BASE)/devutf"/*; do sed "/^fontpath /s=$(PWD)/fonts=$(BASE)/fonts=" <$$f >.fd.tmp; mv .fd.tmp $$f; done
+	@for f in "$(DESTDIR)$(BASE)/devutf"/*; do sed "/^fontpath /s=$(PWD)/fonts=$(BASE)/fonts=" <$$f >.fd.tmp; mv .fd.tmp $$f; done
 
 clean:
 	@cd neatroff && $(MAKE) clean
