@@ -29,7 +29,7 @@
 .ce
 \s-3\fIUpdated in January 2020\s+3\fP\&
 .sp 3
-Neatroff is a new implementation of Troff typesetting system in C
+Neatroff is a new implementation of the Troff typesetting system in the C
 programming language, which tries to address, as neatly as possible,
 some of the shortcomings of the original Troff based on the ideas and
 features available in Plan 9 Troff, Heirloom Troff, and Groff.
@@ -44,11 +44,11 @@ explains how to set up and use Neatroff.
 
 .SH "Nomenklature"
 Since there are several implementations of this family of roff typesetting
-suites available, Neatroff documentation needs to distinguish this
+suites available, the Neatroff documentation needs to distinguish this
 implementation from others to avoid confusion.  \(lqroff\(rq for example is the
-main typesetting application, which may also exist under the name with other
-typesetting suits of the same kind.  To avoid misinterpretation, the name
-\(lqNeatroff\(rq is used in these documents when addressing either the whole
+main typesetting application, which may also exist under this name in other
+typesetting suites of the same kind.  To avoid misinterpretation, the name
+\(lqNeatroff\(rq will be used in these documents when addressing either the whole
 typesetting suite as such or the roff binary of this typeseeting suit in the
 sense of a brand name.  If these documents address the commandline usage of
 \(lqroff\(rq or more general handling the binary itself, it uses the
@@ -71,7 +71,7 @@ delimiters and arguments of commands like .tr, .hc, .tc, .lc, .mc, and
 \&.fc are in UTF-8 encoding.
 
 .MH "Long macro, register, and environment names
-When not in compatibility mode (activated with -C command line option or the .cp
+When not in compatibility mode (activated with the -C command line option or the .cp
 request, as in Groff), Neatroff supports long macro, register, and environment
 names.  It also supports Groff-style escape sequences with long arguments
 (for \\[], \\*[], \\$[], \\f[], \\g[], \\k[], \\m[], \\n[], and \\s[])
@@ -88,7 +88,7 @@ Neatroff, features can be enabled with \&.ff and the active script and
 language can be selected with \&.ffsc.
 Neatmkfn supports PostScript Type 1 fonts, TrueType fonts (TTF), and
 OpenType fonts (OTF).  For the latter, however, it cannot extract
-glyph bounding boxes, which is used by the Neateqn preprocessor.
+glyph bounding boxes, which are used by the Neateqn preprocessor.
 Therefore, if an OpenType font is supposed to be used in Neateqn
 blocks, it should be converted to TrueType first.
 
@@ -107,13 +107,13 @@ paragraphs and does not write any of the collected lines to the output.
 Since after the end macro no new page is started, collected lines may
 be unexpectedly written to the end of the last page of the document.
 To change that, the end macro can invoke the \&.br request.
-For requests that cause break, using \(aq as the control character
+For requests that cause a break, using \(aq as the control character
 prevents writing any line of the collected paragraph to the output,
 as expected.
 The exception to this rule is \(aqbr, which formats the words
 collected so far and outputs all resulting lines except the final
 incomplete line (this is useful, for instance, for footnotes, which
-should be inserted in the same page).
+should be inserted on the same page).
 
 .MH "Paragraph formatting algorithm
 For deciding at what points to break a paragraph into lines, Neatroff
@@ -125,7 +125,7 @@ performing paragraph formatting.
 The \&.hycost request changes the cost of hyphenating words.  The
 default value is zero.
 The \\j escape sequence, as in Heirloom Troff, specifies the extra
-cost of line break after a word; for instance, in \(lqHello\\j'10000'
+cost of a line break after a word; for instance, in \(lqHello\\j'10000'
 world\(rq, the words are not split by the line breaking algorithm,
 unless absolutely necessary (i.e., if other options are more costly).
 The escape sequence \\\(ti introduces non-breakable stretchable space.
@@ -142,21 +142,21 @@ The \&.ssh request sets the amount (in percentage) by which the
 stretchable spaces in a line may be shrunk while formatting lines.
 The default value is zero.
 Also, the second
-argument of \&.ss request specifies sentence space, as in Groff or
+argument of the \&.ss request specifies sentence space, as in Groff or
 Heirloom Troff.
 
 .MH "Macros and their arguments
-In a macro, \\$* is replaced with macro's argument separated
+In a macro, \\$* is replaced with the macro's arguments separated
 by spaces.  \\$@ is like \\$*, but quotes the arguments as well.
 \\$\(ha is like \\$@, except that it escapes the double quotes
 in the arguments.
-The arguments can be shifted with \&.shift request.
+The arguments can be shifted with a \&.shift request.
 Neatroff also supports blank line macro (.blm) and
 leading space macro (.lsm).
 
 .MH "Text direction
-Neatroff supports text direction to render right-to-left languages.
-\&.<< and \&.>> requests specify text direction and \\< and \\> escape
+Neatroff supports changing the text direction to render right-to-left languages.
+The \&.<< and \&.>> requests specify text direction and the \\< and \\> escape
 sequences change it temporarily for including words in the reverse
 direction.  The value of number registers \&.td and \&.cd indicate the
 current text and temporary directions respectively; zero means
@@ -171,7 +171,7 @@ cursive attachment positions, as defined in the fonts.
 
 .MH "Font manipulation
 In Neatroff, the mapping between Troff character names and glyphs in a
-font can be modified with \&.fmap request: \(lq.fmap F C G\(rq
+font can be modified with the \&.fmap request: \(lq.fmap F C G\(rq
 maps Troff character C to the glyph with device-specific name G for
 font F.  When this glyph does not exist in F, Neatroff assumes that
 the character C is not present in the font.  When G is missing, the
@@ -182,7 +182,7 @@ assumed to be special.  Also, \(lq.fzoom FN zoom\(rq scales font FN by
 the second argument after dividing it by 1000.
 
 .MH "Colour support
-Neatroff supports colours with .cl request and \\m[] escape sequence.
+Neatroff supports colours with the .cl request and the \\m[] escape sequence.
 Unlike Groff, colours need not be defined beforehand and can be
 specified directly.  The argument of \\m can be predefined colour
 names (e.g. blue), predefined colour numbers (0 for black, 1 for red,
@@ -190,9 +190,9 @@ names (e.g. blue), predefined colour numbers (0 for black, 1 for red,
 7 for white), #rgb and #rrggbb for specifying colours in hexadecimal
 RGB format, #g and #gg for specifying grey with the given hexadecimal
 level, and empty (\\m[]) for the previous colour.  The current colour
-is available in \&.m number register.
+is available in the \&.m number register.
 
-.MH "Hyphenation language
+.MH "Hyphenation
 The \&.hpf request loads hyphenation patterns, exceptions, and
 character mappings from the addresses specified via its arguments.
 The specified files should contain nothing but utf-8 patterns,
@@ -220,9 +220,9 @@ and splines respectively.
 .MH "Conditional escape sequence
 Neatroff supports a new escape sequence for conditional interpolation:
 the escape sequence \\?'cond@expr1@expr2@', evaluates cond (exactly as
-if it is a \&.if condition) and interpolates expr1, if the condition
+if it were a \&.if condition) and interpolates expr1, if the condition
 is true, and expr2, otherwise.  The delimiter (@ in this example) can
-be any character that cannot be part of the condition; for numerical
+be any character, but may not be part of the condition; for numerical
 expressions, for instance, it cannot be a digit, an operator sign, or
 a scale indicator, unless separated from the condition with \\&.  The
 final delimiter, and even expr2, may be omitted, thus \\?'cond@expr'
@@ -355,7 +355,7 @@ hyphenated lines (only when formatting whole paragraphs).
 Set the maximum number of consecutive hyphenated lines (only when
 formatting whole paragraphs).  The current value is available via
 \\n[.hlm].  An argument of zero or a negative number implies no
-limitation.
+limit.
 
 .NR "\&.hydash C" "\\\\:\\\\(hy\\\\(en\\\\(em-\\\\-\\\\(--" "none" "\-"
 Specify the list of characters after which words may be broken (even
@@ -384,7 +384,7 @@ available in register \\n(.I.
 Right-side temporary indentation.
 
 .NR "\&.kn N" "1" "none" "E"
-Enable or disable pairwise kerning (current value available through \\n[.kn]).
+Enable or disable pairwise kerning (the current value is available through \\n[.kn]).
 
 .NR "\&.lsm M" "\-" "disabled" "\-"
 Specify the leading space macro.  If specified, for each line with
@@ -400,7 +400,7 @@ values passed to \&.pmll.
 
 .NR "\&.>>  \&.<<" "left-to-right" "\-" "E"
 Render text in left-to-right or right-to-left direction.  See the
-first section for an explanation of escape sequences \\> and \\<.
+first section for an explanation of the escape sequences \\> and \\<.
 
 .NR "\&.shift N" "\-" "N=1" "\-"
 Shift macro arguments by N positions.
@@ -425,7 +425,7 @@ difference between the current point size and S1.
 .sp -1
 .MH "The standard macro packages
 The standard Troff macro packages and a top-level build script to
-obtain and install Neatroff are available in neatroff_make git
+obtain and install Neatroff are available in the neatroff_make git
 repository (\*[post.url http://litcave.rudi.ir/ link]).
 \(lqGetting Started with Neatroff\(rq (\*[post.url http://litcave.rudi.ir/neatstart.pdf link])
 explains how to use this repository.
@@ -455,7 +455,7 @@ licence.
 
 .MH "List of OpenType font features
 As mentioned in previous sections, font features can be enabled and
-disabled with \&.ff request.  For the list of OpenType features in
+disabled with the \&.ff request.  For a list of OpenType features in
 general and their descriptions, see
 the list of typographic features in Wikipedia (\*[post.url https://en.wikipedia.org/wiki/List_of_typographic_features link])
 or OpenType specification (\*[post.url http://www.microsoft.com/typography/OTSPEC/featurelist.htm link]).
@@ -469,8 +469,8 @@ and name parameters are ignored, however.  The value of the fontname
 parameter in Neatroff specifies the device name of the font
 (e.g. Times-Roman); Neatpost uses it to map Troff fonts to PostScript fonts.
 In the charset section, the forth field is always the
-device-specific name of the glyph (accessible with \\N escape sequence)
-and the optional fifth field specifies glyph's code (the fourth field
+device-specific name of the glyph (accessible with the \\N escape sequence)
+and the optional fifth field specifies the glyph's code (the fourth field
 of the original Troff).
 
 In addition to the old charset section of the original Troff, Neatroff
@@ -481,7 +481,7 @@ For the latter, \(lqkern\(rq is followed by three tokens: the name of the
 first glyph, the name of the second glyph, and the amount of kerning
 between them.  Specifying the name of glyphs (the fourth field after \(lqchar\(rq)
 instead of character names allows specifying kerning pairs for glyphs
-not mapped to any characters (may be later with \&.fmap request) or
+not mapped to any characters (may be done later with a \&.fmap request) or
 specifying kerning pairs only once for all aliases of a character.
 Here are a few lines of a font description file for Neatroff, created
 with Neatmkfn.
