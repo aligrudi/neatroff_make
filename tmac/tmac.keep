@@ -78,9 +78,13 @@
 .	\}
 ..
 .de keepeof
+.	nr keepeof.depth +1
 .	keepbop
-.	if \\n[keepi]<\\n[keepn] \{\
+.	if (\\n[keepeof.depth]<16)&(\\n[keepi]<\\n[keepn]) \{\
 .		bp
 .		keepeof
 .	\}
+.	nr keepeof.depth -1
+.	if (\\n[keepeof.depth]=0)&(\\n[keepi]<\\n[keepn]) \
+.		tm tmac.keep: failed to output some of the floats (\\n[keepi] of \\n[keepn])
 ..
