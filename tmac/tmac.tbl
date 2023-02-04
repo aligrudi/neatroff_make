@@ -72,7 +72,7 @@
 .de tblbeg
 .	tblrst
 .	tblrec \\$^
-.	nr tblrow.one 1
+.	nr tblrow.cnt 0
 ..
 .de tblmac
 .	ds tblrst1 "\\$1
@@ -95,7 +95,6 @@
 .	tblrst
 .	nr tblcur \\$1
 .	if \\n[tblcolrev] .nr tblcur \\n[tblcnt]-\\$1+1
-.	\\*[tblrst\\n[tblcur]]
 .	if \\n[tblcur]=1 .in +0u
 .	if \\n[tblcur]=2 .in +\\n[tblwid1]u
 .	if \\n[tblcur]=3 .in +\\n[tblwid1]u+\\n[tblwid2]u
@@ -106,6 +105,7 @@
 .	ll \\n(.iu+\\n[tblwid\\n[tblcur]]u
 .	in +\\n[tblgap]u
 .	ll -\\n[tblgap]u
+.	\\*[tblrst\\n[tblcur]]
 ..
 .de tblcolend
 .	br
@@ -114,10 +114,10 @@
 ..
 .de tblrowbeg
 .	tblrst
-.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.one]) \m[\\*[tblboxclr]]\s[\\n[tblbrdrsz]]\D'l \\n[tblwid]u 0'\s[]\m[]
+.	if (\\n[tblboxall]+\\n[tblboxrow])&(\\n[tblrow.cnt]=0) \m[\\*[tblboxclr]]\s[\\n[tblbrdrsz]]\D'l \\n[tblwid]u 0'\s[]\m[]
 .	br
+.	nr tblrow.cnt +1
 .	nr tblrow.ok 1
-.	nr tblrow.one 0
 .	mk tblrow.top
 .	mk tblrow.bot
 ..
