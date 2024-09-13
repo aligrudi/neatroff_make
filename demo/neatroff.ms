@@ -42,7 +42,7 @@ hand, the document \(lqGetting Started with Neatroff\(rq
 (\*[post.url http://litcave.rudi.ir/neatstart.pdf link])
 explains how to set up and use Neatroff.
 
-.SH "Nomenklature"
+.SH "Nomenclature"
 Since there are several implementations of this family of roff typesetting
 suites available, the Neatroff documentation needs to distinguish this
 implementation from others to avoid confusion.  \(lqroff\(rq for example is the
