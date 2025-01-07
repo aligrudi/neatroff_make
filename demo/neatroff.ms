@@ -304,6 +304,11 @@ for character C are removed.
 .NR "\&.rchar C" "\-" "\-" "\-"
 Remove the definition of character C.
 
+.NR "\&.evc E" "\-" "none" "E"
+Copy text-formatting settings from environment E to the
+currently active environment.  Pending input lines are
+not copied.
+
 .NR "\&.eos S T" "S=\&.?!  T='"")]*" "none" "\-"
 Specify sentence characters.  The first argument specifies
 the characters that end a sentence and the second argument
