@@ -1,7 +1,7 @@
 .\" first draft by Larry Kollar
 .TH neatmkfn 1
 .SH NAME
-neatmkfn \- the neatroff typesetting processor
+neatmkfn \- the neatroff font description generator
 .SH SYNOPSIS
 .I neatmkfn
 .RB [ \-a ]
@@ -11,6 +11,8 @@ neatmkfn \- the neatroff typesetting processor
 .IR name ]
 .RB [ \-t \~\c
 .IR name ]
+.RB [ \-f \~\c
+.IR path ]
 .RB [ \-r \~\c
 .IR res ]
 .RB [ \-k \~\c
@@ -47,6 +49,8 @@ in place of the PostScript font name.
 Sets the
 .I troff
 font name.
+.IP "\-f \fIpath\fP"
+Sets the font path for embedding the font into the output.
 .IP "\-r \fIres\fP"
 Sets the device resolution.
 The default is 720 (i.e. 1/720 inch).
