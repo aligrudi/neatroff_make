@@ -46,7 +46,7 @@ test03() {
 cat <<EOF
 .po 0
 .nh
-.ll 800u
+.ll 80u
 hello
 world
 EOF
