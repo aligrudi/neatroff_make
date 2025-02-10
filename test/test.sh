@@ -57,6 +57,34 @@ world
 EOF
 }
 
+test04() {
+cat <<EOF
+.po 0
+hello
+.bp
+world
+EOF
+
+cat 1>&2 <<EOF
+hello
+
+world
+EOF
+}
+
+test05() {
+cat <<EOF
+.po 0
+.nr x 123
+.nr 1 456
+\n\nx
+EOF
+
+cat 1>&2 <<EOF
+45623
+EOF
+}
+
 testcase() {
 	printf "$1: "
 	$1 2>$TMPDIR/.rofftest.2 | $ROFF -F. | $PTXT -F. >$TMPDIR/.rofftest.1
@@ -68,6 +96,6 @@ testcase() {
 	printf "OK\n"
 }
 
-for t in test00 test01 test02 test03; do
+for t in test00 test01 test02 test03 test04 test05; do
 	testcase $t
 done
