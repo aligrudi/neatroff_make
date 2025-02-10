@@ -8,11 +8,52 @@ TMPDIR="/tmp"
 
 test00() {
 cat <<EOF
-testing neatroff...
+hello world
 EOF
 
 cat 1>&2 <<EOF
-       testing neatroff...
+       hello world
+EOF
+}
+
+test01() {
+cat <<EOF
+hello
+.ps 20
+world
+EOF
+
+cat 1>&2 <<EOF
+       hello  w o r l d
+EOF
+}
+
+test02() {
+cat <<EOF
+.po 0
+.nf
+hello
+world
+EOF
+
+cat 1>&2 <<EOF
+hello
+world
+EOF
+}
+
+test03() {
+cat <<EOF
+.po 0
+.nh
+.ll 800u
+hello
+world
+EOF
+
+cat 1>&2 <<EOF
+hello
+world
 EOF
 }
 
@@ -27,6 +68,6 @@ testcase() {
 	printf "OK\n"
 }
 
-for t in test00; do
+for t in test00 test01 test02 test03; do
 	testcase $t
 done
