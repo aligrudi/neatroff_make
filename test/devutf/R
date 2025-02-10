@@ -2,6 +2,15 @@ name R
 fontname Test-Roman
 fontpath /test/Test-Roman.ttf
 spacewidth 10
+char !	10	2	exclam	33
+char "	10	2	quotedbl	34
+char (	10	3	parenleft	40
+char )	10	3	parenright	41
+char *	10	2	asterisk	42
+char +	10	0	plus	43
+char -	10	0	hyphen	45
+char hy	"
+char /	10	2	slash	47
 char .	10	0	period	46
 char 0	10	2	zero	48
 char 1	10	2	one	49
@@ -16,6 +25,11 @@ char 9	10	2	nine	57
 char :	10	0	colon	58
 char ;	10	1	semicolon	59
 char ?	10	2	question	63
+char <	10	0	less	60
+char =	10	0	equal	61
+char >	10	0	greater	62
+char ?	10	2	question	63
+char @	10	3	at	64
 char A	10	2	A	65
 char B	10	2	B	66
 char C	10	2	C	67
@@ -42,6 +56,17 @@ char W	10	2	W	87
 char X	10	2	X	88
 char Y	10	2	Y	89
 char Z	10	2	Z	90
+char [	10	3	bracketleft	91
+char \	10	2	backslash	92
+char bs	"
+char rs	"
+char ]	10	3	bracketright	93
+char ha	10	3	asciicircum	94
+char _	10	1	underscore	95
+char ru	"
+char ul	"
+char `	10	3	quoteleft	96
+char oq	"
 char a	10	0	a	97
 char b	10	2	b	98
 char c	10	0	c	99
