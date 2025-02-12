@@ -1,6 +1,6 @@
-name R
-fontname Test-Roman
-fontpath /test/Test-Roman.ttf
+name I
+fontname Test-Italic
+fontpath /test/Test-Italic.ttf
 spacewidth 10
 char !	10	2	exclam	33
 char "	10	2	quotedbl	34
