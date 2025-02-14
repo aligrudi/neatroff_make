@@ -3699,6 +3699,269 @@ abc abc
 EOF
 }
 
+test194() {
+cat <<'EOF'
+.po 0
+.hpf ./bc.pat ./bc.hyp ./bc.chr
+.ll 1n
+something
+abcdefghi
+Something
+rstuvwxyz
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+somet-
+hing
+abcd-
+efghi
+Somet-
+hing
+rstuv-
+wxyz
+EOF
+}
+
+test195() {
+cat <<'EOF'
+.po 0
+.hw ab-cd-ef-gh-ij-kl-mn-op-qr-st-uv-wx-yz
+.hy 14
+.ll 3m
+.ti 1m
+abcdefghijklmnopqrstuvwxyz
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+ ab-
+cd-
+ef-
+gh-
+ij-
+kl-
+mn-
+op-
+qr-
+st-
+uv-
+wx-
+yz
+EOF
+}
+
+test196() {
+cat <<'EOF'
+.po 0
+.ad p
+.ll \w'abc def-'u
+abc def- ghi jkl mno
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+abc def-
+ghi  jkl
+mno
+EOF
+}
+
+test197() {
+cat <<'EOF'
+.po 0
+.hy 0
+.wh 1v x
+.de x
+.	ll \w'abc abc'u
+..
+.ad pb
+.ll \w'abc'u
+abc abc abc abc abc abc abc abc
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+abc
+abc
+abc abc
+abc abc
+abc abc
+EOF
+}
+
+test198() {
+cat <<'EOF'
+.po 0
+.ll \w'abc def'u
+abc def\c
+ghi
+jkl mno pqr
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+abc
+defghi
+jkl mno
+pqr
+EOF
+}
+
+test199() {
+cat <<'EOF'
+.po 0
+.\"xcmp -a2
+.ad p
+.pl 2
+.de x
+z
+..
+.wh 1 x
+.ll \w'a  b c'u
+.sp
+.ti \w' 'u
+a b c d  e f g h i
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+
+z
+
+ a b c
+d  e z
+f g  h
+i
+EOF
+}
+
+test200() {
+cat <<'EOF'
+.po 0
+.nf
+.nr x 1
+.de xx
+1 \\nx
+\\$1
+2 \\nx
+..
+0 \nx
+.xx "\R'x 2'
+3 \nx
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+0 1
+1 1
+
+2 2
+3 2
+EOF
+}
+
+test201() {
+cat <<'EOF'
+.po 0
+.de q
+a\\$1b
+..
+.chop q
+123 \*[q 456] 789
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+123 a456b 789
+EOF
+}
+
+test202() {
+cat <<'EOF'
+.po 0
+.de min
+\\?'\\$1<\\$2@\\$1@\\$2@'
+..
+.chop min
+\*[min 20 10]
+\*[min 10 20]
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+10 10
+EOF
+}
+
+test203() {
+cat <<'EOF'
+.po 0
+.ll 8
+.nf
+.>>
+ABCDEF
+.<<
+ABCDEF
+.>>
+AB\<CD\>EF
+.<<
+AB\<CD\>EF
+.<<
+AB\>CD\<EF
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+ABCDEF
+  FEDCBA
+ABDCEF
+  EFDCBA
+  FECDBA
+EOF
+}
+
+test204() {
+cat <<'EOF'
+.po 0
+.nf
+.fspecial R I
+.fmap R b one
+abc
+.fmap R b ---
+abc
+.fmap R b
+abc
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+a1c
+abc
+abc
+EOF
+}
+
+test205() {
+cat <<'EOF'
+.po 0
+.de x
+\\$1 \\$2
+..
+.x a\ c def
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+a c def
+EOF
+}
+
+test206() {
+cat <<'EOF'
+.po 0
+.de X
+abc
+..
+.wh 0 X
+.bp
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+abc
+
+abc
+EOF
+}
+
 testcase() {
 	printf "$1: "
 	$1 2>$TMPDIR/.rofftest.1 | $ROFF -F. | $PTXT -F. >$TMPDIR/.rofftest.2
@@ -3715,6 +3978,6 @@ if test -n "$1"; then
 	exit $?
 fi
 
-for t in $(seq 0 193); do
+for t in $(seq 0 206); do
 	testcase test$(printf %02d $t)
 done
