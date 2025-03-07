@@ -3962,6 +3962,22 @@ abc
 EOF
 }
 
+test207() {
+cat <<'EOF'
+.po 0
+a\D'l |2 |2'b\D'l |2 |4'c
+.br
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+a
+
+  b
+
+  c
+EOF
+}
+
 testcase() {
 	printf "$1: "
 	$1 2>$TMPDIR/.rofftest.1 | $ROFF -F. | $PTXT -F. >$TMPDIR/.rofftest.2
@@ -3978,6 +3994,6 @@ if test -n "$1"; then
 	exit $?
 fi
 
-for t in $(seq 0 206); do
+for t in $(seq 0 207); do
 	testcase test$(printf %02d $t)
 done
