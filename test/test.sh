@@ -3978,6 +3978,24 @@ a
 EOF
 }
 
+test208() {
+cat <<'EOF'
+.po 0
+.nf
+.de x
+\\n(.c
+..
+.x
+.lf 50 208.ms
+.x
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+6
+50
+EOF
+}
+
 testcase() {
 	printf "$1: "
 	$1 2>$TMPDIR/.rofftest.1 | $ROFF -F. | $PTXT -F. >$TMPDIR/.rofftest.2
@@ -3994,6 +4012,6 @@ if test -n "$1"; then
 	exit $?
 fi
 
-for t in $(seq 0 207); do
+for t in $(seq 0 208); do
 	testcase test$(printf %02d $t)
 done
