@@ -1,7 +1,7 @@
 /*
  * FARSI/ARABIC SHAPING PREPROCESSOR FOR NEATROFF
  *
- * Copyright (C) 2010-2014 Ali Gholami Rudi <ali at rudi dot ir>
+ * Copyright (C) 2010-2025 Ali Gholami Rudi <ali at rudi dot ir>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -44,13 +44,9 @@ static void shape(int *s)
 
 static void shape_ligs(int *d, int *s)
 {
-	int l;
 	while (*s) {
-		if ((l = uc_lig(d, s)))
-			s += l;
-		else
-			*d = *s++;
-		d++;
+		if (uc_lig(&d, &s))
+			*d++ = *s++;
 	}
 	*d = 0;
 }

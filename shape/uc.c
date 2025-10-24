@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "uc.h"
 
 #define LEN(a)		(sizeof(a) / sizeof((a)[0]))
 
@@ -167,15 +168,22 @@ int uc_lig3(int a1, int a2, int a3)
 }
 
 /* return the length of the ligature in src; writes the ligature to dst */
-int uc_lig(int *dst, int *src)
+int uc_lig(int **dst, int **src)
 {
-	if (src[1] && uc_lig2(src[0], src[1])) {
-		*dst = uc_lig2(src[0], src[1]);
-		return 2;
+	int *s = *src;
+	if (s[0] == 0x200c || s[0] == 0x200d) {
+		*src += 1;
+		return 0;
 	}
-	if (src[1] && src[2] && uc_lig3(src[0], src[1], src[2])) {
-		*dst = uc_lig3(src[0], src[1], src[2]);
-		return 3;
+	if (s[1] && uc_lig2(s[0], s[1])) {
+		*(*dst)++ = uc_lig2(s[0], s[1]);
+		*src += 2;
+		return 0;
 	}
-	return 0;
+	if (s[1] && s[2] && uc_lig3(s[0], s[1], s[2])) {
+		*(*dst)++ = uc_lig3(s[0], s[1], s[2]);
+		*src += 3;
+		return 0;
+	}
+	return 1;
 }
