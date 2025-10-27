@@ -118,13 +118,13 @@ Right adjusted text.
 .in 1c
 .ll 15c
 .ti 2c
-Text indentation is applied to the all lines (its current value is \n[.i]),
+Text indentation is applied to all lines (its current value is \n[.i]),
 whereas temporary indentation is applied only on the next line.
 .in 0
 .sp
-.\" =============
-.\" OTHER REQUSTS
-.\" =============
+.\" ==============
+.\" OTHER REQUESTS
+.\" ==============
 .\" Scale indicators:
 .\" + i: Inch
 .\" + c: Centimeters
