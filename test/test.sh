@@ -3996,6 +3996,41 @@ cat 1>&2 <<'EOF'
 EOF
 }
 
+test209() {
+cat <<'EOF'
+.po 0
+.ls 2
+.nf
+abc
+
+bcd
+def
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+abc
+
+
+bcd
+
+def
+EOF
+}
+
+test210() {
+cat <<'EOF'
+.po 0
+aaa\# bbb
+\# ccc
+ddd efi ghi.
+.br
+EOF
+# outputs
+cat 1>&2 <<'EOF'
+aaaddd efi ghi.
+EOF
+}
+
 testcase() {
 	printf "$1: "
 	$1 2>$TMPDIR/.rofftest.1 | $ROFF -F. | $PTXT -F. >$TMPDIR/.rofftest.2
@@ -4012,6 +4047,6 @@ if test -n "$1"; then
 	exit $?
 fi
 
-for t in $(seq 0 208); do
+for t in $(seq 0 210); do
 	testcase test$(printf %02d $t)
 done
