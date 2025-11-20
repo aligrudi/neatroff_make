@@ -35,11 +35,11 @@ some of the shortcomings of the original Troff based on the ideas and
 features available in Plan 9 Troff, Heirloom Troff, and Groff.
 The latest versions of Neatroff, its PostScript and PDF post-processor,
 Neatpost, and its eqn preprocessor, Neateqn,
-are available at their home page (\*[post.url http://litcave.rudi.ir/ link]).
+are available at their home page (\*[post.url http://dev.rudi.ir/ link]).
 This document enumerates Neatroff's features, its new requests, and
 its differences compared to other Troff implementations.  On the other
 hand, the document \(lqGetting Started with Neatroff\(rq
-(\*[post.url http://litcave.rudi.ir/neatstart.pdf link])
+(\*[post.url http://dev.rudi.ir/neatstart.pdf link])
 explains how to set up and use Neatroff.
 
 .SH "Nomenclature"
@@ -431,8 +431,8 @@ difference between the current point size and S1.
 .MH "The standard macro packages
 The standard Troff macro packages and a top-level build script to
 obtain and install Neatroff are available in the neatroff_make git
-repository (\*[post.url http://litcave.rudi.ir/ link]).
-\(lqGetting Started with Neatroff\(rq (\*[post.url http://litcave.rudi.ir/neatstart.pdf link])
+repository (\*[post.url http://dev.rudi.ir/ link]).
+\(lqGetting Started with Neatroff\(rq (\*[post.url http://dev.rudi.ir/neatstart.pdf link])
 explains how to use this repository.
 
 .MH "Formatting equations with Neateqn
@@ -440,7 +440,7 @@ Neateqn is an eqn preprocessor for Neatroff.  It implements many
 of the extensions introduced in Groff's eqn preprocessor.  It
 can use TeX's Computer Modern-style bracket-building symbols, if
 available.
-\(lqTypesetting Mathematics with Neateqn\(rq (\*[post.url http://litcave.rudi.ir/neateqn.pdf link])
+\(lqTypesetting Mathematics with Neateqn\(rq (\*[post.url http://dev.rudi.ir/neateqn.pdf link])
 introduces Neateqn.
 
 .MH "Generating the output device

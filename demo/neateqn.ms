@@ -12,7 +12,7 @@
 This document briefly introduces Neateqn, an eqn implementation for
 typesetting mathematical formulas in Neatroff.  For further
 information about Neatroff and Neateqn, see
-http:/\h'-.3n'/litcave.rudi.ir/.
+http:/\h'-.3n'/dev.rudi.ir/.
 
 .SH "The Algorithm
 Neatroff follows the rules described in appendix \s-1G\s+1 of Knuth's

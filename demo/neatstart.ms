@@ -22,7 +22,7 @@ a set of standard macro packages and a top-level Makefile to obtain
 and build Neatroff and its helper programs, which are referred to as
 Neat* throughout this document.  More details about Neatroff and the
 programs that accompany it are available at its homepage
-\*[post.url http://litcave.rudi.ir/].
+\*[post.url http://dev.rudi.ir/].
 
 .SH "Using Neatroff Without Installation"
 To use Neatroff without installing it, neatroff_make can be retrieved
@@ -136,13 +136,13 @@ Testing the new font...
 
 .MH "Neatroff Introduction
 Explains the differences between Neatroff and other
-troff implementations.  Available at http:/\h'-.3n'/litcave.rudi.ir/neatroff.pdf.
+troff implementations.  Available at http:/\h'-.3n'/dev.rudi.ir/neatroff.pdf.
 
 .MH "Typesetting Mathematics with Neateqn"
 Introduces the Neateqn preprocessor for typesetting mathematical equations.
-Available at http:/\h'-.3n'/litcave.rudi.ir/neateqn.pdf.
+Available at http:/\h'-.3n'/dev.rudi.ir/neateqn.pdf.
 
 .MH "Neatroff Introduction in Farsi
 Explains specifying text direction in right-to-left languages and
 Keshideh adjustment in Farsi.
-Available at http:/\h'-.3n'/litcave.rudi.ir/neatfarsi.pdf.
+Available at http:/\h'-.3n'/dev.rudi.ir/neatfarsi.pdf.
