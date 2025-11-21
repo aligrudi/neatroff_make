@@ -4,8 +4,6 @@
 .\" using Neatroff; they help particularly those users who have good
 .\" experience in using Troff.  What follows demonstrates the basics of
 .\" using Neatroff, assuming that the reader has never used Troff before.
-.\" Nevertheless, this section would probably help any new user of
-.\" Neatroff.
 .\"
 .\" ===================
 .\" SETTING UP NEATROFF
@@ -18,15 +16,15 @@
 .\" $ make init		# Downloads the required programs and some fonts
 .\" $ make neat		# Compiles the programs
 .\"
-.\" For rendering this file, you can perform the following steps.
+.\" This file is included in the demo directory of neatroff_make.  If
+.\" you prefer to compile it in another directory, you can perform the
+.\" following steps.
 .\"
 .\" + Create a directory to store your Neatroff documents.
 .\" + Copy the Makefile in neatroff_make/demo to this directory.
 .\" + Edit the value of BASE in the Makefile to point to neatroff_make.
-.\" + Edit the line beginning with "all:"; remove the names of files
-.\"   that appear after it in this line.
-.\" + Create a file name demo.tr with the contents of this file.
-.\" + Add demo.pdf after "all:" in the Makefile.
+.\" + Copy this file (demo.tr) to the directory.
+.\" + Make demo.PDF (PDF post processor) or demo.pdf (PS post processor).
 .\"
 .\" ============
 .\" TROFF BASICS
@@ -49,7 +47,7 @@ Words \s[16]can\s0 be \s+[5]Larger\s0 or \s-[5]Smaller\s0.
 .\" the vertical space between lines.
 .ps 14
 .vs 14
-.\" Defaults fonts: R (Roman), B (bold), I (italic); P is the previous
+.\" Default fonts: R (Roman), B (bold), I (italic); P is the previous
 .\" font.
 Fonts can be \fBchanged\fP.
 .\" You can also use ft request.
@@ -68,7 +66,7 @@ sometimes.
 .\" ===============
 .\"
 .\" A multi-line macro can be defined as follows; the definition ends
-.\" at a line containing "..".
+.\" with a line containing ".." by default.
 .de mac1
 .	ft B
 .	cl #824
