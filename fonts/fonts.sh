@@ -12,21 +12,23 @@ HGET="wget -c --no-check-certificate -O"
 # Ghostscript fonts
 echo "Retrieving $URWURL"
 $HGET urw-base35.tar.gz $URWURL
-tar xzf urw-base35.tar.gz
-mv urw-base35*/fonts/*.t1 .
-mv urw-base35*/fonts/*.afm .
-rm -r urw-base35*/
+test -f urw-base35.tar.gz || exit 1
+if tar xzf urw-base35.tar.gz; then
+	mv urw-base35*/fonts/*.t1 .
+	mv urw-base35*/fonts/*.afm .
+	rm -r urw-base35*/
+fi
 
 # AMS and computer modern fonts
 echo "Retrieving $AMSURL"
 $HGET amsfonts.zip $AMSURL
-unzip -q amsfonts.zip 'fonts/**'
-for x in fonts/afm/public/amsfonts/cm/*.afm
-do
-	cp $x `basename $x .afm | tr a-z A-Z`.afm
-done
-for x in fonts/type1/public/amsfonts/cm/*.pfb
-do
-	mv $x `basename $x .pfb | tr a-z A-Z`.pfb
-done
-rm -r fonts/
+test -f amsfonts.zip || exit 1
+if unzip -q amsfonts.zip 'fonts/**'; then
+	for x in fonts/afm/public/amsfonts/cm/*.afm; do
+		cp $x `basename $x .afm | tr a-z A-Z`.afm
+	done
+	for x in fonts/type1/public/amsfonts/cm/*.pfb; do
+		mv $x `basename $x .pfb | tr a-z A-Z`.pfb
+	done
+	rm -r fonts/
+fi
