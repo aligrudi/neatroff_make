@@ -2,9 +2,9 @@
 # Fetch fonts for setting up Neatroff
 
 # urw-base35 URL
-URWURL="https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20170801.1.tar.gz"
-# AMS fonts URL
-AMSURL="https://www.ams.org/arc/tex/amsfonts.zip"
+URWURL="https://github.com/ArtifexSoftware/urw-base35-fonts/archive/20200910.tar.gz"
+# AMS fonts URL (main URL: https://www.ams.org/arc/tex/amsfonts.zip)
+AMSURL="https://mirrors.ctan.org/install/fonts/amsfonts.tds.zip"
 
 # HTTP retrieval program
 HGET="wget -c --no-check-certificate -O"
