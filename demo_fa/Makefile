@@ -1,4 +1,4 @@
-# Neatroff demonstration directory
+# Neatroff template makefile
 BASE = $(PWD)/..
 ROFF = "$(BASE)/neatroff/roff"
 POST = "$(BASE)/neatpost/post"
@@ -22,23 +22,26 @@ all: test.pdf fa.pdf
 	@echo "Generating $@"
 	@cat $< | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | \
 		$(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
+.tr.PDF:
+	@echo "Generating $@"
+	@cat $< | $(SHAPE) | $(PIC) | $(TBL) | $(EQN) | \
+		$(ROFF) $(ROFFOPTS) | $(PPDF) $(POSTOPTS) >$@
 
 .ms.ps:
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | $(REFR) $(REFROPTS) | $(SHAPE) | \
 		$(PIC) | $(TBL) | $(EQN) | \
 		$(ROFF) $(ROFFOPTS) $(ROFFMACS) | $(POST) $(POSTOPTS) >$@
-
-.ps.pdf:
-	@echo "Generating $@"
-	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true \
-		"-sFONTPATH=$(BASE)/fonts/" "-sFONTMAP=$(BASE)/fonts/Fontmap" $< $@
-
 .ms.PDF:
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | $(REFR) $(REFROPTS) | $(SHAPE) | \
 		$(PIC) | $(TBL) | $(EQN) | \
 		$(ROFF) $(ROFFOPTS) $(ROFFMACS) | $(PPDF) $(POSTOPTS) >$@
+
+.ps.pdf:
+	@echo "Generating $@"
+	@ps2pdf -dPDFSETTINGS=/prepress -dEmbedAllFonts=true \
+		"-sFONTPATH=$(BASE)/fonts/" "-sFONTMAP=$(BASE)/fonts/Fontmap" $< $@
 
 clean:
 	rm -f *.ps *.pdf *.PDF

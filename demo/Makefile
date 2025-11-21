@@ -1,4 +1,4 @@
-# Neatroff demonstration directory
+# Neatroff makefile template
 BASE = $(PWD)/..
 ROFF = "$(BASE)/neatroff/roff"
 POST = "$(BASE)/neatpost/post"
@@ -20,13 +20,15 @@ all: demo.pdf neatroff.pdf neateqn.pdf neatstart.pdf neatcc.pdf
 .tr.ps:
 	@echo "Generating $@"
 	@cat $< | $(PIC) | $(TBL) | $(EQN) | $(ROFF) $(ROFFOPTS) | $(POST) $(POSTOPTS) >$@
+.tr.PDF:
+	@echo "Generating $@"
+	@cat $< | $(PIC) | $(TBL) | $(EQN) | $(ROFF) $(ROFFOPTS) | $(PPDF) $(POSTOPTS) >$@
 
 .ms.ps:
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | \
 		$(REFR) $(REFROPTS) | $(PIC) | $(TBL) | $(EQN) | \
 		$(ROFF) $(ROFFOPTS) $(ROFFMACS) | $(POST) $(POSTOPTS) >$@
-
 .ms.PDF:
 	@echo "Generating $@"
 	@cat $< | $(SOIN) | \
