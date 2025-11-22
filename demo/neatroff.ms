@@ -27,7 +27,7 @@
 .AU
 \fIAli Gholami Rudi\fP
 .ce
-\s-3\fIUpdated in January 2020\s+3\fP\&
+\s-3\fIUpdated in November 2025\s+3\fP\&
 .sp 3
 Neatroff is a new implementation of the Troff typesetting system in the C
 programming language, which tries to address, as neatly as possible,
@@ -35,26 +35,26 @@ some of the shortcomings of the original Troff based on the ideas and
 features available in Plan 9 Troff, Heirloom Troff, and Groff.
 The latest versions of Neatroff, its PostScript and PDF post-processor,
 Neatpost, and its eqn preprocessor, Neateqn,
-are available at their home page (\*[post.url http://dev.rudi.ir/ link]).
+are available at their home page (\*[post.url https://dev.rudi.ir/ link]).
 This document enumerates Neatroff's features, its new requests, and
 its differences compared to other Troff implementations.  On the other
-hand, the document \(lqGetting Started with Neatroff\(rq
-(\*[post.url http://dev.rudi.ir/neatstart.pdf link])
+hand, the document \*[eq "Getting Started with Neatroff"]
+(\*[post.url https://dev.rudi.ir/neatstart.pdf link])
 explains how to set up and use Neatroff.
 
 .SH "Nomenclature"
 Since there are several implementations of this family of roff typesetting
 suites available, the Neatroff documentation needs to distinguish this
-implementation from others to avoid confusion.  \(lqroff\(rq for example is the
+implementation from others to avoid confusion.  \*[eq roff] for example is the
 main typesetting application, which may also exist under this name in other
 typesetting suites of the same kind.  To avoid misinterpretation, the name
-\(lqNeatroff\(rq will be used in these documents when addressing either the whole
+\*[eq Neatroff] will be used in these documents when addressing either the whole
 typesetting suite as such or the roff binary of this typeseeting suit in the
 sense of a brand name.  If these documents address the commandline usage of
-\(lqroff\(rq or more general handling the binary itself, it uses the
-name \(lqroff\(rq to name the binary being the result of the compilation
-process.  Same goes for \(lqneatpost,\(rq \(lqneateqn,\(rq \(lqneatmkfn,\(rq and
-\(lqneatrefer\(rq accordingly.
+\*[eq roff] or more general handling the binary itself, it uses the
+name \*[eq roff] to name the binary being the result of the compilation
+process.  Same goes for \*[eq neatpost,] \*[eq neateqn,] \*[eq neatmkfn,] and
+\*[eq neatrefer] accordingly.
 
 .bp
 .SH "Noteworthy Features"
@@ -125,8 +125,9 @@ performing paragraph formatting.
 The \&.hycost request changes the cost of hyphenating words.  The
 default value is zero.
 The \\j escape sequence, as in Heirloom Troff, specifies the extra
-cost of a line break after a word; for instance, in \(lqHello\\j'10000'
-world\(rq, the words are not split by the line breaking algorithm,
+cost of a line break after a word; for instance, in
+\*[eq "Hello\(rsj'10000' world"], the words are not split by the line
+breaking algorithm,
 unless absolutely necessary (i.e., if other options are more costly).
 The escape sequence \\\(ti introduces non-breakable stretchable space.
 Also, to prevent paragraphs with
@@ -176,8 +177,8 @@ maps Troff character C to the glyph with device-specific name G for
 font F.  When this glyph does not exist in F, Neatroff assumes that
 the character C is not present in the font.  When G is missing, the
 effect of \&.fmap for character C is cancelled.  Neatroff also implements
-Groff's \&.fspecial and \&.fzoom requests: after \(lq.fspecial FN S1
-S2 ...\(rq, when the current font is FN, the fonts S1, S2, ... are
+Groff's \&.fspecial and \&.fzoom requests: after \*[eq ".fspecial FN S1 S2 ...],
+when the current font is FN, the fonts S1, S2, ... are
 assumed to be special.  Also, \(lq.fzoom FN zoom\(rq scales font FN by
 the second argument after dividing it by 1000.
 
@@ -203,7 +204,7 @@ The \&.hpfa request is like \&.hpf, except that it does not clear the
 previous hyphenation patterns and exceptions.  The second and third
 arguments of these requests are optional.  With no arguments, these
 requests load English hyphenation patterns and exceptions.  Also the
-\&\(lq.hcode abcd...\(rq request, assigns the hyphenation code of b to
+\&\*[eq ".hcode abcd..."] request, assigns the hyphenation code of b to
 a and the hyphenation code of d to c; initially all upper-case ASCII
 letters are mapped to their lower-case forms.
 
@@ -259,7 +260,7 @@ opena, close, write, pso, and mso.  Also, -men and -mfa include
 .bp
 .SH "Summary of New Requests"
 This is the list of new requests available in Neatroff compared
-to those documented in \(lqTroff User's Manual\(rq by Ossanna
+to those documented in \*[eq "Troff User's Manual"] by Ossanna
 and Kernighan.
 
 .NR "\&.ad p*" "b" "adjust" "E"
@@ -431,8 +432,8 @@ difference between the current point size and S1.
 .MH "The standard macro packages
 The standard Troff macro packages and a top-level build script to
 obtain and install Neatroff are available in the neatroff_make git
-repository (\*[post.url http://dev.rudi.ir/ link]).
-\(lqGetting Started with Neatroff\(rq (\*[post.url http://dev.rudi.ir/neatstart.pdf link])
+repository (\*[post.url https://dev.rudi.ir/ link]).
+\*[eq "Getting Started with Neatroff"] (\*[post.url https://dev.rudi.ir/neatstart.pdf link])
 explains how to use this repository.
 
 .MH "Formatting equations with Neateqn
@@ -440,7 +441,7 @@ Neateqn is an eqn preprocessor for Neatroff.  It implements many
 of the extensions introduced in Groff's eqn preprocessor.  It
 can use TeX's Computer Modern-style bracket-building symbols, if
 available.
-\(lqTypesetting Mathematics with Neateqn\(rq (\*[post.url http://dev.rudi.ir/neateqn.pdf link])
+\*[eq "Typesetting Mathematics with Neateqn"] (\*[post.url https://dev.rudi.ir/neateqn.pdf link])
 introduces Neateqn.
 
 .MH "Generating the output device
@@ -463,7 +464,7 @@ As mentioned in previous sections, font features can be enabled and
 disabled with the \&.ff request.  For a list of OpenType features in
 general and their descriptions, see
 the list of typographic features in Wikipedia (\*[post.url https://en.wikipedia.org/wiki/List_of_typographic_features link])
-or OpenType specification (\*[post.url http://www.microsoft.com/typography/OTSPEC/featurelist.htm link]).
+or OpenType specification (\*[post.url https://www.microsoft.com/typography/OTSPEC/featurelist.htm link]).
 
 .bp
 .SH "Font Description Files"
@@ -480,11 +481,11 @@ of the original Troff).
 
 In addition to the old charset section of the original Troff, Neatroff
 supports a new syntax for defining characters and kerning pairs.  Lines
-starting with the word \(lqchar\(rq define characters (similar to lines in
-the charset section) and lines starting with \(lqkern\(rq specify kerning pairs.
-For the latter, \(lqkern\(rq is followed by three tokens: the name of the
+starting with the word \*[eq char] define characters (similar to lines in
+the charset section) and lines starting with \*[eq kern] specify kerning pairs.
+For the latter, \*[eq kern] is followed by three tokens: the name of the
 first glyph, the name of the second glyph, and the amount of kerning
-between them.  Specifying the name of glyphs (the fourth field after \(lqchar\(rq)
+between them.  Specifying the name of glyphs (the fourth field after \*[eq char])
 instead of character names allows specifying kerning pairs for glyphs
 not mapped to any characters (may be done later with a \&.fmap request) or
 specifying kerning pairs only once for all aliases of a character.
@@ -517,7 +518,7 @@ bounding box of the argument of \\w.
 
 To use the advanced features present in TrueType and OpenType fonts,
 Neatroff supports lines that define substitution and positioning
-rules (lines starting with \(lqgsub\(rq and \(lqgpos\(rq respectively).
+rules (lines starting with \*[eq gsub] and \*[eq gpos] respectively).
 Note that unlike Heirloom Troff, which implements non-contextual
 single-character substitutions, Neatroff implements many of the more
 complex OpenType substitution and positioning features.  The following
@@ -531,10 +532,10 @@ gpos kern:latn 2 gl1:+0+0-5+0 gl2
 .cc.end
 .LP
 In this example, the first line defines a 3-character ligature (with
-feature name \(lqliga\(rq and script name \(lqlatn\(rq) and the second
+feature name \*[eq liga] and script name \*[eq latn]) and the second
 defines pairwise kerning for the pair of glyphs gl1 and gl2
 (decreasing the horizontal advance of gl1 by 5 basic units; with
-feature name \(lqkern\(rq and script name \(lqlatn\(rq).  The patterns
+feature name \*[eq kern] and script name \*[eq latn]).  The patterns
 can be longer and more detailed, defining context or glyph groups, to
 support OpenType features that require them; for examples, see the
 files generated by Neatmkfn.

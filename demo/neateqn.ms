@@ -12,14 +12,14 @@
 This document briefly introduces Neateqn, an eqn implementation for
 typesetting mathematical formulas in Neatroff.  For further
 information about Neatroff and Neateqn, see
-http:/\h'-.3n'/dev.rudi.ir/.
+\*[post.url https://dev.rudi.ir/ https://dev.rudi.ir/].
 
 .SH "The Algorithm
-Neatroff follows the rules described in appendix \s-1G\s+1 of Knuth's
+Neatroff follows the rules described in appendix \*[uc G] of Knuth's
 Texbook, which explains Tex's algorithm for typesetting mathematical
 formulas.  In Tex, sub-formulas of a formula are always typeset in
 one of eight predefined styles.  The formulas inside
-\&\s-1.EQ/.EN\s+1 blocks are rendered in displayed styles and inline
+\*[uc .EQ/.EN] blocks are rendered in displayed styles and inline
 equations are rendered in text styles.
 Their main difference is that in text styles formulas are
 vertically more compact to reduce the amount of extra
@@ -27,8 +27,8 @@ spacing required to be inserted between lines.
 
 The default value of the parameters of the typesetting algorithm,
 such as the position of subscripts, can be changed.
-These parameters are described in appendix \s-1G\s+1 of the Texbook
-and can be modified in Neatroff with Groff eqn-style \(lqset\(rq commands.
+These parameters are described in appendix \*[uc G] of the Texbook
+and can be modified in Neatroff with Groff eqn-style \*[eq set] commands.
 See the Groff eqn manual page or the Texbook for a list and explanations.
 
 .SH "Defining Custom Brackets
@@ -43,8 +43,8 @@ bracketpieces sign top mid bot cen
 .cc.end
 
 .LP
-In these commands, sign is the token placed after the \(lqleft\(rq and
-\(lqright\(rq keywords in equations.  In the bracketsizes command, the
+In these commands, sign is the token placed after the \*[eq left] and
+\*[eq right] keywords in equations.  In the bracketsizes command, the
 glyphs should be ordered based on their size with the smallest glyph
 appearing first.  Neateqn tries the specified glyphs in the same order
 until it finds the glyph that is large enough for the enclosed
@@ -72,7 +72,7 @@ bracketpieces } "\\(rt" "\\(bv" "\\(rb" "\\(rk"
 
 .LP
 The following line instructs Neateqn to use Tex's open
-parenthesis glyphs with different sizes (note that in Neatroff \\\s-1N\s+1'gid' is
+parenthesis glyphs with different sizes (note that in Neatroff \\\*[uc N]'gid' is
 the glyph with device-dependent name gid):
 
 .cc.beg
@@ -85,11 +85,11 @@ delim $$
 .EN
 .SH "Adjusting the Syntax"
 The logic used in eqn to partition equations may seem odd to new
-users; for instance in \(lqO(n sup 2)\(rq, the expected result may
+users; for instance in \*[eq "O(n sup 2)"], the expected result may
 be $O ( n sup 2 )$, instead of $O(n sup {2)}$.
 Even experienced eqn users occasionally make these
 mistakes and some insert spaces around most tokens to prevent possible
-surprises.  Equations like \(lqO ( n sup 2 )\(rq, which prevent
+surprises.  Equations like \*[eq "O ( n sup 2 )"], which prevent
 most of these problems, are not as readable as the alternative, however.  This
 issue is one of the main advantages of Tex's more concise syntax.  In
 Neateqn it is possible to make equations like the first work.
@@ -100,7 +100,7 @@ braces.  By default, equations are also chopped before and after \(ha,
 \(ti, and " (but this can be changed).  The -c option of Neateqn
 allows specifying the characters around which equations are chopped.
 For instance, if \(lq\(ti\(ha"(),\(rq is passed with -c to Neateqn,
-\(lqO(n sup 2)\(rq is interpreted as \(lqO ( n sup 2 )\(rq.  This
+\*[eq O(n sup 2)] is interpreted as \*[eq O ( n sup 2 )].  This
 may be considered an improvement, but a more important advantage in
 the author's opinion is that these characters may be redefined.  For
 instance, one may redefine open and close parenthesis as follows:
@@ -109,33 +109,36 @@ define ( @{ left "(" @
 define ) @right ")" }@
 .cc.end
 .LP
-Then, it is possible to write \(lq(a over b) sup (c + 5)\(rq
+Then, it is possible to write \*[eq "(a over b) sup (c + 5)"]
 to get $left ( a over b right ) sup left ( c + 5 right )$.
 Note that macro arguments are never split away from the macro name,
-thus one can safely call \(lqlog(a, n)\(rq, if log is defined
-as \(lqroman "log" sub {\N'dollar'1}({\N'dollar'2})\(rq.
+thus one can safely call \*[eq "log(a, n)"], if log is defined
+as follows.
+.cc.beg
+define log @{roman "log" sub {\N'dollar'1}({\N'dollar'2})}@
+.cc.end
 
 .SH "Assigning Character Type
 Neateqn determines the spacing between characters in an equation based
 on their type (see chapter 18 of the Texbook for more information).
 It is possible to specify or change the type of a character in Neateqn
-with the \(lqchartype\(rq command.  Possible types are \(lqord\(rq for
-ordinary atoms, \(lqop\(rq for large operators, \(lqbin\(rq for
-binary operators, \(lqrel\(rq for relations, \(lqopen\(rq for opening
-brackets, \(lqclose\(rq for closing brackets, \(lqpunct\(rq for
-punctuations and \(lqinner\(rq for fractions.
+with the \*[eq chartype] command.  Possible types are \*[eq ord] for
+ordinary atoms, \*[eq op] for large operators, \*[eq bin] for
+binary operators, \*[eq rel] for relations, \*[eq open] for opening
+brackets, \*[eq close] for closing brackets, \*[eq punct] for
+punctuations and \*[eq inner] for fractions.
 As an example, the following line declares backslash as a binary operator:
 .cc.beg
 chartype bin \\(rs
 .cc.end
 
 .LP
-The second argument of the \(lqchartype\(rq command should be a Troff
+The second argument of the \*[eq chartype] command should be a Troff
 character name.  If the operator is not a character, it can be defined as one.
-For instance, for \(lq>>\(rq and \(lqlog\(rq
+For instance, for \*[eq >>] and \*[eq log]
 operators, one may define the following two characters (note that
 the following two lines are Neatroff requests and should be placed outside
-\&\s-1.EQ/.EN\s+1 blocks):
+\&\*[uc .EQ/.EN] blocks):
 .cc.beg
 \&.char \\[eqn.log] "log
 \&.char \\[eqn.>>]  ">\\h'-.1n'>
@@ -158,13 +161,13 @@ define log @\\[eqn.log]@
 .SH "Breaking Equations"
 Neateqn can break equations after top-level operators; This is
 important especially when there are long inline equations in the text.
-The \(lqbreakcost\(rq command can specify the cost of a line break
+The \*[eq breakcost] command can specify the cost of a line break
 after different character types: its first argument is the character
 type, as enumerated in the previous section, and its second argument
 is the cost of line breaks after the given character type.  Costs are
-specified via Neatroff's \\j escape sequence (The document \(lqNeatroff
-Introduction\(rq explains the meaning of these costs).  The default
-values are:
+specified via Neatroff's \\j escape sequence (The document
+\*[eq "Neatroff Introduction"] explains the meaning of these costs).
+The default values are:
 
 .cc.beg
 breakcost rel 100
@@ -183,9 +186,9 @@ breakcost any 0
 .cc.end
 
 .SH "Using Tex Mathematical Symbols"
-In order to use Tex's mathematical symbols in Neatroff, \s-1CMEX10\s+1 and
-\s-1CMSY10\s+1 fonts (or their equivalents, for instance \s-1TXEX\s+1 and \s-1TXSY\s+1 for
-Txfonts or \s-1PXEX\s+1 and \s-1PXSY\s+1 for Pxfonts) should be mounted and declared
+In order to use Tex's mathematical symbols in Neatroff, \*[uc CMEX10] and
+\*[uc CMSY10] fonts (or their equivalents, for instance \*[uc TXEX] and \*[uc TXSY] for
+Txfonts or \*[uc PXEX] and \*[uc PXSY] for Pxfonts) should be mounted and declared
 as the special font of eqn Roman font (the font declared as grfont in
 Neateqn).
 
@@ -196,8 +199,8 @@ Neateqn).
 .cc.end
 
 .LP
-If the italic font lacks Greek characters, \s-1CMMI10\s+1 (or its equivalents,
-like \s-1RTXMI\s+1 for Txfonts or \s-1RPXMI\s+1 for Pxfonts) can be mounted and
+If the italic font lacks Greek characters, \*[uc CMMI10] (or its equivalents,
+like \*[uc RTXMI] for Txfonts or \*[uc RPXMI] for Pxfonts) can be mounted and
 declared as a special font of eqn italic font (the font declared as
 gfont in Neateqn).
 
@@ -228,12 +231,12 @@ https://ctan.org/pkg/txfonts (\*[post.url https://ctan.org/pkg/txfonts link])
 .cc.end
 .LP
 Unpack both archives in separate directories.  In each directory copy
-the contents of the contained \(lqafm\(rq and \(lqpfb\(rq directories
-into the \(lqfonts\(rq directory under neatroff_make.
-Then, edit neateqn.ms (source of this document): Search for \(lqChange this
-section\(rq and comment/uncomment a few lines as described there.
+the contents of the contained \*[eq afm] and \*[eq pfb] directories
+into the \*[eq fonts] directory under neatroff_make.
+Then, edit neateqn.ms (source of this document): Search for
+\*[eq "Change this section"] and comment/uncomment a few lines as described there.
 Finally, submit 'make neat' in neatroff_make again, then submit 'make clean
-all' in this folder (\(lqdemo\(rq).
+all' in this folder (\*[eq demo]).
 
 .EQ
 define sum @{vcenter roman "\N'summationdisplay'"}@

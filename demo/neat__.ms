@@ -19,6 +19,8 @@
 .	post.mark "\\$1"
 .	SH_ "\\$1"
 ..
+.ds uc "\s-1\\$*\s+1
+.ds eq "\(lq\\$*\(rq
 .fp - R PA
 .fp - I PI
 .fp - B PB
