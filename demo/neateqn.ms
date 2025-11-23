@@ -100,7 +100,7 @@ braces.  By default, equations are also chopped before and after \(ha,
 \(ti, and " (but this can be changed).  The -c option of Neateqn
 allows specifying the characters around which equations are chopped.
 For instance, if \(lq\(ti\(ha"(),\(rq is passed with -c to Neateqn,
-\*[eq O(n sup 2)] is interpreted as \*[eq O ( n sup 2 )].  This
+\*[eq "O(n sup 2)"] is interpreted as \*[eq "O ( n sup 2 )"].  This
 may be considered an improvement, but a more important advantage in
 the author's opinion is that these characters may be redefined.  For
 instance, one may redefine open and close parenthesis as follows:
@@ -328,7 +328,7 @@ Computer Modern:
 .fp - CMSY CMSY10
 .fp - CMEX CMEX10
 .fp - CMMI CMMI10
-.fspecial R CMSY CMEX10
+.fspecial R CMSY CMEX
 .fspecial I CMMI
 .EQ
 (x + y) sup n = sum from i=0 to n left ( pile {n above i} right ) x sup i y sup n-i
