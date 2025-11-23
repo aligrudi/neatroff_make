@@ -22,7 +22,7 @@ a set of standard macro packages and a top-level Makefile to obtain
 and build Neatroff and its helper programs, which are referred to as
 Neat* throughout this document.  More details about Neatroff and the
 programs that accompany it are available at its homepage
-\*[post.url http://dev.rudi.ir/].
+\*[post.url https://dev.rudi.ir/].
 
 .SH "Using Neatroff Without Installation"
 To use Neatroff without installing it, neatroff_make can be retrieved
@@ -35,8 +35,8 @@ $ git clone https://repo.or.cz/neatroff_make.git
 .LP
 This branch assumes that the resulting directory will not be removed
 and shall contain Neatroff fonts, macros, and binaries when using
-Neatroff.  The \(lqinit\(rq make target, clones the necessary Git
-repositories and obtains Ghostscript fonts.  The \(lqneat\(rq target
+Neatroff.  The \*[eq init] make target, clones the necessary Git
+repositories and obtains Ghostscript fonts.  The \*[eq neat] target
 compiles the programs and generates Neatroff font descriptions.
 Finally, the demo/ subdirectory contains small examples and a Makefile
 to demonstrate how to use Neatroff.
@@ -54,7 +54,7 @@ your document directory and modify its \s-1BASE\s+1 macro to point to the neatro
 directory.
 
 To add new fonts, simply place them in the fonts/ subdirectory and
-re-make the \(lqneat\(rq target.  To use the new font in Neatroff, the
+re-make the \*[eq neat] target.  To use the new font in Neatroff, the
 file name without its extension must be mounted.  For instance, if the
 name of the font is NewFont.ttf, the following Troff code mounts and
 uses this font.
@@ -67,7 +67,7 @@ Text in NewFont
 
 .SH "Installing Neatroff"
 This section describes how to install Neatroff in system directories.
-First modify the \s-1BASE\s+1 macro in neatroff_make/Makefile to point to
+First modify the \*[uc BASE] macro in neatroff_make/Makefile to point to
 the installation location.  Then, after compilining Neatroff as
 described in the previous section, build the Makefile's install target.
 
@@ -136,13 +136,13 @@ Testing the new font...
 
 .MH "Neatroff Introduction
 Explains the differences between Neatroff and other
-troff implementations.  Available at http:/\h'-.3n'/dev.rudi.ir/neatroff.pdf.
+troff implementations.  Available at \*[post.url https://dev.rudi.ir/neatroff.pdf].
 
 .MH "Typesetting Mathematics with Neateqn"
 Introduces the Neateqn preprocessor for typesetting mathematical equations.
-Available at http:/\h'-.3n'/dev.rudi.ir/neateqn.pdf.
+Available at \*[post.url https://dev.rudi.ir/neateqn.pdf].
 
 .MH "Neatroff Introduction in Farsi
 Explains specifying text direction in right-to-left languages and
 Keshideh adjustment in Farsi.
-Available at http:/\h'-.3n'/dev.rudi.ir/neatfarsi.pdf.
+Available at \*[post.url https://dev.rudi.ir/neatfarsi.pdf].
