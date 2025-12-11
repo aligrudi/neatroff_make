@@ -26,33 +26,35 @@ programs that accompany it are available at its homepage
 
 .SH "Using Neatroff Without Installation"
 To use Neatroff without installing it, neatroff_make can be retrieved
-as follows:
+and compiled as follows:
 
 .cc.beg
-$ git clone https://repo.or.cz/neatroff_make.git
+$ git clone https://github.com/aligrudi/neatroff_make
+$ cd neatroff_make/
+$ make init
+$ make neat
 .cc.end
 
 .LP
-This branch assumes that the resulting directory will not be removed
+It assumes that the resulting directory will not be removed
 and shall contain Neatroff fonts, macros, and binaries when using
 Neatroff.  The \*[eq init] make target, clones the necessary Git
 repositories and obtains Ghostscript fonts.  The \*[eq neat] target
 compiles the programs and generates Neatroff font descriptions.
-Finally, the demo/ subdirectory contains small examples and a Makefile
-to demonstrate how to use Neatroff.
+
+The demo/ subdirectory of neatroff_make contains examples,
+and a Makefile to demonstrate how to build Neatroff documents.
+To compile Neatroff documents outside of neatroff_make/demo, the Makefile
+in this directory serves as a good template.  Copy it to your document
+directory and modify its \*[uc BASE] macro to point to the
+neatroff_make directory.  Alternatively, you can use the Makefile
+directly as follows, to compile input.ms or input.tr.
 
 .cc.beg
-$ make init
-$ make neat
-$ cd demo && make
+$ make -f $BASE/demo/Makefile BASE=$BASE input.PDF
 .cc.end
 
 .LP
-To compile Neatroff documents outside of neatroff_make/demo, the Makefile
-in this directory serves as a good template.  Copy it to
-your document directory and modify its \s-1BASE\s+1 macro to point to the neatroff_make/
-directory.
-
 To add new fonts, simply place them in the fonts/ subdirectory and
 re-make the \*[eq neat] target.  To use the new font in Neatroff, the
 file name without its extension must be mounted.  For instance, if the
@@ -77,10 +79,10 @@ $ make install
 
 .LP
 Note that this command may need to be executed by the superuser,
-depending on the directory specified as \s-1BASE\s+1.  At this point
+depending on the directory specified as \*[uc BASE].  At this point
 Neat* should be installed.  As described in the previous section, the
 Makefile in the demo/ subdirectory is a good template for compiling
-Neatroff documents.  You need to update its value of the \s-1BASE\s+1
+Neatroff documents.  You need to update its value of the \*[uc BASE]
 macro.
 
 .LP
@@ -107,7 +109,7 @@ troff just as other fonts with the \&.fp request:
 .cc.end
 
 .LP
-Alternatively, you can place your fonts in the neatroff_make/fonts/
+Alternatively, you can place your fonts in the neatroff_make/fonts
 directory before running make neat; the neat Makefile target generates
 and installs font descriptions for all fonts in that directory
 automatically.  This is especially convenient when the number of fonts
