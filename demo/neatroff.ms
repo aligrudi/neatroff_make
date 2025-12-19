@@ -95,7 +95,7 @@ blocks, it should be converted to TrueType first.
 .MH "Whole paragraph text formatting
 Neatroff supports filling whole paragraphs at once, to achieve
 more uniform word spacing.  Like Heirloom Troff, the \&.ad request
-accepts arguments p or pb, pl, and pr, which are equivalent to b, l,
+accepts arguments pb, pl, and pr, which are equivalent to b, l,
 and r, except that the filling is done for whole paragraphs, i.e.,
 words are collected until a line break is issued.
 This inevitably changes the behaviour of some requests and traps: several
@@ -263,10 +263,19 @@ This is the list of new requests available in Neatroff compared
 to those documented in \*[eq "Troff User's Manual"] by Ossanna
 and Kernighan.
 
-.NR "\&.ad p*" "b" "adjust" "E"
-With values pl, pr, pb, and p, this request instructs Neatroff to perform
-whole-paragraph line formatting.  Also, the value k enables Keshideh
-justification (kp is the equivalent for whole-paragraph formatting).
+.NR "\&.ad F" "b" "adjust" "E"
+The argument is interpreted as a set of flags: l, r, and c for
+left, right, and centre adjustment, respectively; b for
+adjusting both margins; k enables Keshideh justification;
+p instructs Neatroff to perform whole-paragraph line
+filling.  Also, L, R, and C specify line adjustment when
+in no-fill mode.  These flags can be combined.  For instance,
+br means adjust both margins, but right-adjust lines shorter
+than the current line length (the last line of paragraphs,
+for instance).
+Also, note that specifying p without any of l, r, c, or b
+implies b; but this may change in future, and it is
+recommended to specify one of them explicitly.
 
 .NR "\&.blm M" "\-" "disabled" "\-"
 Specify the blank line macro.  If specified, each blank line is
@@ -278,7 +287,7 @@ Remove the last character of a string register.
 .NR "\&.cl C" "0" "previous" "E"
 Change text colour.  The current colour is available in the number
 register \\n(.m.  With no arguments, the previous colour is selected.
-The format of the argument and the \\m escape sequence are described
+The format of the argument and the \\m escape sequence were described
 in the previous section.
 
 .NR "\&.co SRC DST" "\-" "none" "\-"
