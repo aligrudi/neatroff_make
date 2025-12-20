@@ -14,6 +14,7 @@ char (	10	3	parenleft	40
 char )	10	3	parenright	41
 char *	10	2	asterisk	42
 char +	10	0	plus	43
+char ,	10	1	comma	44
 char -	10	0	hyphen	45
 char hy	"
 char /	10	2	slash	47
