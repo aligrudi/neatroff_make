@@ -101,3 +101,13 @@ char x	10	0	x	120
 char y	10	1	y	121
 char z	10	0	z	122
 char |	10	3	bar	124
+gsec 1 gsub tst1:latn
+ggrp 1 1 C
+3 -A -B +X
+3 =X -C +Z
+gsec 2 gsub tst1:latn
+gsub tst1:latn 2 -@1 +Y
+gsec 3 gpos tst2:latn
+ggrp 2 2 G H
+2 D:+0+0+10+0 E
+2 D @2:+0+0+10+0
