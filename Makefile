@@ -38,13 +38,13 @@ init_fa: init
 	@cd fonts && sh ./fonts_fa.sh
 
 pull:
-	cd neatroff && git pull
-	cd neatpost && git pull
-	cd neatmkfn && git pull
-	cd neateqn && git pull
-	cd neatrefer && git pull
-	cd troff && git pull
-	git pull
+	cd neatroff && git $@
+	cd neatpost && git $@
+	cd neatmkfn && git $@
+	cd neateqn && git $@
+	cd neatrefer && git $@
+	cd troff && git $@
+	git $@
 
 comp:
 	@echo "Compiling programs"
@@ -106,13 +106,13 @@ install:
 	@for f in "$(DESTDIR)$(BASE)/devutf"/*; do sed "/^fontpath /s=$(PWD)/fonts=$(BASE)/fonts=" <$$f >.fd.tmp; mv .fd.tmp $$f; done
 
 clean:
-	@cd neatroff && $(MAKE) clean
-	@cd neatpost && $(MAKE) clean
-	@cd neateqn && $(MAKE) clean
-	@cd neatmkfn && $(MAKE) clean
-	@cd neatrefer && $(MAKE) clean
-	@cd troff/tbl && $(MAKE) clean
-	@cd troff/pic && $(MAKE) clean
-	@cd soin && $(MAKE) clean
-	@test ! -d shape || (cd shape && $(MAKE) clean)
+	@cd neatroff && $(MAKE) $@
+	@cd neatpost && $(MAKE) $@
+	@cd neateqn && $(MAKE) $@
+	@cd neatmkfn && $(MAKE) $@
+	@cd neatrefer && $(MAKE) $@
+	@cd troff/tbl && $(MAKE) $@
+	@cd troff/pic && $(MAKE) $@
+	@cd soin && $(MAKE) $@
+	@test ! -d shape || (cd shape && $(MAKE) $@)
 	@rm -fr $(PWD)/devutf
