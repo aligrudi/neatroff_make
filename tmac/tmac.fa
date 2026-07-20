@@ -16,7 +16,7 @@
 .	fi
 .	<<
 .	ft FR
-.	ad pk
+.	ad pbk
 .	ps \\n(PS
 .	vs \\n(VS
 .	ll \\n(LLu
@@ -204,35 +204,37 @@
 .	da fa.footdiv
 .	ev fa.footenv
 .	RT
+.	in2 0
 .	ps \\n(PS-4
 .	vs \\n(PS-2
-.	ad l
+.	nf
 .	>>
 .	nr fa.footnum +1
 .	if \\n[fa.footnum]=1 \l'\\n(.lu'
 .	ds fa.footsign "\\n[fa.footnum]
 .	if \\n(.$>0 .ds fa.footsign "\\$1
-.	ad pk
-.	in 3n
-.	in2 3n
 ..
 .de FS
 .	FS.common \\$1
 .	ft R
-.	ti -3n
 \\*[fa.footsign]
 .	sp -1
+.	in 3n
+.	in2 3n
+.	fi
 ..
 .de FS.fa
 .	FS.common \\$1
 .	<<
 .	ft FR
-.	ti2 -3n
 \>\\*[fa.footsign]\<
 .	sp -1
+.	in 3n
+.	in2 3n
+.	fi
 ..
 .de FE
-.	in 0
+.	br
 .	ev
 .	di
 \s-4\d\>\\*[fa.footsign]\<\u\s+4\c
@@ -242,8 +244,10 @@
 .de FP
 .	if \\n[fa.footnum] \{\
 .		ev fa.footenv
+'		in 0
+'		in2 0
 '		nf
-'		ad l
+'		ad L
 .		fa.footdiv
 .		rm fa.footdiv
 .		ev
@@ -348,7 +352,7 @@
 .de tblrst
 .	fi
 .	ft FR
-.	ad pk
+.	ad pbk
 .	ps \\n(PS-2
 .	vs \\n(VS-3
 .	ll \\n(LLu
@@ -370,7 +374,7 @@
 .de fa.tblfb
 .	<<
 .	ft FR
-.	ad pk
+.	ad pbk
 ..
 .\" For keep package
 .de KF
