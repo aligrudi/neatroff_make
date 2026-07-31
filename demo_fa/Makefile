@@ -1,5 +1,5 @@
 # Neatroff template makefile
-BASE = $(PWD)/..
+BASE = ..
 ROFF = "$(BASE)/neatroff/roff"
 POST = "$(BASE)/neatpost/post"
 PPDF = "$(BASE)/neatpost/pdf"
