@@ -1,19 +1,19 @@
 # Neatroff template makefile
-BASE = ..
-ROFF = "$(BASE)/neatroff/roff"
-POST = "$(BASE)/neatpost/post"
-PPDF = "$(BASE)/neatpost/pdf"
-EQN = "$(BASE)/neateqn/eqn"
-REFR = "$(BASE)/neatrefer/refer"
-PIC = "$(BASE)/troff/pic/pic"
-TBL = "$(BASE)/troff/tbl/tbl"
-SOIN = "$(BASE)/soin/soin"
-SHAPE = "$(BASE)/shape/shape"
+BASE := "$(CURDIR)/.."
+ROFF := "$(BASE)/neatroff/roff"
+POST := "$(BASE)/neatpost/post"
+PPDF := "$(BASE)/neatpost/pdf"
+EQN := "$(BASE)/neateqn/eqn"
+REFR := "$(BASE)/neatrefer/refer"
+PIC := "$(BASE)/troff/pic/pic"
+TBL := "$(BASE)/troff/tbl/tbl"
+SOIN := "$(BASE)/soin/soin"
+SHAPE := "$(BASE)/shape/shape"
 
-ROFFOPTS = "-F$(BASE)" "-M$(BASE)/tmac"
-ROFFMACS = -mpost -mtbl -mkeep -mfa -msrefs
-POSTOPTS = "-F$(BASE)" -pa4
-REFROPTS = -m -e -o ct -p ref.bib
+ROFFOPTS := "-F$(BASE)" "-M$(BASE)/tmac"
+ROFFMACS := -mpost -mtbl -mkeep -mfa -msrefs
+POSTOPTS := "-F$(BASE)" -pa4
+REFROPTS := -m -e -o ct -p ref.bib
 
 all: test.pdf fa.pdf
 
