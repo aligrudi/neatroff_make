@@ -622,7 +622,7 @@ cat <<'EOF'
 EOF
 # outputs
 cat 1>&2 <<'EOF'
-2147483647
+1073741823
 EOF
 }
 
