@@ -1,14 +1,14 @@
 # Neatroff top-level Makefile
 
 # Neatroff base directory
-BASE = $(PWD)
+BASE := $(CURDIR)
 
 # There is no need to install it, but if you wish it, this is the location.
 #BASE = /opt/share/neatroff
 
 INSTALL = install
 MKDIR = mkdir -p -m 755
-PWD = $${PWD}
+PWD := $(CURDIR)
 
 all: help
 
@@ -60,7 +60,7 @@ comp:
 
 neat: comp
 	@echo "Generating font descriptions"
-	@pwd="$(PWD)" && cd neatmkfn && ./gen.sh "$$pwd/fonts" "$$pwd/devutf" >/dev/null
+	@cd neatmkfn && MKFN_RES=7200 ./gen.sh "$(PWD)/fonts" "$(PWD)/devutf" >/dev/null
 
 install:
 	@echo "Copying binaries to $(DESTDIR)$(BASE)"
