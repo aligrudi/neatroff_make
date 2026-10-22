@@ -1,7 +1,7 @@
 /*
  * FARSI/ARABIC SHAPING PREPROCESSOR FOR NEATROFF
  *
- * Copyright (C) 2010-2025 Ali Gholami Rudi <ali at rudi dot ir>
+ * Copyright (C) 2010-2026 Ali Gholami Rudi <ali at rudi dot ir>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
